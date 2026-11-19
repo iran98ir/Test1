@@ -3,147 +3,355 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>۸ المان رشد — پیش‌نمایش</title>
+<title>CountUp + Confetti — تست</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  body{margin:0;background:#f4f5ef;color:#222D29;font-family:"Vazirmatn",Tahoma,sans-serif;padding:20px}
-  .wrap{max-width:800px;margin:auto}
-  .item{margin-bottom:48px;border-top:1px dashed #ccc;padding-top:20px}
-  .label{font-size:13px;font-weight:900;color:#176b4b;margin-bottom:12px}
-  .label span{display:inline-block;width:26px;height:26px;background:#222D29;color:#C7FF00;text-align:center;line-height:26px;margin-left:6px;font-size:12px}
-  .note{font-size:11px;color:#69736b;font-weight:600;margin-bottom:14px}
-  .box{width:100%;min-height:220px;border:1px solid #ddd;background:#fff;position:relative;overflow:hidden}
+  :root{
+    --paper:#f4f5ef;--ink:#222D29;--muted:#69736b;
+    --green:#176b4b;--lime:#C7FF00;--coral:#ef7657;
+    --line:rgba(21,27,24,.13);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Vazirmatn",Tahoma,sans-serif;
+    padding:24px 16px 60px;
+  }
+  .wrap{max-width:560px;margin:auto}
+
+  /* ============ کارت شمارنده ============ */
+  .counter-card{
+    position:relative;
+    border-radius:0;
+    background:linear-gradient(160deg,#1f2b25 0%,#222D29 55%,#163d2a 100%);
+    color:#fff;
+    padding:26px 22px 22px;
+    overflow:hidden;
+    box-shadow:0 26px 60px #151b1840;
+  }
+  .counter-card:before{
+    content:"";position:absolute;top:-50%;right:-30%;
+    width:320px;height:320px;border-radius:50%;
+    background:radial-gradient(circle,#C7FF0030,transparent 65%);
+    filter:blur(20px);
+    animation:glowFloat 9s ease-in-out infinite;
+  }
+  @keyframes glowFloat{
+    0%,100%{transform:translate(0,0)}
+    50%{transform:translate(-30px,30px)}
+  }
+  .counter-card:after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+    background:linear-gradient(90deg,transparent,#C7FF0060,transparent);
+  }
+
+  .cc-head{
+    position:relative;z-index:2;
+    display:flex;justify-content:space-between;align-items:flex-start;
+    margin-bottom:24px;
+  }
+  .cc-head small{
+    display:block;font-size:10px;font-weight:900;letter-spacing:1.6px;
+    color:#8fbfa1;
+  }
+  .cc-head .title{
+    font-size:15px;font-weight:900;margin-top:5px;line-height:1.5;
+  }
+  .cc-head .chip{
+    background:var(--lime);color:#1c3528;
+    font-size:9px;font-weight:900;padding:5px 10px;letter-spacing:.6px;
+    box-shadow:0 0 20px #C7FF0055;
+  }
+
+  .cc-main{
+    position:relative;z-index:2;
+    display:flex;align-items:baseline;gap:6px;
+    padding:6px 0 18px;
+    border-bottom:1px solid #ffffff18;
+  }
+  .cc-num{
+    font-size:64px;font-weight:900;line-height:1;
+    letter-spacing:-2px;
+    background:linear-gradient(180deg,#fff,#C7FF00);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 30px #C7FF0033;
+    font-variant-numeric:tabular-nums;
+  }
+  .cc-unit{
+    font-size:13px;font-weight:800;color:#c2d1c7;letter-spacing:.4px;
+    padding-bottom:6px;
+  }
+  .cc-arrow{
+    margin-inline-start:auto;
+    align-self:center;
+    width:38px;height:38px;border-radius:50%;
+    background:#C7FF0018;border:1px solid #C7FF0050;
+    display:grid;place-items:center;color:var(--lime);
+  }
+  .cc-arrow svg{width:18px;height:18px}
+
+  .cc-foot{
+    position:relative;z-index:2;
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:16px;
+    font-size:10px;font-weight:700;color:#a8bcb0;
+  }
+  .cc-foot b{color:var(--lime);font-size:11px}
+
+  /* ============ کارت کانفتی ============ */
+  .confetti-card{
+    position:relative;
+    margin-top:18px;
+    border-radius:0;
+    background:#fffefa;
+    border:1px solid var(--line);
+    padding:22px 20px 20px;
+    overflow:hidden;
+    box-shadow:0 18px 44px #182b2014;
+  }
+  .confetti-card:before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+    background:linear-gradient(180deg,#C7FF00,#176b4b);
+  }
+  .cf-head{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:14px;
+  }
+  .cf-head small{
+    font-size:10px;font-weight:900;letter-spacing:1.4px;color:#176b4b;
+  }
+  .cf-head .title{
+    font-size:16px;font-weight:900;margin-top:4px;
+  }
+  .cf-badge{
+    background:#222D29;color:var(--lime);
+    font-size:9px;font-weight:900;padding:5px 10px;letter-spacing:.6px;
+  }
+  .cf-desc{
+    font-size:12px;color:var(--muted);font-weight:600;line-height:1.9;
+    margin:0 0 16px;
+  }
+  .cf-btn{
+    width:100%;
+    min-height:56px;
+    border:none;border-radius:0;
+    background:linear-gradient(135deg,#176b4b 0%,#0f4a32 100%);
+    color:#fff;font-family:inherit;
+    font-size:14px;font-weight:900;
+    cursor:pointer;position:relative;overflow:hidden;
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    box-shadow:0 12px 26px #176b4b40;
+    transition:transform .2s,box-shadow .2s;
+    letter-spacing:.3px;
+  }
+  .cf-btn:hover{transform:translateY(-2px);box-shadow:0 18px 34px #176b4b55}
+  .cf-btn:active{transform:translateY(0) scale(.985)}
+  .cf-btn svg{width:18px;height:18px}
+  .cf-btn:before{
+    content:"";position:absolute;top:0;left:-100%;width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,#ffffff40,transparent);
+    transform:skewX(-20deg);
+    animation:btnShine 3.5s ease-in-out infinite;
+  }
+  @keyframes btnShine{
+    0%,55%{left:-100%}
+    75%{left:140%}
+    100%{left:140%}
+  }
+
+  .cf-hint{
+    font-size:10px;color:var(--muted);font-weight:600;
+    text-align:center;margin-top:12px;letter-spacing:.2px;
+  }
+
+  /* دکمه ریست شمارنده */
+  .reset-btn{
+    margin-top:16px;
+    width:100%;min-height:44px;
+    background:#fff;border:1px solid var(--line);
+    color:var(--ink);font-family:inherit;font-size:12px;font-weight:800;
+    cursor:pointer;letter-spacing:.3px;
+    transition:background .2s;
+  }
+  .reset-btn:hover{background:#f0f2ea}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <div class="item">
-    <div class="label"><span>۱</span> Bar Chart Race — مسابقه میلگردی</div>
-    <div class="note">مخزن: YananLee/bar-chart-race [citation:1]</div>
-    <div class="box" id="chart1"></div>
-  </div>
-
-  <div class="item">
-    <div class="label"><span>۲</span> Evolution Graph — گراف تکاملی</div>
-    <div class="note">مخزن: nathanssantos/evolution-graph [citation:2]</div>
-    <div class="box" id="chart2"></div>
-  </div>
-
-  <div class="item">
-    <div class="label"><span>۳</span> CountUp.js — شمارنده عددی</div>
-    <div class="note">مخزن: inorganik/countUp.js [citation:3]</div>
-    <div class="box" style="display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:900;color:#176b4b" id="count1">0</div>
-  </div>
-
-  <div class="item">
-    <div class="label"><span>۴</span> Confetti — انفجار کاغذرنگی</div>
-    <div class="note">مخزن: code4fukui/confetti-es [citation:4]</div>
-    <div class="box" style="display:flex;align-items:center;justify-content:center">
-      <button onclick="fireConfetti()" style="padding:14px 28px;background:#176b4b;color:#fff;border:none;border-radius:12px;font-weight:900;font-size:14px;cursor:pointer">شلیک کانفتی</button>
+  <!-- ============ کارت ۱: CountUp ============ -->
+  <div class="counter-card" id="counterCard">
+    <div class="cc-head">
+      <div>
+        <small>LIVE / GROWTH / 24</small>
+        <div class="title">فالوور پیج، در حال رشد.</div>
+      </div>
+      <span class="chip">G24 / COUNT</span>
     </div>
+
+    <div class="cc-main">
+      <span class="cc-num" id="ccNum">0</span>
+      <span class="cc-unit">فالوور</span>
+      <span class="cc-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17 17 7M9 7h8v8"/>
+        </svg>
+      </span>
+    </div>
+
+    <div class="cc-foot">
+      <span>هدف‌گذاری ← اقدام ← بازبینی</span>
+      <b>مسیر اختصاصی تو</b>
+    </div>
+
+    <button class="reset-btn" id="resetBtn">↺ شمارنده را از نو ببین</button>
   </div>
 
-  <div class="item">
-    <div class="label"><span>۵</span> tsParticles — ذرات و فوران</div>
-    <div class="note">مخزن: tsparticles/tsparticles [citation:5]</div>
-    <div class="box" id="tsparticles" style="background:#0d1117"></div>
-  </div>
+  <!-- ============ کارت ۲: Confetti ============ -->
+  <div class="confetti-card">
+    <div class="cf-head">
+      <div>
+        <small>MOMENT / CELEBRATE</small>
+        <div class="title">لحظه جهش، جشن بگیر.</div>
+      </div>
+      <span class="cf-badge">G24 / BURST</span>
+    </div>
 
-  <div class="item">
-    <div class="label"><span>۶</span> GoldenChart — نمودار دست‌کشیده</div>
-    <div class="note">مخزن: benseverndev-oss/GoldenChart [citation:6]</div>
-    <div class="box" id="chart6" style="display:flex;align-items:center;justify-content:center;color:#888;font-size:12px">نیاز به React — دموی تعاملی در مخزن</div>
-  </div>
+    <p class="cf-desc">
+      وقتی پیج به اکسپلور می‌رسه، این لحظه رو با یک انفجار لیمویی جشن بگیر.
+    </p>
 
-  <div class="item">
-    <div class="label"><span>۷</span> Vivus.js — کشیدن SVG</div>
-    <div class="note">مخزن: maxwellito/vivus [citation:7]</div>
-    <div class="box" id="vivusBox" style="display:flex;align-items:center;justify-content:center">
-      <svg id="vivusSvg" viewBox="0 0 400 120" style="width:100%;height:100%">
-        <path d="M10 100 L60 90 L110 80 L160 60 L210 45 L260 25 L310 15 L360 8 L390 5" fill="none" stroke="#C7FF00" stroke-width="3" stroke-linecap="round"/>
+    <button class="cf-btn" id="confettiBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2v6M12 16v6M2 12h6M16 12h6"/>
+        <circle cx="12" cy="12" r="2" fill="currentColor"/>
       </svg>
-    </div>
-  </div>
+      انفجار جشن
+    </button>
 
-  <div class="item">
-    <div class="label"><span>۸</span> Anime.js — انیمیشن SVG</div>
-    <div class="note">مخزن: juliangarnier/anime [citation:8]</div>
-    <div class="box" style="display:flex;align-items:center;justify-content:center">
-      <div id="animeBox" style="width:20px;height:20px;background:#C7FF00;border-radius:50%"></div>
-    </div>
+    <p class="cf-hint">روی دکمه بزن — کانفتی لیمویی/سبز می‌پاشه ✨</p>
   </div>
 
 </div>
 
-<!-- ۱ Bar Chart Race -->
-<script src="https://cdn.jsdelivr.net/gh/YananLee/bar-chart-race@main/docs/bar-chart-race.global.js"></script>
-<script>
-  BarChartRace.mount("#chart1", {
-    data: `فالوور,روز۱,روز۲,روز۳,روز۴
-  پیج شما,100,200,1500,5000
-  رقیب,120,180,300,400`,
-    title: "رشد فالوور",
-    subtitle: "LIVE DATA",
-    accent: "#C7FF00",
-    background: "#222D29",
-    textColor: "#ffffff",
-    loop: true,
-    duration: 1.5
-  });
-</script>
-
-<!-- ۲ Evolution Graph -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nathanssantos/evolution-graph@master/src/css/styles.css">
-<script type="module">
-  import EvolutionGraph from "https://cdn.jsdelivr.net/gh/nathanssantos/evolution-graph@master/Controller.js";
-  const data = [
-    { label: "فالوور", color: "#C7FF00", values: [10, 20, 50, 200, 800, 2000, 5000] },
-    { label: "ریلز", color: "#ef7657", values: [5, 10, 15, 30, 100, 400, 1500] }
-  ];
-  const labels = ["روز۱","روز۲","روز۳","روز۴","روز۵","روز۶","روز۷"];
-  new EvolutionGraph({
-    data, labels, autoPlay: true, barThickness: 16,
-    className: "custom-evolution-graph", order: "desc", stepInterval: 1200,
-    timelineTrackFillColor: "#C7FF00"
-  });
-  // mount into #chart2
-  document.getElementById("chart2").appendChild(document.querySelector(".custom-evolution-graph") || document.createElement("div"));
-</script>
-
-<!-- ۳ CountUp -->
+<!-- ================= CountUp.js ================= -->
 <script src="https://cdn.jsdelivr.net/npm/countup.js@2.10.1/dist/countUp.umd.js"></script>
+
+<!-- ================= canvas-confetti ================= -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
 <script>
-  new countUp.CountUp('count1', 10000, { duration: 3, separator: ',' }).start();
-</script>
+(() => {
+  "use strict";
 
-<!-- ۴ Confetti -->
-<script type="module">
-  import { confetti } from "https://code4fukui.github.io/confetti-es/confetti.js";
-  window.fireConfetti = () => confetti({ particleCount: 150, spread: 180, origin: { y: 0.6 } });
-</script>
+  /* ---------- CountUp ---------- */
+  const ccEl = document.getElementById("ccNum");
+  const counterCard = document.getElementById("counterCard");
+  const resetBtn = document.getElementById("resetBtn");
+  const FINAL_NUMBER = 10000;
+  let counterInstance = null;
 
-<!-- ۵ tsParticles -->
-<script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@4/tsparticles.engine.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-confetti@4/tsparticles.preset.confetti.bundle.min.js"></script>
-<script>
-  (async () => {
-    await loadConfettiPreset(tsParticles);
-    await tsParticles.load({ id: "tsparticles", options: { preset: "confetti" } });
-  })();
-</script>
+  function runCounter(){
+    if(counterInstance) counterInstance.reset();
+    counterInstance = new countUp.CountUp(ccEl, FINAL_NUMBER, {
+      duration: 2.6,
+      separator: ",",
+      useEasing: true,
+      useGrouping: true,
+      onComplete: () => {
+        /* وقتی شمارنده تموم شد، یک انفجار کوچیک هم روی کارت بزن */
+        burstConfettiOnElement(counterCard, 40, 0.3);
+      }
+    });
+    if(!counterInstance.error) counterInstance.start();
+  }
 
-<!-- ۷ Vivus -->
-<script src="https://cdn.jsdelivr.net/npm/vivus@0.4.6/dist/vivus.min.js"></script>
-<script>
-  new Vivus('vivusSvg', { type: 'oneByOne', duration: 200, start: 'autostart' });
-</script>
+  /* اجرا وقتی کارت وارد دید شد */
+  let counterTriggered = false;
+  if("IntersectionObserver" in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting && !counterTriggered){
+          counterTriggered = true;
+          runCounter();
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.35 });
+    io.observe(counterCard);
+  } else {
+    runCounter();
+  }
 
-<!-- ۸ Anime.js -->
-<script src="https://cdn.jsdelivr.net/npm/animejs@4/lib/anime.iife.min.js"></script>
-<script>
-  anime({ targets: '#animeBox', translateX: [0, 200], scale: [1, 2], loop: true, direction: 'alternate', duration: 1500, easing: 'easeInOutQuad' });
-</script>
+  resetBtn.addEventListener("click", () => {
+    ccEl.textContent = "0";
+    runCounter();
+  });
 
+  /* ---------- Confetti (canvas-confetti) ---------- */
+  const COLORS = ["#C7FF00", "#176b4b", "#a8d7b8", "#ffffff", "#ef7657"];
+
+  function bigCelebration(){
+    const duration = 1400;
+    const end = Date.now() + duration;
+
+    (function frame(){
+      confetti({
+        particleCount: 4,
+        angle: 60,
+        spread: 70,
+        origin: { x: 0, y: 0.7 },
+        colors: COLORS
+      });
+      confetti({
+        particleCount: 4,
+        angle: 120,
+        spread: 70,
+        origin: { x: 1, y: 0.7 },
+        colors: COLORS
+      });
+      if(Date.now() < end) requestAnimationFrame(frame);
+    })();
+
+    /* یک انفجار مرکزی */
+    confetti({
+      particleCount: 100,
+      spread: 90,
+      startVelocity: 45,
+      origin: { y: 0.6 },
+      colors: COLORS
+    });
+  }
+
+  function burstConfettiOnElement(el, count = 40, originY = 0.4){
+    const r = el.getBoundingClientRect();
+    const x = (r.left + r.width / 2) / window.innerWidth;
+    confetti({
+      particleCount: count,
+      spread: 70,
+      startVelocity: 30,
+      origin: { x, y: originY },
+      colors: COLORS,
+      scalar: 0.9
+    });
+  }
+
+  document.getElementById("confettiBtn").addEventListener("click", (e) => {
+    /* انفجار از خود دکمه */
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = (r.left + r.width / 2) / window.innerWidth;
+    const y = (r.top + r.height / 2) / window.innerHeight;
+    confetti({
+      particleCount: 80,
+      spread: 80,
+      startVelocity: 40,
+      origin: { x, y },
+      colors: COLORS
+    });
+    setTimeout(bigCelebration, 120);
+  });
+
+})();
+</script>
 </body>
 </html>
