@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>۸ نمونه کارت رشد — گروزای ۲۴</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f5ef;
+  --ink:#222D29;
+  --muted:#69736b;
+  --green:#176b4b;
+  --green-3:#d7eadb;
+  --lime:#C7FF00;
+  --blue:#4858d7;
+  --coral:#ef7657;
+  --line:rgba(21,27,24,.13);
+  --white:#fffefa;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Vazirmatn",Tahoma,sans-serif;
+  padding:30px 18px 60px;
+}
+.demo-wrap{max-width:720px;margin:auto}
+.demo-intro{
+  text-align:center;margin-bottom:30px;
+  padding:22px;
+  background:#fff;
+  border-radius:24px;
+  border:1px solid var(--line);
+}
+.demo-intro h1{font-size:24px;margin:0 0 8px;font-weight:900;letter-spacing:-.5px}
+.demo-intro p{font-size:13px;color:var(--muted);margin:0;line-height:1.9;font-weight:600}
+.demo-intro .tag{
+  display:inline-block;margin-top:12px;
+  background:var(--lime);color:var(--ink);
+  padding:6px 14px;border-radius:999px;
+  font-size:11px;font-weight:900;
+}
+.demo-item{
+  margin-bottom:38px;
+  padding-top:12px;
+  border-top:1px dashed #c9d0c9;
+}
+.demo-label{
+  font-size:13px;font-weight:900;color:var(--green);
+  margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.demo-label .num{
+  width:32px;height:32px;border-radius:10px;
+  background:var(--ink);color:var(--lime);
+  display:grid;place-items:center;font-size:14px;
+}
+.demo-label .desc{
+  color:var(--muted);font-weight:600;font-size:11px;
+}
+</style>
+</head>
+<body>
+<div class="demo-wrap">
+
+  <div class="demo-intro">
+    <h1>۸ نمونه کارت «نقشه تصمیم‌گیری رشد»</h1>
+    <p>هر کارت دو نقطه جهش داره: یکی فالوور، یکی تعامل ریلز. با دیدن هر شماره، بگو کدوم رو می‌خوای.</p>
+    <span class="tag">G24 / SIGNAL DESIGN</span>
+  </div>
+
+  <!-- =============================================
+       کارت ۱ — «پالس اکسپلور»
+       دو نقطه جهش پالسی، شاین لیمویی، خط زنده
+  ============================================== -->
+  <div class="demo-item">
+    <div class="demo-label">
+      <span class="num">۱</span>
+      <span>پالس اکسپلور</span>
+      <span class="desc">— پالس‌های نورانی روی نقاط جهش + شاین لیمویی</span>
+    </div>
+
+    <style>
+      .c1{
+        position:relative;
+        padding:20px 19px 17px;
+        border-radius:27px;
+        background:linear-gradient(160deg,#1f2b25 0%,#222D29 60%,#1a2e24 100%);
+        color:#fff;
+        overflow:hidden;
+        box-shadow:0 20px 44px #151b1830, inset 0 1px 0 rgba(255,255,255,.05);
+      }
+      .c1:before{
+        content:"";position:absolute;width:260px;height:260px;
+        border:1px solid #ffffff10;border-radius:50%;
+        left:-90px;top:-120px;
+        box-shadow:0 0 0 22px #ffffff06,0 0 0 48px #ffffff04;
+        animation:c1spin 30s linear infinite;
+      }
+      @keyframes c1spin{to{transform:rotate(360deg)}}
+
+      .c1-top{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+      .c1-top span{font-size:11px;color:#c2d1c7;font-weight:700}
+      .c1-chip{
+        background:var(--lime);color:#1c3528;
+        border-radius:999px;padding:6px 11px;
+        font-size:10px;font-weight:900;
+        box-shadow:0 0 0 0 rgba(199,255,0,.6);
+        animation:c1pulse 2.4s ease-out infinite;
+      }
+      @keyframes c1pulse{
+        0%{box-shadow:0 0 0 0 rgba(199,255,0,.5)}
+        70%{box-shadow:0 0 0 10px rgba(199,255,0,0)}
+        100%{box-shadow:0 0 0 0 rgba(199,255,0,0)}
+      }
+
+      .c1-title{font-size:20px;font-weight:900;line-height:1.6;margin:16px 0 4px;position:relative;z-index:1}
+      .c1-sub{font-size:12px;line-height:1.9;color:#c2cec5;margin:0 0 6px;position:relative;z-index:1;font-weight:600}
+
+      .c1-visual{height:100px;margin-top:12px;position:relative;z-index:1}
+      .c1-visual svg{width:100%;height:100%;overflow:visible}
+
+      .c1-line{
+        stroke-dasharray:600;stroke-dashoffset:600;
+        animation:c1draw 3.2s ease-out forwards .3s;
+      }
+      @keyframes c1draw{to{stroke-dashoffset:0}}
+
+      .c1-pt{animation:c1ptpulse 2.4s ease-in-out infinite;transform-origin:center}
+      .c1-pt.p2{animation-delay:1.2s}
+      @keyframes c1ptpulse{
+        0%,100%{r:4;opacity:1}
+        50%{r:6.5;opacity:.85}
+      }
+
+      .c1-halo{animation:c1halo 2.4s ease-in-out infinite;transform-origin:center}
+      .c1-halo.h2{animation-delay:1.2s}
+      @keyframes c1halo{
+        0%,100%{r:4;opacity:.5}
+        50%{r:14;opacity:0}
+      }
+
+      .c1-foot{
+        display:flex;justify-content:space-between;align-items:center;
+        border-top:1px solid #ffffff1a;padding-top:13px;margin-top:10px;
+        color:#d3ded5;font-size:10px;font-weight:700;position:relative;z-index:1;
+      }
+      .c1-foot b{color:var(--lime);font-size:12px}
+
+      .c1-tags{
+        display:flex;gap:6px;position:relative;z-index:1;margin-top:10px;
+      }
+      .c1-tags span{
+        font-size:9px;font-weight:900;
+        padding:4px 8px;border-radius:8px;
+        background:#ffffff12;color:#d3ded5;
+        border:1px solid #ffffff10;
+      }
+      .c1-tags span.hot{background:var(--coral);color:#fff;border-color:transparent}
+    </style>
+    <div class="c1">
+      <div class="c1-top">
+        <span>نقشه تصمیم‌گیری رشد</span>
+        <b class="c1-chip">G24 / LIVE</b>
+      </div>
+      <h3 class="c1-title">دو جهش، یک مسیر.</h3>
+      <p class="c1-sub">فالوور ناگهانی + ورود ریلز به اکسپلور، رشد واقعی می‌سازد.</p>
+
+      <div class="c1-visual">
+        <svg viewBox="0 0 440 110" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="c1area" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#C7FF00" stop-opacity=".34"/>
+              <stop offset="1" stop-color="#C7FF00" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="c1line" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#8bad74"/>
+              <stop offset="1" stop-color="#C7FF00"/>
+            </linearGradient>
+          </defs>
+          <path d="M0 92 C30 88 42 82 70 78 S110 74 140 66 C160 62 168 60 182 42 C196 24 210 30 232 48 S262 60 280 50 C300 40 312 36 330 22 S368 10 440 6 L440 110 L0 110Z" fill="url(#c1area)" opacity=".9"/>
+          <path class="c1-line" d="M0 92 C30 88 42 82 70 78 S110 74 140 66 C160 62 168 60 182 42 C196 24 210 30 232 48 S262 60 280 50 C300 40 312 36 330 22 S368 10 440 6" fill="none" stroke="url(#c1line)" stroke-width="3" stroke-linecap="round"/>
+          <circle class="c1-halo" cx="182" cy="42" r="4" fill="#C7FF00" opacity=".5"/>
+          <circle class="c1-halo h2" cx="330" cy="22" r="4" fill="#C7FF00" opacity=".5"/>
+          <circle class="c1-pt p1" cx="182" cy="42" r="4" fill="#C7FF00" stroke="#222D29" stroke-width="2"/>
+          <circle class="c1-pt p2" cx="330" cy="22" r="4" fill="#C7FF00" stroke="#222D29" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <div class="c1-tags">
+        <span class="hot">فالوور جهشی</span>
+        <span>ریلز / اکسپلور</span>
+        <span>مخاطب واقعی</span>
+      </div>
+
+      <div class="c1-foot">
+        <span>هدف‌گذاری ← اقدام ← بازبینی</span>
+        <b>مسیر اختصاصی تو</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       کارت ۲ — «دو قله» (Minimal)
+  ============================================== -->
+  <div class="demo-item">
+    <div class="demo-label">
+      <span class="num">۲</span>
+      <span>دو قله مینیمال</span>
+      <span class="desc">— بدون شلوغی، خط تمیز، دو قله با هاله لیمویی</span>
+    </div>
+    <style>
+      .c2{position:relative;padding:20px 19px 17px;border-radius:27px;background:#222D29;color:#fff;overflow:hidden;box-shadow:0 20px 44px #151b1830}
+      .c2-grid{position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(180deg,#000,transparent 90%)}
+      .c2-top{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+      .c2-top span{font-size:11px;color:#aebbb2;font-weight:700}
+      .c2-chip{font-size:10px;font-weight:900;color:#C7FF00;letter-spacing:1px}
+      .c2-title{font-size:21px;font-weight:900;margin:18px 0 4px;position:relative;z-index:1;line-height:1.5}
+      .c2-title em{font-style:normal;color:var(--lime)}
+      .c2-sub{font-size:12px;line-height:1.9;color:#b8c6bd;margin:0;position:relative;z-index:1;font-weight:600}
+      .c2-visual{height:110px;margin-top:16px;position:relative;z-index:1}
+      .c2-visual svg{width:100%;height:100%;overflow:visible}
+      .c2-peak{stroke-dasharray:600;stroke-dashoffset:600;animation:c2draw 2.8s ease-out forwards .2s}
+      @keyframes c2draw{to{stroke-dashoffset:0}}
+      .c2-dot{animation:c2dot 3s ease-in-out infinite;transform-origin:center}
+      .c2-dot.d2{animation-delay:1.5s}
+      @keyframes c2dot{0%,100%{r:4}50%{r:6}}
+      .c2-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ffffff15;padding-top:13px;margin-top:8px;font-size:10px;color:#c2d1c7;font-weight:700;position:relative;z-index:1}
+      .c2-foot b{color:var(--lime);font-size:12px}
+    </style>
+    <div class="c2">
+      <div class="c2-grid"></div>
+      <div class="c2-top">
+        <span>نقشه تصمیم‌گیری رشد</span>
+        <b class="c2-chip">G24 / SYSTEM</b>
+      </div>
+      <h3 class="c2-title">دو جهش، <em>یک داستان.</em></h3>
+      <p class="c2-sub">فالوور ناگهانی و ورود به اکسپلور، مسیر رشد را می‌سازند.</p>
+      <div class="c2-visual">
+        <svg viewBox="0 0 440 120" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="c2area" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#C7FF00" stop-opacity=".28"/>
+              <stop offset="1" stop-color="#C7FF00" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0 100 C30 96 60 92 100 86 C130 82 150 80 170 55 C185 36 200 34 220 44 C240 54 255 60 275 55 C295 50 310 46 330 20 S370 8 440 4 L440 120 L0 120Z" fill="url(#c2area)"/>
+          <path class="c2-peak" d="M0 100 C30 96 60 92 100 86 C130 82 150 80 170 55 C185 36 200 34 220 44 C240 54 255 60 275 55 C295 50 310 46 330 20 S370 8 440 4" fill="none" stroke="#C7FF00" stroke-width="2.5" stroke-linecap="round"/>
+          <circle class="c2-dot d1" cx="170" cy="55" r="4" fill="#C7FF00"/>
+          <circle class="c2-dot d2" cx="330" cy="20" r="4" fill="#C7FF00"/>
+        </svg>
+      </div>
+      <div class="c2-foot">
+        <span>هدف‌گذاری ← اقدام ← بازبینی</span>
+        <b>مسیر اختصاصی تو</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       کارت ۳ — «شبکه سیگنال» (Radar)
+  ============================================== -->
+  <div class="demo-item">
+    <div class="demo-label">
+      <span class="num">۳</span>
+      <span>شبکه سیگنال</span>
+      <span class="desc">— دو موج رادار از نقاط جهش، حس زنده و لوکس</span>
+    </div>
+    <style>
+      .c3{position:relative;padding:20px 19px 17px;border-radius:27px;background:radial-gradient(circle at 80% 0%,#1f4d38 0%,#222D29 55%,#1a2e24 100%);color:#fff;overflow:hidden;box-shadow:0 20px 44px #151b1830}
+      .c3-top{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
+      .c3-top span{font-size:11px;color:#c2d1c7;font-weight:700}
+      .c3-chip{background:#C7FF00;color:#1c3528;border-radius:999px;padding:6px 11px;font-size:10px;font-weight:900}
+      .c3-title{font-size:20px;font-weight:900;margin:16px 0 4px;position:relative;z-index:2;line-height:1.6}
+      .c3-sub{font-size:12px;line-height:1.9;color:#c2cec5;margin:0;position:relative;z-index:2;font-weight:600}
+      .c3-visual{height:130px;margin-top:8px;position:relative;z-index:1}
+      .c3-visual svg{width:100%;height:100%;overflow:visible}
+      .c3-wave{animation:c3wave 3s ease-out infinite;transform-origin:center}
+      .c3-wave.w2{animation-delay:1.5s}
+      @keyframes c3wave{0%{r:4;opacity:.9}100%{r:26;opacity:0}}
+      .c3-line{stroke-dasharray:700;stroke-dashoffset:700;animation:c3draw 3s ease-out forwards .3s}
+      @keyframes c3draw{to{stroke-dashoffset:0}}
+      .c3-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ffffff18;padding-top:13px;margin-top:6px;font-size:10px;color:#d3ded5;font-weight:700;position:relative;z-index:2}
+      .c3-foot b{color:var(--lime);font-size:12px}
+    </style>
+    <div class="c3">
+      <div class="c3-top">
+        <span>نقشه تصمیم‌گیری رشد</span>
+        <b class="c3-chip">G24 / RADAR</b>
+      </div>
+      <h3 class="c3-title">هر جهش، یک سیگنال.</h3>
+      <p class="c3-sub">فالوور ناگهانی + تعامل ریلز، مسیر رشد را روشن می‌کند.</p>
+      <div class="c3-visual">
+        <svg viewBox="0 0 440 130" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="c3line" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#8bad74"/>
+              <stop offset="1" stop-color="#C7FF00"/>
+            </linearGradient>
+          </defs>
+          <path class="c3-line" d="M0 108 C40 102 60 96 90 92 C120 88 150 84 175 58 C195 38 215 40 235 52 C255 64 275 68 300 58 C320 50 335 42 355 22 S395 8 440 6" fill="none" stroke="url(#c3line)" stroke-width="3" stroke-linecap="round"/>
+          <circle class="c3-wave w1" cx="175" cy="58" r="4" fill="none" stroke="#C7FF00" stroke-width="1.5"/>
+          <circle class="c3-wave w2" cx="355" cy="22" r="4" fill="none" stroke="#C7FF00" stroke-width="1.5"/>
+          <circle cx="175" cy="58" r="4" fill="#C7FF00"/>
+          <circle cx="355" cy="22" r="4" fill="#C7FF00"/>
+        </svg>
+      </div>
+      <div class="c3-foot">
+        <span>هدف‌گذاری ← اقدام ← بازبینی</span>
+        <b>مسیر اختصاصی تو</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       کارت ۴ — «نوار لیمویی» (Split)
+  ============================================== -->
+  <div class="demo-item">
+    <div class="demo-label">
+      <span class="num">۴</span>
+      <span>نوار لیمویی</span>
+      <span class="desc">— نوار لیمویی بالا + کارت تیره، کنتراست لوکس</span>
+    </div>
+    <style>
+      .c4{position:relative;padding:0;border-radius:27px;overflow:hidden;box-shadow:0 20px 44px #151b1830;background:#222D29;color:#fff}
+      .c4-band{background:var(--lime);color:#1c3528;padding:9px 19px;font-size:10px;font-weight:900;letter-spacing:1px;display:flex;justify-content:space-between;align-items:center}
+      .c4-band .live{display:flex;align-items:center;gap:6px}
+      .c4-band .live:before{content:"";width:7px;height:7px;border-radius:50%;background:#222D29;animation:c4blink 1.4s ease-in-out infinite}
+      @keyframes c4blink{0%,100%{opacity:1}50%{opacity:.3}}
+      .c4-body{padding:18px 19px 17px}
+      .c4-title{font-size:20px;font-weight:900;margin:0 0 5px;line-height:1.5}
+      .c4-sub{font-size:12px;line-height:1.9;color:#c2cec5;margin:0;font-weight:600}
+      .c4-visual{height:100px;margin-top:12px}
+      .c4-visual svg{width:100%;height:100%;overflow:visible}
+      .c4-line{stroke-dasharray:700;stroke-dashoffset:700;animation:c4draw 3s ease-out forwards .2s}
+      @keyframes c4draw{to{stroke-dashoffset:0}}
+      .c4-halo{animation:c4halo 2.6s ease-out infinite;transform-origin:center}
+      .c4-halo.h2{animation-delay:1.3s}
+      @keyframes c4halo{0%{r:4;opacity:.7}100%{r:18;opacity:0}}
+      .c4-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ffffff18;padding-top:12px;margin-top:6px;font-size:10px;color:#d3ded5;font-weight:700}
+      .c4-foot b{color:var(--lime);font-size:12px}
+    </style>
+    <div class="c4">
+      <div class="c4-band">
+        <span>GROWTH / SIGNAL MAP</span>
+        <span class="live">LIVE</span>
+      </div>
+      <div class="c4-body">
+        <h3 class="c4-title">دو پرش، یک نتیجه.</h3>
+        <p class="c4-sub">فالوور جهشی + ریلز در اکسپلور = رشد واقعی مخاطب.</p>
+        <div class="c4-visual">
+          <svg viewBox="0 0 440 110" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="c4area" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#C7FF00" stop-opacity=".35"/>
+                <stop offset="1" stop-color="#C7FF00" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0 94 C40 90 60 84 90 80 C120 76 150 72 175 48 C195 30 215 34 235 46 C255 58 275 62 300 52 C320 44 340 32 360 18 S400 8 440 4 L440 110 L0 110Z" fill="url(#c4area)"/>
+            <path class="c4-line" d="M0 94 C40 90 60 84 90 80 C120 76 150 72 175 48 C195 30 215 34 235 46 C255 58 275 62 300 52 C320 44 340 32 360 18 S400 8 440 4" fill="none" stroke="#C7FF00" stroke-width="3" stroke-linecap="round"/>
+            <circle class="c4-halo" cx="175" cy="48" r="4" fill="none" stroke="#C7FF00" stroke-width="1.5"/>
+            <circle class="c4-halo h2" cx="360" cy="18" r="4" fill="none" stroke="#C7FF00" stroke-width="1.5"/>
+            <circle cx="175" cy="48" r="4" fill="#C7FF00" stroke="#222D29" stroke-width="2"/>
+            <circle cx="360" cy="18" r="4" fill="#C7FF00" stroke="#222D29" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="c4-foot">
+          <span>هدف‌گذاری ← اقدام ← بازبینی</span>
+          <b>مسیر اختصاصی تو</b>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       کارت ۵ — «شیشه‌ای» (Glass)
+  ============================================== -->
+  <div class="demo-item">
+    <div class="demo-label">
+      <span class="num">۵</span>
+      <span>شیشه‌ای لوکس</span>
+      <span class="desc">— پس‌زمینه گرادیانی، لایه شیشه‌ای، درخشش لیمویی</span>
+    </div>
+    <style>
+      .c5{position:relative;padding:22px 19px 17px;border-radius:27px;overflow:hidden;box-shadow:0 20px 44px #151b1830;color:#fff;background:linear-gradient(135deg,#176b4b 0%,#1a3d2c 60%,#0f2a1e 100%)}
+      .c5:before{content:"";position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,#C7FF0055,transparent 70%);top:-60px;right:-60px;filter:blur(20px);animation:c5float 8s ease-in-out infinite}
+      @keyframes c5float{0%,100%{transform:translate(0,0)}50%{transform:translate(-16px,16px)}}
+      .c5-inner{position:relative;z-index:1;background:#ffffff0a;border:1px solid #ffffff1a;border-radius:20px;padding:15px;backdrop-filter:blur(10px)}
+      .c5-top{display:flex;align-items:center;justify-content:space-between}
+      .c5-top span{font-size:11px;color:#d8e6dc;font-weight:700}
+      .c5-chip{background:#C7FF00;color:#1c3528;border-radius:999px;padding:5px 10px;font-size:10px;font-weight:900}
+      .c5-title{font-size:19px;font-weight:900;margin:14px 0 3px;line-height:1.6}
+      .c5-sub{font-size:12px;line-height:1.9;color:#d8e6dc;margin:0;font-weight:600}
+      .c5-visual{height:96px;margin-top:12px}
+      .c5-visual svg{width:100%;height:100%;overflow:visible}
+      .c5-line{stroke-dasharray:700;stroke-dashoffset:700;animation:c5draw 3s ease-out forwards .2s}
+      @keyframes c5draw{to{stroke-dashoffset:0}}
+      .c5-glow{animation:c5glow 2.8s ease-in-out infinite;transform-origin:center}
+      .c5-glow.g2{animation-delay:1.4s}
+      @keyframes c5glow{0%,100%{opacity:.5;r:5}50%{opacity:1;r:8}}
+    </style>
+    <div class="c5">
+      <div class="c5-inner">
+        <div class="c5-top">
+          <span>نقشه تصمیم‌گیری رشد</span>
+          <b class="c5-chip">G24 / GLASS</b>
+        </div>
+        <h3 class="c5-title">دو جهش، یک امضا.</h3>
+        <p class="c5-sub">فالوور ناگهانی + ورود ریلز به اکسپلور.</p>
+        <div class="c5-visual">
+          <svg viewBox="0 0 440 100" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="c5area" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#C7FF00" stop-opacity=".4"/>
+                <stop offset="1" stop-color="#C7FF00" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0 88 C30 84 55 78 85 74 C115 70 145 66 170 44 C190 26 210 30 230 44 C250 58 270 62 295 52 C315 44 335 34 355 16 S395 8 440 4 L440 100 L0 100Z" fill="url(#c5area)"/>
+            <path class="c5-line" d="M0 88 C30 84 55 78 85 74 C115 70 145 66 170 44 C190 26 210 30 230 44 C250 58 270 62 295 52 C315 44 335 34 355 16 S395 8 440 4" fill="none" stroke="#C7FF00" stroke-width="3" stroke-linecap="round"/>
+            <circle class="c5-glow g1" cx="170" cy="44" r="5" fill="#C7FF00"/>
+            <circle class="c5-glow g2" cx="355" cy="16" r="5" fill="#C7FF00"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       کارت ۶ — «دوقطبی» (Horizontal Split)
+  ============================================== -->
+  <div class="demo-item">
+    <div class="demo-label">
+      <span class="num">۶</span>
+      <span>دوقطبی</span>
+      <span class="desc">— چپ/راست دو ناحیه (فالوور / ریلز) با نمودار وسط</span>
+    </div>
+    <style>
+      .c6{position:relative;padding:20px 19px 17px;border-radius:27px;background:#222D29;color:#fff;overflow:hidden;box-shadow:0 20px 44px #151b1830}
+      .c6-top{display:flex;align-items:center;justify-content:space-between}
+      .c6-top span{font-size:11px;color:#c2d1c7;font-weight:700}
+      .c6-chip{background:#C7FF00;color:#1c3528;border-radius:999px;padding:6px 11px;font-size:10px;font-weight:900}
+      .c6-title{font-size:20px;font-weight:900;margin:16px 0 4px;line-height:1.5}
+      .c6-sub{font-size:12px;line-height:1.9;color:#c2cec5;margin:0 0 10px;font-weight:600}
+      .c6-cols{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+      .c6-col{
+        padding:10px 11px;border-radius:13px;
+        background:#ffffff0c;border:1px solid #ffffff10;
+        display:flex;flex-direction:column;gap:4px;
+        position:relative;overflow:hidden;
+      }
+      .c6-col:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--lime)}
+      .c6-col.b:before{background:var(--coral)}
+      .c6-col b{font-size:11px;font-weight:900}
+      .c6-col small{font-size:9px;color:#b8c6bd;font-weight:600;line-height:1.5}
+      .c6-col .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);display:inline-block;margin-inline-end:5px;animation:c6blink 1.6s ease-in-out infinite}
+      .c6-col.b .dot{background:var(--coral);animation-delay:.8s}
+      @keyframes c6blink{0%,100%{opacity:1}50%{opacity:.3}}
+      .c6-visual{height:80px;margin-top:4px}
+      .c6-visual svg{width:100%;height:100%;overflow:visible}
+      .c6-line{stroke-dasharray:700;stroke-dashoffset:700;animation:c6draw 3s ease-out forwards .2s}
+      @keyframes c6draw{to{stroke-dashoffset:0}}
+      .c6-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ffffff15;padding-top:12px;margin-top:6px;font-size:10px;color:#d3ded5;font-weight:700}
+      .c6-foot b{color:var(--lime);font-size:12px}
+    </style>
+    <div class="c6">
+      <div class="c6-top">
+        <span>نقشه تصمیم‌گیری رشد</span>
+        <b class="c6-chip">G24 / DUAL</b>
+      </div>
+      <h3 class="c6-title">دو محرک، یک رشد.</h3>
+      <p class="c6-sub">فالوور جهشی و ریلز اکسپلور، همدیگر را تقویت می‌کنند.</p>
+
+      <div class="c6-cols">
+        <div class="c6-col">
+          <b><span class="dot"></span>فالوور جهشی</b>
+          <small>رشد ناگهانی مخاطب واقعی</small>
+        </div>
+        <div class="c6-col b">
+          <b><span class="dot"></span>ریلز / اکسپلور</b>
+          <small>موج تعامل و ورود به اکسپلور</small>
+        </div>
+      </div>
+
+      <div class="c6-visual">
+        <svg viewBox="0 0 440 80" preserveAspectRatio="none">
+          <path class="c6-line" d="M0 68 C40 64 70 60 100 54 C130 48 155 44 180 30 C200 18 220 20 240 32 C260 44 280 48 305 40 C325 32 345 24 365 12 S405 6 440 4" fill="none" stroke="#C7FF00" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="180" cy="30" r="4" fill="#C7FF00"/>
+          <circle cx="365" cy="12" r="4" fill="#C7FF00"/>
+        </svg>
+      </div>
+
+      <div class="c6-foot">
+        <span>هدف‌گذاری ← اقدام ← بازبینی</span>
+        <b>مسیر اختصاصی تو</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       کارت ۷ — «کارت پرمیوم طلایی»
+  ============================================== -->
+  <div class="demo-item">
+    <div class="demo-label">
+      <span class="num">۷</span>
+      <span>پرمیوم لیمویی</span>
+      <span class="desc">— فویل لیمویی روی تیره، حس لوکس و امضا</span>
+    </div>
+    <style>
+      .c7{position:relative;padding:20px 19px 17px;border-radius:27px;background:#1a2e24;color:#fff;overflow:hidden;box-shadow:0 20px 44px #151b1830}
+      .c7:before{
+        content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+        background:conic-gradient(from 0deg,transparent 0deg,#C7FF0008 40deg,transparent 90deg,transparent 180deg,#C7FF0008 220deg,transparent 270deg);
+        animation:c7rotate 20s linear infinite;pointer-events:none;
+      }
+      @keyframes c7rotate{to{transform:rotate(360deg)}}
+      .c7-top{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+      .c7-top span{font-size:11px;color:#c2d1c7;font-weight:700}
+      .c7-chip{background:#C7FF00;color:#1c3528;border-radius:999px;padding:6px 11px;font-size:10px;font-weight:900;box-shadow:0 0 24px #C7FF0066}
+      .c7-title{font-size:20px;font-weight:900;margin:16px 0 4px;line-height:1.5;position:relative;z-index:1;background:linear-gradient(90deg,#fff,#C7FF00);-webkit-background-clip:text;background-clip:text;color:transparent}
+      .c7-sub{font-size:12px;line-height:1.9;color:#c2cec5;margin:0;position:relative;z-index:1;font-weight:600}
+      .c7-visual{height:100px;margin-top:12px;position:relative;z-index:1}
+      .c7-visual svg{width:100%;height:100%;overflow:visible}
+      .c7-line{stroke-dasharray:700;stroke-dashoffset:700;animation:c7draw 3s ease-out forwards .2s}
+      @keyframes c7draw{to{stroke-dashoffset:0}}
+      .c7-halo{animation:c7halo 3s ease-out infinite;transform-origin:center}
+      .c7-halo.h2{animation-delay:1.5s}
+      @keyframes c7halo{0%{r:4;opacity:.9}100%{r:20;opacity:0}}
+      .c7-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ffffff15;padding-top:12px;margin-top:6px;font-size:10px;color:#d3ded5;font-weight:700;position:relative;z-index:1}
+      .c7-foot b{color:var(--lime);font-size:12px}
+    </style>
+    <div class="c7">
+      <div class="c7-top">
+        <span>نقشه تصمیم‌گیری رشد</span>
+        <b class="c7-chip">G24 / PREMIUM</b>
+      </div>
+      <h3 class="c7-title">دو جهش، یک امضا.</h3>
+      <p class="c7-sub">فالوور ناگهانی + ورود ریلز به اکسپلور، به شکل یک داستان.</p>
+      <div class="c7-visual">
+        <svg viewBox="0 0 440 100" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="c7area" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#C7FF00" stop-opacity=".38"/>
+              <stop offset="1" stop-color="#C7FF00" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0 92 C35 88 60 82 90 78 C120 74 150 70 175 46 C195 28 215 32 235 46 C255 60 275 62 300 52 C320 44 340 34 360 18 S400 8 440 4 L440 100 L0 100Z" fill="url(#c7area)"/>
+          <path class="c7-line" d="M0 92 C35 88 60 82 90 78 C120 74 150 70 175 46 C195 28 215 32 235 46 C255 60 275 62 300 52 C320 44 340 34 360 18 S400 8 440 4" fill="none" stroke="#C7FF00" stroke-width="3" stroke-linecap="round"/>
+          <circle class="c7-halo" cx="175" cy="46" r="4" fill="none" stroke="#C7FF00" stroke-width="1.5"/>
+          <circle class="c7-halo h2" cx="360" cy="18" r="4" fill="none" stroke="#C7FF00" stroke-width="1.5"/>
+          <circle cx="175" cy="46" r="4" fill="#C7FF00"/>
+          <circle cx="360" cy="18" r="4" fill="#C7FF00"/>
+        </svg>
+      </div>
+      <div class="c7-foot">
+        <span>هدف‌گذاری ← اقدام ← بازبینی</span>
+        <b>مسیر اختصاصی تو</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       کارت ۸ — «پارالاکس دو لایه»
+  ============================================== -->
+  <div class="demo-item">
+    <div class="demo-label">
+      <span class="num">۸</span>
+      <span>پارالاکس دو لایه</span>
+      <span class="desc">— نمودار پشت + شیشه جلو، عمق و ظرافت</span>
+    </div>
+    <style>
+      .c8{position:relative;padding:0;border-radius:27px;overflow:hidden;box-shadow:0 20px 44px #151b1830;background:#222D29;color:#fff}
+      .c8-bg{position:absolute;inset:0;opacity:.35;overflow:hidden}
+      .c8-bg svg{width:100%;height:100%;animation:c8drift 12s ease-in-out infinite}
+      @keyframes c8drift{0%,100%{transform:translateX(0)}50%{transform:translateX(-12px)}}
+      .c8-body{position:relative;z-index:1;padding:20px 19px 17px;background:linear-gradient(180deg,#222D29ee 0%,#222D29f2 60%,#222D29cc 100%)}
+      .c8-top{display:flex;align-items:center;justify-content:space-between}
+      .c8-top span{font-size:11px;color:#c2d1c7;font-weight:700}
+      .c8-chip{background:#C7FF00;color:#1c3528;border-radius:999px;padding:6px 11px;font-size:10px;font-weight:900}
+      .c8-title{font-size:20px;font-weight:900;margin:16px 0 4px;line-height:1.5}
+      .c8-sub{font-size:12px;line-height:1.9;color:#c2cec5;margin:0;font-weight:600}
+      .c8-visual{height:100px;margin-top:12px}
+      .c8-visual svg{width:100%;height:100%;overflow:visible}
+      .c8-line{stroke-dasharray:700;stroke-dashoffset:700;animation:c8draw 3s ease-out forwards .2s}
+      @keyframes c8draw{to{stroke-dashoffset:0}}
+      .c8-spark{animation:c8spark 2s ease-in-out infinite;transform-origin:center}
+      .c8-spark.s2{animation-delay:1s}
+      @keyframes c8spark{0%,100%{opacity:1;r:4}50%{opacity:.6;r:7}}
+      .c8-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ffffff15;padding-top:12px;margin-top:6px;font-size:10px;color:#d3ded5;font-weight:700}
+      .c8-foot b{color:var(--lime);font-size:12px}
+    </style>
+    <div class="c8">
+      <div class="c8-bg" aria-hidden="true">
+        <svg viewBox="0 0 440 300" preserveAspectRatio="none">
+          <path d="M0 240 C40 230 80 210 120 190 C160 170 190 160 220 130 C250 100 280 90 320 70 C360 50 400 40 440 20 L440 300 L0 300Z" fill="#C7FF00" opacity=".12"/>
+          <path d="M0 260 C60 250 100 230 140 200 C180 170 220 140 260 120 C300 100 340 80 380 60 C410 46 430 36 440 30" fill="none" stroke="#C7FF00" stroke-width="1" opacity=".3"/>
+        </svg>
+      </div>
+      <div class="c8-body">
+        <div class="c8-top">
+          <span>نقشه تصمیم‌گیری رشد</span>
+          <b class="c8-chip">G24 / PARALLAX</b>
+        </div>
+        <h3 class="c8-title">دو جهش، یک مسیر.</h3>
+        <p class="c8-sub">فالوور ناگهانی + ریلز در اکسپلور، مسیر رشد را می‌سازند.</p>
+        <div class="c8-visual">
+          <svg viewBox="0 0 440 100" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="c8area" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#C7FF00" stop-opacity=".32"/>
+                <stop offset="1" stop-color="#C7FF00" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0 90 C35 86 60 80 90 76 C120 72 150 68 175 44 C195 26 215 30 235 44 C255 58 275 60 300 50 C320 42 340 32 360 16 S400 8 440 4 L440 100 L0 100Z" fill="url(#c8area)"/>
+            <path class="c8-line" d="M0 90 C35 86 60 80 90 76 C120 72 150 68 175 44 C195 26 215 30 235 44 C255 58 275 60 300 50 C320 42 340 32 360 16 S400 8 440 4" fill="none" stroke="#C7FF00" stroke-width="3" stroke-linecap="round"/>
+            <circle class="c8-spark s1" cx="175" cy="44" r="4" fill="#C7FF00"/>
+            <circle class="c8-spark s2" cx="360" cy="16" r="4" fill="#C7FF00"/>
+          </svg>
+        </div>
+        <div class="c8-foot">
+          <span>هدف‌گذاری ← اقدام ← بازبینی</span>
+          <b>مسیر اختصاصی تو</b>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
