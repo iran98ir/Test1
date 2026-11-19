@@ -3,999 +3,147 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>۸ نمودار خلاقانه — گروزای ۲۴</title>
+<title>۸ المان رشد — پیش‌نمایش</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{
-  --paper:#f4f5ef;--ink:#222D29;--muted:#69736b;--green:#176b4b;
-  --lime:#C7FF00;--coral:#ef7657;--blue:#4858d7;--line:rgba(21,27,24,.13);
-}
-*{box-sizing:border-box}
-body{
-  margin:0;background:var(--paper);color:var(--ink);
-  font-family:"Vazirmatn",Tahoma,sans-serif;
-  padding:0 0 60px;
-}
-.demo-intro{
-  padding:26px 20px;background:#fff;
-  border-bottom:1px solid var(--line);
-  text-align:center;margin-bottom:30px;
-}
-.demo-intro h1{font-size:22px;margin:0 0 8px;font-weight:900;letter-spacing:-.4px}
-.demo-intro p{font-size:12px;color:var(--muted);margin:0;line-height:1.9;font-weight:600}
-.demo-intro .tag{
-  display:inline-block;margin-top:12px;background:var(--lime);
-  color:var(--ink);padding:6px 14px;border-radius:999px;
-  font-size:11px;font-weight:900;
-}
-.demo-item{margin:0 0 44px;padding:0 16px}
-.demo-label{
-  font-size:12px;font-weight:900;color:var(--green);
-  margin-bottom:10px;display:flex;align-items:center;gap:8px;
-  max-width:760px;margin-inline:auto;
-}
-.demo-label .num{
-  width:30px;height:30px;background:var(--ink);color:var(--lime);
-  display:grid;place-items:center;font-size:13px;
-}
-.demo-label .desc{color:var(--muted);font-weight:600;font-size:10px}
-.demo-wrap{max-width:760px;margin:auto}
+  body{margin:0;background:#f4f5ef;color:#222D29;font-family:"Vazirmatn",Tahoma,sans-serif;padding:20px}
+  .wrap{max-width:800px;margin:auto}
+  .item{margin-bottom:48px;border-top:1px dashed #ccc;padding-top:20px}
+  .label{font-size:13px;font-weight:900;color:#176b4b;margin-bottom:12px}
+  .label span{display:inline-block;width:26px;height:26px;background:#222D29;color:#C7FF00;text-align:center;line-height:26px;margin-left:6px;font-size:12px}
+  .note{font-size:11px;color:#69736b;font-weight:600;margin-bottom:14px}
+  .box{width:100%;min-height:220px;border:1px solid #ddd;background:#fff;position:relative;overflow:hidden}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="demo-intro">
-  <h1>۸ نمودار اختصاصی — گروزای ۲۴</h1>
-  <p>هر نمودار یک زبان بصری کاملاً متفاوت دارد. شماره منتخب را بگو.</p>
-  <span class="tag">G24 / SIGNATURE CHARTS</span>
-</div>
-
-<div class="demo-wrap">
-
-<!-- ======================================================
-     نمودار ۱ — DOT MATRIX (شبکه نقطه‌ای)
-     جهش با تراکم نقطه نمایش داده می‌شود
-======================================================= -->
-<div class="demo-item">
-  <div class="demo-label">
-    <span class="num">۱</span>
-    <span>Dot Matrix</span>
-    <span class="desc">— شبکه نقطه‌ای با تراکم جهشی</span>
+  <div class="item">
+    <div class="label"><span>۱</span> Bar Chart Race — مسابقه میلگردی</div>
+    <div class="note">مخزن: YananLee/bar-chart-race [citation:1]</div>
+    <div class="box" id="chart1"></div>
   </div>
 
-  <style>
-    .d1{
-      position:relative;width:100%;height:220px;
-      background:#222D29;overflow:hidden;
-      box-shadow:0 24px 50px #151b1830;
-    }
-    .d1:before{
-      content:"";position:absolute;inset:0;
-      background:radial-gradient(ellipse at 85% 20%,#176b4b55,transparent 55%),
-                 radial-gradient(ellipse at 20% 90%,#C7FF0011,transparent 55%);
-    }
-    .d1-head{
-      position:absolute;top:16px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-start;
-    }
-    .d1-head small{color:#c2d1c7;font-size:10px;font-weight:700}
-    .d1-head .chip{
-      background:var(--lime);color:#1c3528;font-size:9px;
-      font-weight:900;padding:4px 9px;letter-spacing:.5px;
-    }
-    .d1-head .title{
-      color:#fff;font-size:15px;font-weight:900;margin-top:4px;
-    }
-    .d1-dots{position:absolute;inset:0;z-index:2}
-    .d1-dots svg{width:100%;height:100%}
-    .d1-label{
-      position:absolute;bottom:14px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-end;
-      font-size:9px;color:#c2d1c7;font-weight:700;
-    }
-    .d1-label b{color:var(--lime);font-size:11px}
-    .d1-pulse{animation:d1p 2.4s ease-in-out infinite;transform-origin:center}
-    .d1-pulse.p2{animation-delay:1.2s}
-    @keyframes d1p{0%,100%{opacity:1}50%{opacity:.35}}
-  </style>
+  <div class="item">
+    <div class="label"><span>۲</span> Evolution Graph — گراف تکاملی</div>
+    <div class="note">مخزن: nathanssantos/evolution-graph [citation:2]</div>
+    <div class="box" id="chart2"></div>
+  </div>
 
-  <div class="d1">
-    <div class="d1-head">
-      <div>
-        <small>GROWTH / SIGNAL MAP</small>
-        <div class="title">دو جهش، یک امضا.</div>
-      </div>
-      <span class="chip">G24 / 01</span>
+  <div class="item">
+    <div class="label"><span>۳</span> CountUp.js — شمارنده عددی</div>
+    <div class="note">مخزن: inorganik/countUp.js [citation:3]</div>
+    <div class="box" style="display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:900;color:#176b4b" id="count1">0</div>
+  </div>
+
+  <div class="item">
+    <div class="label"><span>۴</span> Confetti — انفجار کاغذرنگی</div>
+    <div class="note">مخزن: code4fukui/confetti-es [citation:4]</div>
+    <div class="box" style="display:flex;align-items:center;justify-content:center">
+      <button onclick="fireConfetti()" style="padding:14px 28px;background:#176b4b;color:#fff;border:none;border-radius:12px;font-weight:900;font-size:14px;cursor:pointer">شلیک کانفتی</button>
     </div>
+  </div>
 
-    <div class="d1-dots">
-      <svg viewBox="0 0 760 220" preserveAspectRatio="none">
-        <defs>
-          <pattern id="d1grid" width="16" height="16" patternUnits="userSpaceOnUse">
-            <circle cx="8" cy="8" r="1" fill="#ffffff20"/>
-          </pattern>
-        </defs>
-        <rect width="760" height="220" fill="url(#d1grid)"/>
+  <div class="item">
+    <div class="label"><span>۵</span> tsParticles — ذرات و فوران</div>
+    <div class="note">مخزن: tsparticles/tsparticles [citation:5]</div>
+    <div class="box" id="tsparticles" style="background:#0d1117"></div>
+  </div>
 
-        <!-- دات‌های کم (پایین) -->
-        <g fill="#C7FF0040">
-          <circle cx="40" cy="190" r="2"/><circle cx="60" cy="185" r="2"/>
-          <circle cx="80" cy="182" r="2"/><circle cx="100" cy="178" r="2"/>
-          <circle cx="120" cy="172" r="2"/><circle cx="140" cy="168" r="2"/>
-          <circle cx="160" cy="160" r="2"/><circle cx="180" cy="155" r="2"/>
-        </g>
+  <div class="item">
+    <div class="label"><span>۶</span> GoldenChart — نمودار دست‌کشیده</div>
+    <div class="note">مخزن: benseverndev-oss/GoldenChart [citation:6]</div>
+    <div class="box" id="chart6" style="display:flex;align-items:center;justify-content:center;color:#888;font-size:12px">نیاز به React — دموی تعاملی در مخزن</div>
+  </div>
 
-        <!-- جهش اول — فالوور ناگهانی (تراکم بالا و شیب تند) -->
-        <g fill="#C7FF0090">
-          <circle cx="200" cy="145" r="2.5"/><circle cx="215" cy="130" r="2.5"/>
-          <circle cx="230" cy="115" r="2.5"/><circle cx="245" cy="98" r="2.5"/>
-          <circle cx="260" cy="82" r="2.5"/><circle cx="275" cy="68" r="3"/>
-          <circle cx="290" cy="55" r="3"/><circle cx="305" cy="44" r="3"/>
-          <circle cx="320" cy="38" r="3.5"/><circle cx="335" cy="36" r="3.5"/>
-        </g>
-
-        <!-- افت ملایم بعد از جهش اول -->
-        <g fill="#C7FF0070">
-          <circle cx="355" cy="42" r="2.5"/><circle cx="375" cy="48" r="2.5"/>
-          <circle cx="395" cy="55" r="2.5"/><circle cx="415" cy="62" r="2.5"/>
-          <circle cx="435" cy="68" r="2.5"/><circle cx="455" cy="74" r="2.5"/>
-          <circle cx="475" cy="78" r="2.5"/><circle cx="495" cy="82" r="2.5"/>
-        </g>
-
-        <!-- جهش دوم — ریلز/اکسپلور (تراکم خیلی بالاتر و صعودی‌تر) -->
-        <g fill="#C7FF00">
-          <circle cx="515" cy="72" r="3"/><circle cx="530" cy="60" r="3"/>
-          <circle cx="545" cy="46" r="3.5"/><circle cx="560" cy="32" r="3.5"/>
-          <circle cx="575" cy="22" r="4"/><circle cx="590" cy="16" r="4"/>
-          <circle cx="605" cy="12" r="4"/><circle cx="620" cy="10" r="4.5"/>
-          <circle cx="635" cy="8" r="4.5"/><circle cx="650" cy="7" r="5"/>
-          <circle cx="665" cy="6" r="5"/><circle cx="680" cy="5" r="5"/>
-          <circle cx="695" cy="4" r="5.5"/><circle cx="710" cy="4" r="5.5"/>
-          <circle cx="725" cy="3" r="5.5"/><circle cx="740" cy="3" r="5.5"/>
-        </g>
-
-        <!-- هایلایت نقطه جهش ۱ -->
-        <circle class="d1-pulse" cx="335" cy="36" r="8" fill="none" stroke="#C7FF00" stroke-width="1.5"/>
-        <!-- هایلایت نقطه جهش ۲ -->
-        <circle class="d1-pulse p2" cx="650" cy="7" r="10" fill="none" stroke="#C7FF00" stroke-width="1.5"/>
+  <div class="item">
+    <div class="label"><span>۷</span> Vivus.js — کشیدن SVG</div>
+    <div class="note">مخزن: maxwellito/vivus [citation:7]</div>
+    <div class="box" id="vivusBox" style="display:flex;align-items:center;justify-content:center">
+      <svg id="vivusSvg" viewBox="0 0 400 120" style="width:100%;height:100%">
+        <path d="M10 100 L60 90 L110 80 L160 60 L210 45 L260 25 L310 15 L360 8 L390 5" fill="none" stroke="#C7FF00" stroke-width="3" stroke-linecap="round"/>
       </svg>
     </div>
+  </div>
 
-    <div class="d1-label">
-      <span>هدف‌گذاری ← اقدام ← بازبینی</span>
-      <b>مسیر اختصاصی تو</b>
+  <div class="item">
+    <div class="label"><span>۸</span> Anime.js — انیمیشن SVG</div>
+    <div class="note">مخزن: juliangarnier/anime [citation:8]</div>
+    <div class="box" style="display:flex;align-items:center;justify-content:center">
+      <div id="animeBox" style="width:20px;height:20px;background:#C7FF00;border-radius:50%"></div>
     </div>
   </div>
+
 </div>
 
-<!-- ======================================================
-     نمودار ۲ — HAND-DRAWN INK (هنری، دست‌کشیده)
-     خط با ضربه‌قلم، پاشش رنگ و نویز دستی
-======================================================= -->
-<div class="demo-item">
-  <div class="demo-label">
-    <span class="num">۲</span>
-    <span>Ink / Hand-drawn</span>
-    <span class="desc">— ضربه‌قلم هنری + پاشش</span>
-  </div>
+<!-- ۱ Bar Chart Race -->
+<script src="https://cdn.jsdelivr.net/gh/YananLee/bar-chart-race@main/docs/bar-chart-race.global.js"></script>
+<script>
+  BarChartRace.mount("#chart1", {
+    data: `فالوور,روز۱,روز۲,روز۳,روز۴
+  پیج شما,100,200,1500,5000
+  رقیب,120,180,300,400`,
+    title: "رشد فالوور",
+    subtitle: "LIVE DATA",
+    accent: "#C7FF00",
+    background: "#222D29",
+    textColor: "#ffffff",
+    loop: true,
+    duration: 1.5
+  });
+</script>
+
+<!-- ۲ Evolution Graph -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nathanssantos/evolution-graph@master/src/css/styles.css">
+<script type="module">
+  import EvolutionGraph from "https://cdn.jsdelivr.net/gh/nathanssantos/evolution-graph@master/Controller.js";
+  const data = [
+    { label: "فالوور", color: "#C7FF00", values: [10, 20, 50, 200, 800, 2000, 5000] },
+    { label: "ریلز", color: "#ef7657", values: [5, 10, 15, 30, 100, 400, 1500] }
+  ];
+  const labels = ["روز۱","روز۲","روز۳","روز۴","روز۵","روز۶","روز۷"];
+  new EvolutionGraph({
+    data, labels, autoPlay: true, barThickness: 16,
+    className: "custom-evolution-graph", order: "desc", stepInterval: 1200,
+    timelineTrackFillColor: "#C7FF00"
+  });
+  // mount into #chart2
+  document.getElementById("chart2").appendChild(document.querySelector(".custom-evolution-graph") || document.createElement("div"));
+</script>
+
+<!-- ۳ CountUp -->
+<script src="https://cdn.jsdelivr.net/npm/countup.js@2.10.1/dist/countUp.umd.js"></script>
+<script>
+  new countUp.CountUp('count1', 10000, { duration: 3, separator: ',' }).start();
+</script>
+
+<!-- ۴ Confetti -->
+<script type="module">
+  import { confetti } from "https://code4fukui.github.io/confetti-es/confetti.js";
+  window.fireConfetti = () => confetti({ particleCount: 150, spread: 180, origin: { y: 0.6 } });
+</script>
+
+<!-- ۵ tsParticles -->
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@4/tsparticles.engine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-confetti@4/tsparticles.preset.confetti.bundle.min.js"></script>
+<script>
+  (async () => {
+    await loadConfettiPreset(tsParticles);
+    await tsParticles.load({ id: "tsparticles", options: { preset: "confetti" } });
+  })();
+</script>
+
+<!-- ۷ Vivus -->
+<script src="https://cdn.jsdelivr.net/npm/vivus@0.4.6/dist/vivus.min.js"></script>
+<script>
+  new Vivus('vivusSvg', { type: 'oneByOne', duration: 200, start: 'autostart' });
+</script>
+
+<!-- ۸ Anime.js -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@4/lib/anime.iife.min.js"></script>
+<script>
+  anime({ targets: '#animeBox', translateX: [0, 200], scale: [1, 2], loop: true, direction: 'alternate', duration: 1500, easing: 'easeInOutQuad' });
+</script>
 
-  <style>
-    .d2{
-      position:relative;width:100%;height:220px;
-      background:#f9f7ef;overflow:hidden;
-      box-shadow:0 24px 50px #151b1820;
-      border:1px solid #e0dcc9;
-    }
-    .d2:before{
-      content:"";position:absolute;inset:0;
-      background:
-        radial-gradient(circle at 15% 30%,#176b4b08,transparent 40%),
-        radial-gradient(circle at 90% 80%,#ef765708,transparent 40%);
-    }
-    .d2-head{
-      position:absolute;top:16px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-start;
-    }
-    .d2-head small{color:#69736b;font-size:10px;font-weight:700;letter-spacing:.5px}
-    .d2-head .chip{
-      background:#222D29;color:var(--lime);font-size:9px;
-      font-weight:900;padding:4px 9px;letter-spacing:.5px;
-    }
-    .d2-head .title{
-      color:#222D29;font-size:15px;font-weight:900;margin-top:4px;
-    }
-    .d2-head .title em{font-style:normal;color:var(--green)}
-    .d2-visual{position:absolute;inset:0;z-index:2}
-    .d2-visual svg{width:100%;height:100%}
-    .d2-draw{
-      stroke-dasharray:1000;stroke-dashoffset:1000;
-      animation:d2draw 3s ease-out forwards .3s;
-    }
-    @keyframes d2draw{to{stroke-dashoffset:0}}
-    .d2-splat{animation:d2splat 3.6s ease-in-out infinite;transform-origin:center}
-    .d2-splat.s2{animation-delay:1.8s}
-    @keyframes d2splat{0%,100%{opacity:.9;r:4}50%{opacity:.6;r:7}}
-    .d2-foot{
-      position:absolute;bottom:14px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-end;
-      font-size:9px;color:#69736b;font-weight:700;
-    }
-    .d2-foot b{color:var(--green);font-size:11px}
-  </style>
-
-  <div class="d2">
-    <div class="d2-head">
-      <div>
-        <small>GROWTH / SIGNAL MAP</small>
-        <div class="title">دو جهش، <em>یک داستان.</em></div>
-      </div>
-      <span class="chip">G24 / 02</span>
-    </div>
-
-    <div class="d2-visual">
-      <svg viewBox="0 0 760 220" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="d2fill" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0" stop-color="#176b4b" stop-opacity=".12"/>
-            <stop offset="1" stop-color="#176b4b" stop-opacity="0"/>
-          </linearGradient>
-          <filter id="d2rough">
-            <feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="3"/>
-            <feDisplacementMap in="SourceGraphic" scale="2"/>
-          </filter>
-        </defs>
-
-        <!-- منطقه زیر خط با پاشش نامنظم -->
-        <path d="M30 195 C80 190 120 180 160 172 C200 164 220 158 240 130 C260 100 280 96 300 108 C320 120 330 128 350 124 C370 120 390 116 410 100 C430 84 450 76 480 70 C510 64 530 58 560 34 C590 12 620 8 650 6 C680 4 710 4 740 4 L740 220 L30 220Z" fill="url(#d2fill)"/>
-
-        <!-- خط اصلی دست‌کشیده -->
-        <path class="d2-draw" filter="url(#d2rough)" d="M30 195 C80 190 120 180 160 172 C200 164 220 158 240 130 C260 100 280 96 300 108 C320 120 330 128 350 124 C370 120 390 116 410 100 C430 84 450 76 480 70 C510 64 530 58 560 34 C590 12 620 8 650 6 C680 4 710 4 740 4" fill="none" stroke="#222D29" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <!-- پاشش رنگ سبز روی جهش اول -->
-        <g fill="#176b4b">
-          <circle class="d2-splat s1" cx="300" cy="108" r="4"/>
-          <circle cx="290" cy="100" r="1.5"/>
-          <circle cx="312" cy="115" r="1.8"/>
-          <circle cx="280" cy="112" r="1"/>
-          <circle cx="320" cy="102" r="1.2"/>
-        </g>
-
-        <!-- پاشش رنگ کورال روی جهش دوم -->
-        <g fill="#ef7657">
-          <circle class="d2-splat s2" cx="650" cy="6" r="5"/>
-          <circle cx="635" cy="14" r="2"/>
-          <circle cx="670" cy="12" r="1.8"/>
-          <circle cx="620" cy="8" r="1.4"/>
-          <circle cx="680" cy="2" r="1.2"/>
-          <circle cx="655" cy="20" r="1"/>
-        </g>
-
-        <!-- خط خط‌چین راهنما -->
-        <path d="M30 210 L740 210" stroke="#222D29" stroke-width="1" stroke-dasharray="2 6" opacity=".2"/>
-      </svg>
-    </div>
-
-    <div class="d2-foot">
-      <span>هدف‌گذاری ← اقدام ← بازبینی</span>
-      <b>مسیر اختصاصی تو</b>
-    </div>
-  </div>
-</div>
-
-<!-- ======================================================
-     نمودار ۳ — GOLD FOIL LUXE (فویل چرخان + خط برجسته ۳D)
-======================================================= -->
-<div class="demo-item">
-  <div class="demo-label">
-    <span class="num">۳</span>
-    <span>Gold Foil Luxe</span>
-    <span class="desc">— فویل چرخان + خط ۳D برجسته</span>
-  </div>
-
-  <style>
-    .d3{
-      position:relative;width:100%;height:220px;
-      background:linear-gradient(135deg,#0d1f16 0%,#1a3a28 50%,#0a1810 100%);
-      overflow:hidden;box-shadow:0 24px 50px #0a181050;
-    }
-    .d3:before{
-      content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;
-      background:conic-gradient(from 0deg,
-        transparent 0deg,#C7FF0006 30deg,transparent 60deg,
-        transparent 180deg,#C7FF0006 210deg,transparent 240deg);
-      animation:d3rot 24s linear infinite;pointer-events:none;
-    }
-    @keyframes d3rot{to{transform:rotate(360deg)}}
-    .d3-head{
-      position:absolute;top:16px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-start;
-    }
-    .d3-head small{color:#c2d1c7;font-size:10px;font-weight:700;letter-spacing:.5px}
-    .d3-head .chip{
-      background:var(--lime);color:#1c3528;font-size:9px;
-      font-weight:900;padding:4px 9px;letter-spacing:.5px;
-      box-shadow:0 0 20px #C7FF0066;
-    }
-    .d3-head .title{
-      color:#fff;font-size:15px;font-weight:900;margin-top:4px;
-      background:linear-gradient(90deg,#fff,#C7FF00);
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-    }
-    .d3-visual{position:absolute;inset:0;z-index:2}
-    .d3-visual svg{width:100%;height:100%}
-    .d3-draw{
-      stroke-dasharray:1000;stroke-dashoffset:1000;
-      animation:d3draw 3s ease-out forwards .3s;
-    }
-    @keyframes d3draw{to{stroke-dashoffset:0}}
-    .d3-glow{animation:d3glow 2.6s ease-out infinite;transform-origin:center}
-    .d3-glow.g2{animation-delay:1.3s}
-    @keyframes d3glow{0%{r:4;opacity:.9}100%{r:22;opacity:0}}
-    .d3-foot{
-      position:absolute;bottom:14px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-end;
-      font-size:9px;color:#c2d1c7;font-weight:700;
-    }
-    .d3-foot b{color:var(--lime);font-size:11px}
-  </style>
-
-  <div class="d3">
-    <div class="d3-head">
-      <div>
-        <small>GROWTH / SIGNAL MAP</small>
-        <div class="title">دو جهش، یک امضا.</div>
-      </div>
-      <span class="chip">G24 / 03</span>
-    </div>
-
-    <div class="d3-visual">
-      <svg viewBox="0 0 760 220" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="d3line" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0" stop-color="#5a8060"/>
-            <stop offset=".3" stop-color="#C7FF00"/>
-            <stop offset=".7" stop-color="#C7FF00"/>
-            <stop offset="1" stop-color="#fff"/>
-          </linearGradient>
-          <linearGradient id="d3area" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0" stop-color="#C7FF00" stop-opacity=".28"/>
-            <stop offset="1" stop-color="#C7FF00" stop-opacity="0"/>
-          </linearGradient>
-          <filter id="d3glowf">
-            <feGaussianBlur stdDeviation="3" result="b"/>
-            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-
-        <!-- منطقه -->
-        <path d="M30 190 C90 182 140 172 190 160 C220 152 240 148 260 120 C280 92 300 86 320 100 C340 114 355 124 375 118 C395 112 415 104 440 88 C465 72 490 66 520 58 C550 50 570 46 600 26 C620 12 640 8 670 6 C700 4 720 4 740 4 L740 220 L30 220Z" fill="url(#d3area)"/>
-
-        <!-- سایه زیر خط (۳D) -->
-        <path d="M30 194 C90 186 140 176 190 164 C220 156 240 152 260 124 C280 96 300 90 320 104 C340 118 355 128 375 122 C395 116 415 108 440 92 C465 76 490 70 520 62 C550 54 570 50 600 30 C620 16 640 12 670 10 C700 8 720 8 740 8" fill="none" stroke="#000" stroke-width="4" opacity=".3" filter="url(#d3glowf)"/>
-
-        <!-- خط اصلی طلایی/لیمویی -->
-        <path class="d3-draw" d="M30 190 C90 182 140 172 190 160 C220 152 240 148 260 120 C280 92 300 86 320 100 C340 114 355 124 375 118 C395 112 415 104 440 88 C465 72 490 66 520 58 C550 50 570 46 600 26 C620 12 640 8 670 6 C700 4 720 4 740 4" fill="none" stroke="url(#d3line)" stroke-width="3.5" stroke-linecap="round" filter="url(#d3glowf)"/>
-
-        <!-- نقطه جهش ۱ -->
-        <circle class="d3-glow g1" cx="260" cy="120" r="4" fill="none" stroke="#C7FF00" stroke-width="2"/>
-        <circle cx="260" cy="120" r="4" fill="#C7FF00"/>
-        <circle cx="260" cy="120" r="1.5" fill="#fff"/>
-
-        <!-- نقطه جهش ۲ -->
-        <circle class="d3-glow g2" cx="600" cy="26" r="4" fill="none" stroke="#C7FF00" stroke-width="2"/>
-        <circle cx="600" cy="26" r="4" fill="#C7FF00"/>
-        <circle cx="600" cy="26" r="1.5" fill="#fff"/>
-      </svg>
-    </div>
-
-    <div class="d3-foot">
-      <span>هدف‌گذاری ← اقدام ← بازبینی</span>
-      <b>مسیر اختصاصی تو</b>
-    </div>
-  </div>
-</div>
-
-<!-- ======================================================
-     نمودار ۴ — ISOMETRIC BLOCKS (بلوک‌های سه‌بعدی)
-     هر بلوک ارتفاعش ناگهانی می‌پرد
-======================================================= -->
-<div class="demo-item">
-  <div class="demo-label">
-    <span class="num">۴</span>
-    <span>Isometric Blocks</span>
-    <span class="desc">— بلوک‌های ۳D ایزومتریک با پرش</span>
-  </div>
-
-  <style>
-    .d4{
-      position:relative;width:100%;height:220px;
-      background:linear-gradient(180deg,#1e2a24,#222D29);
-      overflow:hidden;box-shadow:0 24px 50px #151b1830;
-    }
-    .d4-head{
-      position:absolute;top:16px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-start;
-    }
-    .d4-head small{color:#c2d1c7;font-size:10px;font-weight:700;letter-spacing:.5px}
-    .d4-head .chip{
-      background:var(--lime);color:#1c3528;font-size:9px;
-      font-weight:900;padding:4px 9px;letter-spacing:.5px;
-    }
-    .d4-head .title{color:#fff;font-size:15px;font-weight:900;margin-top:4px}
-    .d4-visual{position:absolute;inset:0;z-index:2}
-    .d4-visual svg{width:100%;height:100%}
-    .d4-block{animation:d4grow 3s ease-out infinite;transform-origin:bottom}
-    .d4-block.b1{animation-delay:0s}
-    .d4-block.b2{animation-delay:.1s}
-    .d4-block.b3{animation-delay:.2s}
-    .d4-block.b4{animation-delay:.3s}
-    .d4-block.b5{animation-delay:.4s}
-    .d4-block.b6{animation-delay:.5s}
-    .d4-block.b7{animation-delay:.6s}
-    .d4-block.b8{animation-delay:.7s}
-    .d4-block.b9{animation-delay:.8s}
-    .d4-block.b10{animation-delay:.9s}
-    .d4-block.b11{animation-delay:1s}
-    .d4-block.b12{animation-delay:1.1s}
-    @keyframes d4grow{
-      0%,100%{transform:scaleY(1)}
-      50%{transform:scaleY(1.08)}
-    }
-    .d4-foot{
-      position:absolute;bottom:14px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-end;
-      font-size:9px;color:#c2d1c7;font-weight:700;
-    }
-    .d4-foot b{color:var(--lime);font-size:11px}
-  </style>
-
-  <div class="d4">
-    <div class="d4-head">
-      <div>
-        <small>GROWTH / SIGNAL MAP</small>
-        <div class="title">دو جهش، یک مسیر.</div>
-      </div>
-      <span class="chip">G24 / 04</span>
-    </div>
-
-    <div class="d4-visual">
-      <svg viewBox="0 0 760 220" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="d4top1" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0" stop-color="#C7FF00"/>
-            <stop offset="1" stop-color="#8bad74"/>
-          </linearGradient>
-          <linearGradient id="d4side" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0" stop-color="#176b4b"/>
-            <stop offset="1" stop-color="#0e3a26"/>
-          </linearGradient>
-        </defs>
-
-        <!-- پایه ایزومتریک -->
-        <path d="M30 190 L740 190" stroke="#ffffff20" stroke-width="1"/>
-
-        <!-- بلوک‌ها — قبل از جهش ۱ (کوتاه) -->
-        <g>
-          <rect class="d4-block b1" x="40" y="170" width="30" height="20" fill="url(#d4side)"/>
-          <polygon points="40,170 55,160 85,160 70,170" fill="url(#d4top1)" opacity=".6"/>
-
-          <rect class="d4-block b2" x="80" y="168" width="30" height="22" fill="url(#d4side)"/>
-          <polygon points="80,168 95,158 125,158 110,168" fill="url(#d4top1)" opacity=".7"/>
-
-          <rect class="d4-block b3" x="120" y="164" width="30" height="26" fill="url(#d4side)"/>
-          <polygon points="120,164 135,154 165,154 150,164" fill="url(#d4top1)" opacity=".8"/>
-
-          <rect class="d4-block b4" x="160" y="158" width="30" height="32" fill="url(#d4side)"/>
-          <polygon points="160,158 175,148 205,148 190,158" fill="url(#d4top1)" opacity=".85"/>
-        </g>
-
-        <!-- جهش ۱ — فالوور (پرش ناگهانی ارتفاع) -->
-        <g>
-          <rect class="d4-block b5" x="205" y="120" width="30" height="70" fill="url(#d4side)"/>
-          <polygon points="205,120 220,110 250,110 235,120" fill="url(#d4top1)"/>
-
-          <rect class="d4-block b6" x="245" y="90" width="30" height="100" fill="url(#d4side)"/>
-          <polygon points="245,90 260,80 290,80 275,90" fill="url(#d4top1)"/>
-
-          <rect class="d4-block b7" x="285" y="80" width="30" height="110" fill="url(#d4side)"/>
-          <polygon points="285,80 300,70 330,70 315,80" fill="url(#d4top1)"/>
-        </g>
-
-        <!-- افت ملایم -->
-        <g>
-          <rect class="d4-block b8" x="335" y="100" width="30" height="90" fill="url(#d4side)"/>
-          <polygon points="335,100 350,90 380,90 365,100" fill="url(#d4top1)" opacity=".9"/>
-
-          <rect class="d4-block b9" x="375" y="120" width="30" height="70" fill="url(#d4side)"/>
-          <polygon points="375,120 390,110 420,110 405,120" fill="url(#d4top1)" opacity=".85"/>
-        </g>
-
-        <!-- جهش ۲ — ریلز/اکسپلور (پرش بلندتر) -->
-        <g>
-          <rect class="d4-block b10" x="420" y="70" width="30" height="120" fill="url(#d4side)"/>
-          <polygon points="420,70 435,60 465,60 450,70" fill="url(#d4top1)"/>
-
-          <rect class="d4-block b11" x="460" y="40" width="30" height="150" fill="url(#d4side)"/>
-          <polygon points="460,40 475,30 505,30 490,40" fill="url(#d4top1)"/>
-
-          <rect class="d4-block b12" x="500" y="20" width="30" height="170" fill="url(#d4side)"/>
-          <polygon points="500,20 515,10 545,10 530,20" fill="url(#d4top1)"/>
-        </g>
-
-        <!-- نقطه‌های نور بالای دو جهش -->
-        <circle cx="300" cy="70" r="4" fill="#C7FF00">
-          <animate attributeName="r" values="4;8;4" dur="2.4s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;.3;1" dur="2.4s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="515" cy="10" r="4" fill="#C7FF00">
-          <animate attributeName="r" values="4;9;4" dur="2.4s" begin="1.2s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;.3;1" dur="2.4s" begin="1.2s" repeatCount="indefinite"/>
-        </circle>
-      </svg>
-    </div>
-
-    <div class="d4-foot">
-      <span>هدف‌گذاری ← اقدام ← بازبینی</span>
-      <b>مسیر اختصاصی تو</b>
-    </div>
-  </div>
-</div>
-
-<!-- ======================================================
-     نمودار ۵ — GLITCH / DATA (سایبری، نویز، گلیچ)
-======================================================= -->
-<div class="demo-item">
-  <div class="demo-label">
-    <span class="num">۵</span>
-    <span>Glitch / Data</span>
-    <span class="desc">— خط گلیچ دیجیتال + نویز سایبری</span>
-  </div>
-
-  <style>
-    .d5{
-      position:relative;width:100%;height:220px;
-      background:#0a0f0c;overflow:hidden;
-      box-shadow:0 24px 50px #0a181060;
-    }
-    .d5:before{
-      content:"";position:absolute;inset:0;
-      background:
-        repeating-linear-gradient(0deg,transparent 0,transparent 2px,#C7FF0004 2px,#C7FF0004 4px),
-        radial-gradient(ellipse at 70% 30%,#C7FF0010,transparent 60%);
-      pointer-events:none;z-index:1;
-    }
-    .d5-head{
-      position:absolute;top:16px;right:18px;left:18px;z-index:4;
-      display:flex;justify-content:space-between;align-items:flex-start;
-    }
-    .d5-head small{
-      color:#5a8060;font-size:10px;font-weight:700;letter-spacing:2px;
-      font-family:"Vazirmatn",monospace;
-    }
-    .d5-head .chip{
-      background:var(--lime);color:#0a0f0c;font-size:9px;
-      font-weight:900;padding:4px 9px;letter-spacing:1px;
-      font-family:"Vazirmatn",monospace;
-    }
-    .d5-head .title{
-      color:#fff;font-size:15px;font-weight:900;margin-top:4px;
-      letter-spacing:-.3px;
-    }
-    .d5-head .title em{font-style:normal;color:var(--lime)}
-    .d5-visual{position:absolute;inset:0;z-index:2}
-    .d5-visual svg{width:100%;height:100%}
-    .d5-line{
-      stroke-dasharray:1000;stroke-dashoffset:1000;
-      animation:d5draw 3s ease-out forwards .3s;
-    }
-    @keyframes d5draw{to{stroke-dashoffset:0}}
-    .d5-ghost{
-      animation:d5ghost 2.4s steps(2) infinite;
-    }
-    @keyframes d5ghost{
-      0%,100%{transform:translate(0,0);opacity:.6}
-      25%{transform:translate(-2px,1px);opacity:.4}
-      50%{transform:translate(2px,-1px);opacity:.8}
-      75%{transform:translate(-1px,2px);opacity:.5}
-    }
-    .d5-dot{animation:d5dot 1.4s steps(2) infinite}
-    .d5-dot.d2{animation-delay:.7s}
-    @keyframes d5dot{0%,100%{opacity:1}50%{opacity:.2}}
-    .d5-foot{
-      position:absolute;bottom:14px;right:18px;left:18px;z-index:4;
-      display:flex;justify-content:space-between;align-items:flex-end;
-      font-size:9px;color:#5a8060;font-weight:700;
-      font-family:"Vazirmatn",monospace;letter-spacing:1px;
-    }
-    .d5-foot b{color:var(--lime);font-size:11px}
-  </style>
-
-  <div class="d5">
-    <div class="d5-head">
-      <div>
-        <small>DATA / GLITCH / 24</small>
-        <div class="title">دو جهش، <em>دو سیگنال.</em></div>
-      </div>
-      <span class="chip">G24 / 05</span>
-    </div>
-
-    <div class="d5-visual">
-      <svg viewBox="0 0 760 220" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="d5line" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0" stop-color="#C7FF0080"/>
-            <stop offset=".5" stop-color="#C7FF00"/>
-            <stop offset="1" stop-color="#fff"/>
-          </linearGradient>
-          <filter id="d5blur">
-            <feGaussianBlur stdDeviation="2"/>
-          </filter>
-        </defs>
-
-        <!-- خط شبح گلیچ (تار) -->
-        <path class="d5-ghost" filter="url(#d5blur)" d="M30 195 L120 190 L180 184 L200 175 L215 160 L230 140 L245 120 L260 105 L275 100 L300 108 L340 115 L380 118 L400 110 L420 95 L440 78 L460 62 L480 50 L500 38 L520 30 L540 24 L570 18 L620 10 L680 6 L740 4" fill="none" stroke="#C7FF00" stroke-width="4" opacity=".5"/>
-
-        <!-- خط اصلی پله‌ای گلیچ -->
-        <path class="d5-line" d="M30 195 L120 190 L180 184 L200 175 L215 160 L230 140 L245 120 L260 105 L275 100 L300 108 L340 115 L380 118 L400 110 L420 95 L440 78 L460 62 L480 50 L500 38 L520 30 L540 24 L570 18 L620 10 L680 6 L740 4" fill="none" stroke="url(#d5line)" stroke-width="2" stroke-linejoin="miter"/>
-
-        <!-- نقطه جهش ۱ — گلیچ -->
-        <g transform="translate(275,100)">
-          <rect class="d5-dot d1" x="-3" y="-3" width="6" height="6" fill="#C7FF00"/>
-          <rect x="-8" y="-8" width="16" height="16" fill="none" stroke="#C7FF00" stroke-width="1" opacity=".6"/>
-          <rect x="-13" y="-13" width="26" height="26" fill="none" stroke="#C7FF00" stroke-width="1" opacity=".3"/>
-        </g>
-
-        <!-- نقطه جهش ۲ — گلیچ بزرگتر -->
-        <g transform="translate(570,18)">
-          <rect class="d5-dot d2" x="-4" y="-4" width="8" height="8" fill="#C7FF00"/>
-          <rect x="-10" y="-10" width="20" height="20" fill="none" stroke="#C7FF00" stroke-width="1" opacity=".7"/>
-          <rect x="-16" y="-16" width="32" height="32" fill="none" stroke="#C7FF00" stroke-width="1" opacity=".35"/>
-          <rect x="-24" y="-24" width="48" height="48" fill="none" stroke="#C7FF00" stroke-width="1" opacity=".15"/>
-        </g>
-      </svg>
-    </div>
-
-    <div class="d5-foot">
-      <span>GOAL → ACT → REVIEW</span>
-      <b>G24 / YOUR PATH</b>
-    </div>
-  </div>
-</div>
-
-<!-- ======================================================
-     نمودار ۶ — NEON TUBE (لوله نئون درخشان)
-======================================================= -->
-<div class="demo-item">
-  <div class="demo-label">
-    <span class="num">۶</span>
-    <span>Neon Tube</span>
-    <span class="desc">— لوله نئون درخشان با جهش برقی</span>
-  </div>
-
-  <style>
-    .d6{
-      position:relative;width:100%;height:220px;
-      background:#0d0f0e;overflow:hidden;
-      box-shadow:0 24px 50px #00000060;
-    }
-    .d6:before{
-      content:"";position:absolute;inset:0;
-      background:
-        radial-gradient(ellipse at 30% 50%,#C7FF0015,transparent 50%),
-        radial-gradient(ellipse at 80% 30%,#ef765715,transparent 50%);
-      pointer-events:none;
-    }
-    .d6-head{
-      position:absolute;top:16px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-start;
-    }
-    .d6-head small{color:#8a958d;font-size:10px;font-weight:700;letter-spacing:1.5px}
-    .d6-head .chip{
-      background:var(--lime);color:#0d0f0e;font-size:9px;
-      font-weight:900;padding:4px 9px;letter-spacing:1px;
-      box-shadow:0 0 20px #C7FF0080;
-    }
-    .d6-head .title{color:#fff;font-size:15px;font-weight:900;margin-top:4px}
-    .d6-head .title em{font-style:normal;color:var(--lime);text-shadow:0 0 12px #C7FF00}
-    .d6-visual{position:absolute;inset:0;z-index:2}
-    .d6-visual svg{width:100%;height:100%}
-    .d6-tube{
-      filter:drop-shadow(0 0 6px #C7FF00) drop-shadow(0 0 14px #C7FF0080);
-    }
-    .d6-draw{
-      stroke-dasharray:1000;stroke-dashoffset:1000;
-      animation:d6draw 3s ease-out forwards .3s;
-    }
-    @keyframes d6draw{to{stroke-dashoffset:0}}
-    .d6-flicker{animation:d6fl 4s ease-in-out infinite}
-    .d6-flicker.f2{animation-delay:2s}
-    @keyframes d6fl{
-      0%,90%,100%{opacity:1}
-      92%{opacity:.4}94%{opacity:1}96%{opacity:.6}98%{opacity:1}
-    }
-    .d6-foot{
-      position:absolute;bottom:14px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-end;
-      font-size:9px;color:#8a958d;font-weight:700;letter-spacing:1px;
-    }
-    .d6-foot b{color:var(--lime);font-size:11px;text-shadow:0 0 10px #C7FF00}
-  </style>
-
-  <div class="d6">
-    <div class="d6-head">
-      <div>
-        <small>NEON / GROWTH / 24</small>
-        <div class="title">دو جهش، <em>یک درخشش.</em></div>
-      </div>
-      <span class="chip">G24 / 06</span>
-    </div>
-
-    <div class="d6-visual">
-      <svg viewBox="0 0 760 220" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="d6line" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0" stop-color="#8bad74"/>
-            <stop offset=".5" stop-color="#C7FF00"/>
-            <stop offset="1" stop-color="#ef7657"/>
-          </linearGradient>
-        </defs>
-
-        <!-- لوله نئون -->
-        <path class="d6-tube d6-draw" d="M30 190 C90 184 140 174 190 162 C220 154 240 148 260 118 C280 88 300 80 320 96 C340 112 355 122 375 116 C395 110 415 102 440 86 C465 70 490 62 520 54 C550 46 570 42 600 22 C620 10 640 6 670 4 C700 2 720 2 740 2" fill="none" stroke="url(#d6line)" stroke-width="2.5" stroke-linecap="round"/>
-
-        <!-- نقطه جهش ۱ — لامپ نئون -->
-        <g class="d6-flicker f1">
-          <circle cx="260" cy="118" r="14" fill="#C7FF0020"/>
-          <circle cx="260" cy="118" r="7" fill="#C7FF0040"/>
-          <circle cx="260" cy="118" r="3.5" fill="#C7FF00"/>
-          <circle cx="260" cy="118" r="1.5" fill="#fff"/>
-        </g>
-
-        <!-- نقطه جهش ۲ — لامپ نئون بزرگتر -->
-        <g class="d6-flicker f2">
-          <circle cx="600" cy="22" r="18" fill="#ef765720"/>
-          <circle cx="600" cy="22" r="9" fill="#ef765750"/>
-          <circle cx="600" cy="22" r="4.5" fill="#ef7657"/>
-          <circle cx="600" cy="22" r="2" fill="#fff"/>
-        </g>
-      </svg>
-    </div>
-
-    <div class="d6-foot">
-      <span>GOAL → ACT → REVIEW</span>
-      <b>G24 / NEON</b>
-    </div>
-  </div>
-</div>
-
-<!-- ======================================================
-     نمودار ۷ — BRUSH STROKE (ضربه‌قلم هنری)
-======================================================= -->
-<div class="demo-item">
-  <div class="demo-label">
-    <span class="num">۷</span>
-    <span>Brush Stroke</span>
-    <span class="desc">— ضربه‌قلم پهن هنری با بافت</span>
-  </div>
-
-  <style>
-    .d7{
-      position:relative;width:100%;height:220px;
-      background:#f2ede0;overflow:hidden;
-      box-shadow:0 24px 50px #151b1820;
-    }
-    .d7:before{
-      content:"";position:absolute;inset:0;
-      background:
-        radial-gradient(circle at 20% 30%,#176b4b08,transparent 40%),
-        radial-gradient(circle at 85% 75%,#ef765708,transparent 40%);
-      pointer-events:none;
-    }
-    .d7-head{
-      position:absolute;top:16px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-start;
-    }
-    .d7-head small{color:#8a7d63;font-size:10px;font-weight:700;letter-spacing:1.5px}
-    .d7-head .chip{
-      background:#222D29;color:var(--lime);font-size:9px;
-      font-weight:900;padding:4px 9px;letter-spacing:1px;
-    }
-    .d7-head .title{color:#222D29;font-size:15px;font-weight:900;margin-top:4px}
-    .d7-head .title em{font-style:normal;color:var(--green)}
-    .d7-visual{position:absolute;inset:0;z-index:2}
-    .d7-visual svg{width:100%;height:100%}
-    .d7-draw{
-      stroke-dasharray:1000;stroke-dashoffset:1000;
-      animation:d7draw 3.5s ease-out forwards .3s;
-    }
-    @keyframes d7draw{to{stroke-dashoffset:0}}
-    .d7-ink{animation:d7ink 3s ease-in-out infinite;transform-origin:center}
-    .d7-ink.i2{animation-delay:1.5s}
-    @keyframes d7ink{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
-    .d7-foot{
-      position:absolute;bottom:14px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-end;
-      font-size:9px;color:#8a7d63;font-weight:700;letter-spacing:1px;
-    }
-    .d7-foot b{color:var(--green);font-size:11px}
-  </style>
-
-  <div class="d7">
-    <div class="d7-head">
-      <div>
-        <small>BRUSH / GROWTH / 24</small>
-        <div class="title">دو جهش، <em>یک اثر.</em></div>
-      </div>
-      <span class="chip">G24 / 07</span>
-    </div>
-
-    <div class="d7-visual">
-      <svg viewBox="0 0 760 220" preserveAspectRatio="none">
-        <defs>
-          <filter id="d7rough">
-            <feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="7"/>
-            <feDisplacementMap in="SourceGraphic" scale="4"/>
-          </filter>
-          <linearGradient id="d7grad" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0" stop-color="#176b4b"/>
-            <stop offset=".5" stop-color="#222D29"/>
-            <stop offset="1" stop-color="#176b4b"/>
-          </linearGradient>
-          <linearGradient id="d7area" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0" stop-color="#176b4b" stop-opacity=".18"/>
-            <stop offset="1" stop-color="#176b4b" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-
-        <!-- منطقه زیر -->
-        <path filter="url(#d7rough)" d="M30 190 C90 184 140 174 190 162 C220 154 240 148 260 118 C280 88 300 80 320 96 C340 112 355 122 375 116 C395 110 415 102 440 86 C465 70 490 62 520 54 C550 46 570 42 600 22 C620 10 640 6 670 4 C700 2 720 2 740 2 L740 220 L30 220Z" fill="url(#d7area)"/>
-
-        <!-- ضربه‌قلم پهن -->
-        <path class="d7-draw" filter="url(#d7rough)" d="M30 190 C90 184 140 174 190 162 C220 154 240 148 260 118 C280 88 300 80 320 96 C340 112 355 122 375 116 C395 110 415 102 440 86 C465 70 490 62 520 54 C550 46 570 42 600 22 C620 10 640 6 670 4 C700 2 720 2 740 2" fill="none" stroke="url(#d7grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <!-- نقطه جهش ۱ — لکه جوهر -->
-        <g class="d7-ink i1">
-          <circle cx="260" cy="118" r="7" fill="#176b4b"/>
-          <circle cx="255" cy="114" r="2.5" fill="#176b4b"/>
-          <circle cx="265" cy="122" r="2" fill="#176b4b"/>
-          <circle cx="250" cy="122" r="1.5" fill="#176b4b"/>
-        </g>
-
-        <!-- نقطه جهش ۲ — لکه جوهر بزرگتر -->
-        <g class="d7-ink i2">
-          <circle cx="600" cy="22" r="9" fill="#ef7657"/>
-          <circle cx="592" cy="16" r="3" fill="#ef7657"/>
-          <circle cx="608" cy="28" r="2.5" fill="#ef7657"/>
-          <circle cx="595" cy="30" r="1.8" fill="#ef7657"/>
-          <circle cx="610" cy="14" r="1.5" fill="#ef7657"/>
-        </g>
-      </svg>
-    </div>
-
-    <div class="d7-foot">
-      <span>GOAL → ACT → REVIEW</span>
-      <b>G24 / BRUSH</b>
-    </div>
-  </div>
-</div>
-
-<!-- ======================================================
-     نمودار ۸ — WIREFRAME 3D (سیمی سه‌بعدی)
-======================================================= -->
-<div class="demo-item">
-  <div class="demo-label">
-    <span class="num">۸</span>
-    <span>Wireframe 3D</span>
-    <span class="desc">— نمودار سیمی سه‌بعدی با پرسپکتیو</span>
-  </div>
-
-  <style>
-    .d8{
-      position:relative;width:100%;height:220px;
-      background:linear-gradient(180deg,#0e1812,#1a2e24);
-      overflow:hidden;
-      box-shadow:0 24px 50px #0a181050;
-    }
-    .d8:before{
-      content:"";position:absolute;inset:0;
-      background:
-        radial-gradient(ellipse at 75% 25%,#C7FF0015,transparent 55%);
-      pointer-events:none;
-    }
-    .d8-head{
-      position:absolute;top:16px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-start;
-    }
-    .d8-head small{color:#8a958d;font-size:10px;font-weight:700;letter-spacing:1.5px}
-    .d8-head .chip{
-      background:var(--lime);color:#0e1812;font-size:9px;
-      font-weight:900;padding:4px 9px;letter-spacing:1px;
-    }
-    .d8-head .title{color:#fff;font-size:15px;font-weight:900;margin-top:4px}
-    .d8-head .title em{font-style:normal;color:var(--lime)}
-    .d8-visual{position:absolute;inset:0;z-index:2;perspective:800px}
-    .d8-visual svg{width:100%;height:100%;transform:rotateX(8deg);transform-origin:center bottom}
-    .d8-line{
-      stroke-dasharray:1000;stroke-dashoffset:1000;
-      animation:d8draw 3s ease-out forwards .3s;
-    }
-    @keyframes d8draw{to{stroke-dashoffset:0}}
-    .d8-pulse{animation:d8p 2.4s ease-out infinite;transform-origin:center}
-    .d8-pulse.p2{animation-delay:1.2s}
-    @keyframes d8p{0%{r:4;opacity:1}100%{r:20;opacity:0}}
-    .d8-foot{
-      position:absolute;bottom:14px;right:18px;left:18px;z-index:3;
-      display:flex;justify-content:space-between;align-items:flex-end;
-      font-size:9px;color:#8a958d;font-weight:700;letter-spacing:1px;
-    }
-    .d8-foot b{color:var(--lime);font-size:11px}
-  </style>
-
-  <div class="d8">
-    <div class="d8-head">
-      <div>
-        <small>WIREFRAME / 3D / 24</small>
-        <div class="title">دو جهش، <em>یک عمق.</em></div>
-      </div>
-      <span class="chip">G24 / 08</span>
-    </div>
-
-    <div class="d8-visual">
-      <svg viewBox="0 0 760 220" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="d8line" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0" stop-color="#5a8060"/>
-            <stop offset=".5" stop-color="#C7FF00"/>
-            <stop offset="1" stop-color="#C7FF00"/>
-          </linearGradient>
-        </defs>
-
-        <!-- شبکه پرسپکتیو سیمی -->
-        <g stroke="#C7FF00" stroke-width=".5" opacity=".15">
-          <line x1="0" y1="220" x2="300" y2="0"/>
-          <line x1="100" y1="220" x2="350" y2="0"/>
-          <line x1="200" y1="220" x2="400" y2="0"/>
-          <line x1="300" y1="220" x2="450" y2="0"/>
-          <line x1="400" y1="220" x2="500" y2="0"/>
-          <line x1="500" y1="220" x2="550" y2="0"/>
-          <line x1="600" y1="220" x2="600" y2="0"/>
-          <line x1="700" y1="220" x2="650" y2="0"/>
-          <line x1="760" y1="220" x2="700" y2="0"/>
-        </g>
-        <g stroke="#C7FF00" stroke-width=".5" opacity=".15">
-          <line x1="30" y1="220" x2="740" y2="220"/>
-          <line x1="80" y1="180" x2="700" y2="180"/>
-          <line x1="130" y1="140" x2="660" y2="140"/>
-          <line x1="180" y1="100" x2="620" y2="100"/>
-          <line x1="230" y1="60" x2="580" y2="60"/>
-          <line x1="280" y1="20" x2="540" y2="20"/>
-        </g>
-
-        <!-- خط اصلی سه‌بعدی -->
-        <path class="d8-line" d="M30 190 C90 184 140 174 190 162 C220 154 240 148 260 118 C280 88 300 80 320 96 C340 112 355 122 375 116 C395 110 415 102 440 86 C465 70 490 62 520 54 C550 46 570 42 600 22 C620 10 640 6 670 4 C700 2 720 2 740 2" fill="none" stroke="url(#d8line)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <!-- سایه زیر خط برای عمق -->
-        <path d="M30 196 C90 190 140 180 190 168 C220 160 240 154 260 124 C280 94 300 86 320 102 C340 118 355 128 375 122 C395 116 415 108 440 92 C465 76 490 68 520 60 C550 52 570 48 600 28 C620 16 640 12 670 10 C700 8 720 8 740 8" fill="none" stroke="#000" stroke-width="2" opacity=".4" stroke-linecap="round"/>
-
-        <!-- نقطه جهش ۱ — پالس سیمی -->
-        <circle class="d8-pulse p1" cx="260" cy="118" r="4" fill="none" stroke="#C7FF00" stroke-width="1.5"/>
-        <circle cx="260" cy="118" r="4" fill="#C7FF00"/>
-        <line x1="260" y1="118" x2="260" y2="190" stroke="#C7FF00" stroke-width=".8" opacity=".4" stroke-dasharray="2 4"/>
-
-        <!-- نقطه جهش ۲ — پالس سیمی بزرگتر -->
-        <circle class="d8-pulse p2" cx="600" cy="22" r="4" fill="none" stroke="#C7FF00" stroke-width="1.5"/>
-        <circle cx="600" cy="22" r="4" fill="#C7FF00"/>
-        <line x1="600" y1="22" x2="600" y2="190" stroke="#C7FF00" stroke-width=".8" opacity=".4" stroke-dasharray="2 4"/>
-      </svg>
-    </div>
-
-    <div class="d8-foot">
-      <span>GOAL → ACT → REVIEW</span>
-      <b>G24 / WIREFRAME</b>
-    </div>
-  </div>
-</div>
-
-</div>
 </body>
-  </html>
+</html>
