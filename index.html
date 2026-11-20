@@ -4,1046 +4,738 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#F8F7F2">
-<title>InstaGain | دانلود اپلیکیشن</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F5F3EC">
+<title>InstaGain | پلتفرم کسب درآمد از اینستاگرام</title>
 
 <style>
-:root {
-    --bg: #F8F7F2;
-    --white: #FFFFFF;
-    --black: #202027;
-    --blue: #315CFA;
-    --blue2: #6684FF;
-    --purple: #853BDB;
-    --pink: #F04491;
-    --coral: #FF6659;
-    --orange: #FFA43B;
-    --green: #B7D957;
-    --muted: #686875;
-    --border: #E8E5DF;
-    --font: "Vazirmatn", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700;800;900&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+    --paper:#F5F3EC;
+    --ink:#171717;
+    --blue:#315CFF;
+    --orange:#FF633D;
+    --pink:#F2A8B9;
+    --yellow:#F4D64E;
+    --green:#C8ED69;
+    --white:#FFFFFF;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden !important;
-    overscroll-behavior: none;
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#E9E7E0;
 }
 
-body {
-    position: fixed;
-    inset: 0;
-    background: var(--bg);
-    font-family: var(--font);
-    color: var(--black);
+body{
+    font-family:"Vazirmatn",Tahoma,sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overscroll-behavior:none;
 }
 
-.page {
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    overflow: hidden;
-    position: relative;
-    padding:
-        max(8px, env(safe-area-inset-top))
-        12px
-        max(8px, env(safe-area-inset-bottom));
-    isolation: isolate;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.poster{
+    position:absolute;
+    width:900px;
+    height:1900px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) scale(var(--poster-scale,1));
+    transform-origin:center center;
+    overflow:hidden;
+    background:var(--paper);
+    color:var(--ink);
+    isolation:isolate;
 }
 
-/* BACKGROUND */
-
-.background {
-    position: absolute;
-    inset: 0;
-    z-index: -3;
-    background:
-        radial-gradient(ellipse at 5% 12%, rgba(49,92,250,.10), transparent 28%),
-        radial-gradient(ellipse at 95% 65%, rgba(240,68,145,.09), transparent 27%),
-        radial-gradient(ellipse at 45% 100%, rgba(255,164,59,.08), transparent 35%),
-        #F8F7F2;
+/* بافت ظریف کاغذ */
+.poster::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:20;
+    pointer-events:none;
+    opacity:.14;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.19'/%3E%3C/svg%3E");
 }
 
-.pattern {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    opacity: .24;
-    background-image: radial-gradient(#AAA7A0 0.8px, transparent .8px);
-    background-size: 16px 16px;
+/* عناصر گرافیکی پس‌زمینه */
+.shape{
+    position:absolute;
+    pointer-events:none;
 }
 
-.edge {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: linear-gradient(
-        180deg,
-        var(--blue),
-        var(--purple),
-        var(--pink),
-        var(--orange)
-    );
+.shape-circle{
+    width:330px;
+    height:330px;
+    border:2px solid var(--blue);
+    border-radius:50%;
+    top:340px;
+    left:-180px;
 }
 
-.edge.left { left: 0; }
-.edge.right { right: 0; opacity: .4; }
-
-/* MAIN POSTER */
-
-.poster {
-    width: 100%;
-    max-width: 580px;
-    height: 100%;
-    max-height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    z-index: 2;
-    min-height: 0;
+.shape-circle::before,
+.shape-circle::after{
+    content:"";
+    position:absolute;
+    border:1px solid var(--blue);
+    border-radius:50%;
+    inset:22px;
 }
 
-/* TOP */
-
-.top {
-    width: 100%;
-    flex: 0 0 auto;
-    text-align: center;
+.shape-circle::after{
+    inset:45px;
 }
 
-.eyebrow {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    padding: 5px 17px;
-    background: var(--black);
-    color: white;
-    border-radius: 7px;
-    font-size: clamp(13px, 3.8vw, 16px);
-    font-weight: 900;
-    box-shadow: 4px 4px 0 var(--blue);
-    margin-bottom: 9px;
+.shape-orange{
+    width:120px;
+    height:120px;
+    background:var(--orange);
+    border-radius:50%;
+    right:-45px;
+    top:640px;
 }
 
-.eyebrow-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 0 4px rgba(183,217,87,.18);
+.shape-green{
+    width:100px;
+    height:100px;
+    background:var(--green);
+    transform:rotate(45deg);
+    left:55px;
+    bottom:310px;
 }
 
-h1 {
-    font-size: clamp(32px, 9.1vw, 49px);
-    font-weight: 900;
-    line-height: 1.36;
-    letter-spacing: -1.4px;
-    overflow-wrap: anywhere;
+.shape-cross{
+    width:74px;
+    height:74px;
+    right:70px;
+    bottom:520px;
 }
 
-h1 .line {
-    display: block;
+.shape-cross::before,
+.shape-cross::after{
+    content:"";
+    position:absolute;
+    background:var(--blue);
+    border-radius:10px;
 }
 
-h1 .colored {
-    color: var(--blue);
-    position: relative;
-    white-space: nowrap;
+.shape-cross::before{
+    width:100%;
+    height:12px;
+    top:31px;
 }
 
-h1 .colored::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 6px;
-    background: var(--pink);
-    border-radius: 10px;
-    z-index: -1;
+.shape-cross::after{
+    height:100%;
+    width:12px;
+    left:31px;
 }
 
-.subtitle {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 5px 14px;
-    border: 2px solid var(--black);
-    border-radius: 8px;
-    background: white;
-    font-size: clamp(14px, 4vw, 18px);
-    font-weight: 900;
-    box-shadow: 4px 4px 0 var(--purple);
-    line-height: 1.7;
+.top-line{
+    position:absolute;
+    top:58px;
+    left:65px;
+    right:65px;
+    height:2px;
+    background:var(--ink);
 }
 
-.subtitle strong {
-    color: var(--purple);
+.top-meta{
+    position:absolute;
+    top:78px;
+    left:65px;
+    right:65px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:19px;
+    font-weight:800;
+    letter-spacing:-.5px;
 }
 
-/* BENEFITS */
-
-.benefits {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 9px;
-    flex: 0 0 auto;
+.meta-dot{
+    display:inline-block;
+    width:13px;
+    height:13px;
+    background:var(--orange);
+    border-radius:50%;
+    margin-left:10px;
+    vertical-align:middle;
 }
 
-.benefit {
-    min-width: 0;
-    min-height: 56px;
-    padding: 5px 8px;
-    background: white;
-    border: 1.5px solid #E5E1DB;
-    border-radius: 11px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 3px 4px 0 rgba(49,92,250,.20);
+/* بخش اصلی تیتر */
+.hero{
+    position:absolute;
+    top:180px;
+    right:65px;
+    left:65px;
+    height:440px;
 }
 
-.benefit:nth-child(2) {
-    box-shadow: 3px 4px 0 rgba(240,68,145,.20);
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:13px;
+    padding:10px 20px;
+    border:2px solid var(--ink);
+    border-radius:100px;
+    font-size:25px;
+    font-weight:800;
+    background:var(--paper);
 }
 
-.benefit-icon {
-    width: 34px;
-    height: 34px;
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    background: #EAF0FF;
-    color: var(--blue);
-    border-radius: 10px;
+.eyebrow-mark{
+    width:14px;
+    height:14px;
+    background:var(--orange);
+    border-radius:50%;
 }
 
-.benefit:nth-child(2) .benefit-icon {
-    background: #FFEAF3;
-    color: var(--pink);
+.hero h1{
+    margin-top:28px;
+    font-size:91px;
+    line-height:1.38;
+    font-weight:900;
+    letter-spacing:-5px;
+    text-align:right;
+    position:relative;
+    z-index:2;
 }
 
-.benefit-icon svg {
-    width: 21px;
-    height: 21px;
+.hero h1 .line-one{
+    display:block;
+    white-space:nowrap;
 }
 
-.benefit-text {
-    font-size: clamp(11px, 3.2vw, 14px);
-    font-weight: 800;
-    line-height: 1.5;
-    text-align: right;
-    overflow-wrap: anywhere;
+.hero h1 .line-two{
+    display:inline-block;
+    position:relative;
+    z-index:1;
+    padding:0 13px 4px 20px;
+    background:var(--green);
+    transform:rotate(-1.3deg);
+    margin-top:5px;
 }
 
-.benefit-text strong {
-    display: block;
-    color: var(--blue);
-    font-size: clamp(13px, 3.7vw, 16px);
-    font-weight: 900;
+.hero h1 .line-two::after{
+    content:"";
+    position:absolute;
+    bottom:-9px;
+    right:0;
+    width:100%;
+    height:5px;
+    background:var(--ink);
 }
 
-/* SOCIAL ROW */
-
-.social-row {
-    width: 100%;
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 5px 10px;
-    box-shadow: 0 4px 12px rgba(30,25,40,.045);
+.hero-stamp{
+    position:absolute;
+    left:12px;
+    top:110px;
+    width:145px;
+    height:145px;
+    border:2px solid var(--blue);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transform:rotate(-13deg);
+    color:var(--blue);
 }
 
-.social-label {
-    font-size: clamp(10px, 3vw, 13px);
-    font-weight: 900;
-    color: var(--black);
+.hero-stamp svg{
+    width:95px;
+    height:95px;
 }
 
-.social-icons {
-    display: flex;
-    align-items: center;
-    gap: 7px;
+.subline{
+    position:absolute;
+    right:65px;
+    top:630px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    font-size:34px;
+    font-weight:900;
 }
 
-.social-icon {
-    width: 29px;
-    height: 29px;
-    border-radius: 8px;
-    background: #F8F7FA;
-    border: 1px solid #EEEAF0;
-    display: grid;
-    place-items: center;
+.subline::before{
+    content:"";
+    width:55px;
+    height:8px;
+    background:var(--orange);
+    display:block;
 }
 
-.social-icon svg {
-    width: 18px;
-    height: 18px;
+/* دو پیام اطراف کادر */
+.side-copy{
+    position:absolute;
+    top:725px;
+    right:65px;
+    width:770px;
+    height:95px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
 
-.heart { color: #EF3980; }
-.save { color: #315CFA; }
-.send { color: #FF7656; }
-.repeat { color: #873BDB; }
-.person { color: #DA4698; }
-
-/* BRAND */
-
-.brand-area {
-    flex: 0 0 auto;
-    text-align: center;
-    direction: ltr;
-    position: relative;
-    line-height: 1;
+.side-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:24px;
+    font-weight:800;
+    line-height:1.5;
+    white-space:nowrap;
 }
 
-.brand {
-    font-family: "Manrope", sans-serif;
-    font-size: clamp(29px, 8.5vw, 39px);
-    font-weight: 800;
-    letter-spacing: -2px;
-    color: var(--black);
+.side-item .number{
+    width:48px;
+    height:48px;
+    flex:0 0 48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:var(--blue);
+    color:white;
+    font-family:"DM Sans",sans-serif;
+    font-size:23px;
+    font-weight:900;
 }
 
-.brand span {
-    color: var(--blue);
+.side-item:last-child .number{
+    background:var(--orange);
 }
 
-.brand-line {
-    width: 80%;
-    height: 4px;
-    border-radius: 10px;
-    margin: 4px auto 0;
-    background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
+/* بخش قاب خالی QR */
+.qr-section{
+    position:absolute;
+    top:850px;
+    left:0;
+    width:900px;
+    height:600px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
-/* QR AREA */
-
-.qr-area {
-    width: 100%;
-    flex: 0 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+.brand-name{
+    height:78px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"DM Sans","Vazirmatn",sans-serif;
+    direction:ltr;
+    font-size:65px;
+    font-weight:900;
+    letter-spacing:-3px;
+    color:var(--ink);
+    line-height:1;
 }
 
-.qr-card {
-    width: min(30dvh, 67vw);
-    aspect-ratio: 1 / 1;
-    flex-shrink: 0;
-    position: relative;
-    background: #FFFFFF;
-    border: 3px dashed var(--blue);
-    border-radius: 15px;
-    outline: 5px solid white;
+.brand-name span{
+    color:var(--blue);
+}
+
+.qr-frame{
+    position:relative;
+    width:500px;
+    height:500px;
+    background:#FFFFFF;
+    border:3px solid var(--ink);
+    outline:3px dashed var(--blue);
+    outline-offset:13px;
     box-shadow:
-        0 0 0 8px rgba(49,92,250,.13),
-        0 12px 35px rgba(39,52,95,.14),
-        0 0 30px rgba(49,92,250,.12);
+        15px 15px 0 var(--green),
+        18px 18px 0 var(--ink);
+    margin-top:12px;
 }
 
-/* Decorative QR corners */
-
-.qr-card::before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 23px;
-    height: 23px;
-    border-top: 3px solid rgba(49,92,250,.16);
-    border-left: 3px solid rgba(49,92,250,.16);
-    border-radius: 5px 0 0;
+/* گوشه‌های گرافیکی قاب */
+.qr-frame::before,
+.qr-frame::after{
+    content:"";
+    position:absolute;
+    width:43px;
+    height:43px;
+    border-color:var(--orange);
+    border-style:solid;
+    z-index:2;
 }
 
-.qr-card::after {
-    content: "";
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 23px;
-    height: 23px;
-    border-bottom: 3px solid rgba(49,92,250,.16);
-    border-right: 3px solid rgba(49,92,250,.16);
-    border-radius: 0 0 5px;
+.qr-frame::before{
+    top:-5px;
+    right:-5px;
+    border-width:6px 6px 0 0;
 }
 
-/* Floating decorations */
-
-.floating {
-    position: absolute;
-    z-index: 3;
-    width: 37px;
-    height: 37px;
-    display: grid;
-    place-items: center;
-    background: white;
-    border: 1.5px solid var(--black);
-    border-radius: 11px;
-    box-shadow: 3px 4px 0 var(--blue);
+.qr-frame::after{
+    bottom:-5px;
+    left:-5px;
+    border-width:0 0 6px 6px;
 }
 
-.floating svg {
-    width: 21px;
-    height: 21px;
+/* نوار تزئینی پایین قاب */
+.qr-caption{
+    position:absolute;
+    top:1450px;
+    right:65px;
+    left:65px;
+    height:3px;
+    background:var(--ink);
 }
 
-.floating.one {
-    right: 3%;
-    top: 8%;
-    color: var(--pink);
-    transform: rotate(9deg);
+/* بخش دستور اسکن */
+.instruction{
+    position:absolute;
+    top:1510px;
+    right:65px;
+    left:65px;
+    height:280px;
 }
 
-.floating.two {
-    left: 3%;
-    bottom: 8%;
-    color: var(--blue);
-    box-shadow: 3px 4px 0 var(--pink);
-    transform: rotate(-8deg);
+.follow-label{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    font-size:25px;
+    font-weight:800;
+    padding:7px 16px;
+    background:var(--pink);
+    border:2px solid var(--ink);
+    transform:rotate(-.6deg);
 }
 
-.floating.three {
-    right: 3%;
-    bottom: 10%;
-    color: var(--coral);
-    box-shadow: 3px 4px 0 var(--purple);
-    transform: rotate(8deg);
+.follow-label::before{
+    content:"";
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--ink);
 }
 
-.decor-star {
-    position: absolute;
-    color: var(--orange);
-    font-size: 24px;
-    top: 2%;
-    left: 12%;
+.instruction h2{
+    margin-top:16px;
+    font-size:47px;
+    line-height:1.55;
+    font-weight:900;
+    letter-spacing:-1.5px;
 }
 
-.decor-heart {
-    position: absolute;
-    color: var(--pink);
-    font-size: 18px;
-    right: 12%;
-    top: 2%;
+.instruction h2 .scan{
+    color:var(--blue);
+    text-decoration:underline;
+    text-decoration-thickness:5px;
+    text-underline-offset:8px;
 }
 
-/* BOTTOM */
-
-.bottom {
-    width: 100%;
-    flex: 0 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
+.instruction p{
+    margin-top:9px;
+    font-size:27px;
+    line-height:1.7;
+    font-weight:700;
 }
 
-.follow {
-    width: 100%;
-    min-height: 44px;
-    padding: 5px 10px;
-    background: var(--black);
-    color: white;
-    border: 1.5px solid #393943;
-    border-radius: 9px;
-    box-shadow: 0 4px 0 var(--pink);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: clamp(12px, 3.6vw, 15px);
-    font-weight: 900;
-    line-height: 1.6;
-    text-align: center;
+.footer-line{
+    position:absolute;
+    right:65px;
+    left:65px;
+    bottom:55px;
+    height:2px;
+    background:var(--ink);
 }
 
-.follow svg {
-    flex-shrink: 0;
-    width: 22px;
-    height: 22px;
-    color: #FF75A8;
+.footer-symbols{
+    position:absolute;
+    bottom:15px;
+    right:65px;
+    left:65px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-family:"DM Sans",sans-serif;
+    font-size:17px;
+    font-weight:800;
+    direction:ltr;
 }
 
-.follow strong {
-    color: #FF80AD;
+.footer-symbols .dots{
+    display:flex;
+    gap:8px;
 }
 
-.scan {
-    width: 100%;
-    min-height: 47px;
-    background: var(--blue);
-    color: white;
-    border: 2px solid white;
-    outline: 2px dashed rgba(49,92,250,.5);
-    border-radius: 9px;
-    box-shadow: 0 5px 0 #1F43C1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 5px 9px;
-    font-size: clamp(18px, 5.6vw, 23px);
-    font-weight: 900;
-    line-height: 1.5;
-    text-align: center;
+.footer-symbols .dots i{
+    display:block;
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:var(--blue);
 }
 
-.scan svg {
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
+.footer-symbols .dots i:nth-child(2){
+    background:var(--orange);
 }
 
-.scan strong {
-    color: #E1FF7B;
+.footer-symbols .dots i:nth-child(3){
+    background:var(--green);
 }
 
-.bio {
-    width: 100%;
-    min-height: 43px;
-    padding: 5px 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    border: 2px dashed #D8D0E8;
-    border-radius: 9px;
-    background: white;
-    box-shadow: 0 4px 12px rgba(40,30,55,.05);
-    font-size: clamp(11px, 3.3vw, 14px);
-    font-weight: 900;
-    line-height: 1.65;
-    text-align: center;
+/* نمادهای تعاملی */
+.social-mark{
+    position:absolute;
+    width:58px;
+    height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--white);
+    border:2px solid var(--ink);
+    box-shadow:5px 5px 0 var(--ink);
+    transform:rotate(-9deg);
 }
 
-.bio svg {
-    flex-shrink: 0;
-    width: 21px;
-    height: 21px;
-    color: var(--purple);
+.social-mark svg{
+    width:31px;
+    height:31px;
+    stroke:var(--ink);
+    fill:none;
+    stroke-width:2.4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
 }
 
-.bio strong {
-    color: var(--purple);
+.mark-heart{
+    top:1150px;
+    right:55px;
+    border-radius:50%;
 }
 
-.signature {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    color: #77747D;
-    font-size: 10px;
-    font-weight: 800;
-    line-height: 1.4;
+.mark-send{
+    top:1285px;
+    left:55px;
+    border-radius:18px;
+    transform:rotate(9deg);
 }
 
-.signature .en {
-    font-family: "Manrope", sans-serif;
-    direction: ltr;
-    color: var(--blue);
-    letter-spacing: .5px;
+.mark-bookmark{
+    top:1060px;
+    left:85px;
+    border-radius:50%;
+    transform:rotate(8deg);
 }
 
-/* =================================
-   RESPONSIVE FIT
-================================= */
-
-/* Short mobile displays */
-
-@media (max-height: 740px) {
-    .eyebrow {
-        margin-bottom: 5px;
-        padding: 4px 13px;
-    }
-
-    h1 {
-        font-size: clamp(29px, 8vw, 40px);
-        line-height: 1.27;
-    }
-
-    .subtitle {
-        margin-top: 5px;
-        padding: 3px 11px;
-    }
-
-    .benefits {
-        gap: 7px;
-    }
-
-    .benefit {
-        min-height: 46px;
-        padding: 4px 6px;
-    }
-
-    .benefit-icon {
-        width: 29px;
-        height: 29px;
-    }
-
-    .social-row {
-        padding: 4px 8px;
-    }
-
-    .social-icon {
-        width: 26px;
-        height: 26px;
-    }
-
-    .brand {
-        font-size: 30px;
-    }
-
-    .bottom {
-        gap: 7px;
-    }
-
-    .follow {
-        min-height: 39px;
-    }
-
-    .scan {
-        min-height: 41px;
-    }
-
-    .bio {
-        min-height: 38px;
-    }
+.mark-repost{
+    top:1350px;
+    right:70px;
+    border-radius:50%;
+    transform:rotate(-8deg);
 }
 
-/* Very short screens */
-
-@media (max-height: 640px) {
-    .page {
-        padding-top: 4px;
-        padding-bottom: 4px;
-    }
-
-    .eyebrow {
-        font-size: 12px;
-        margin-bottom: 3px;
-    }
-
-    h1 {
-        font-size: clamp(26px, 7.5vw, 34px);
-        line-height: 1.22;
-    }
-
-    .subtitle {
-        font-size: 13px;
-        margin-top: 3px;
-        padding: 2px 9px;
-    }
-
-    .benefit {
-        min-height: 38px;
-    }
-
-    .benefit-icon {
-        width: 25px;
-        height: 25px;
-    }
-
-    .benefit-icon svg {
-        width: 17px;
-        height: 17px;
-    }
-
-    .benefit-text {
-        font-size: 10px;
-    }
-
-    .benefit-text strong {
-        font-size: 12px;
-    }
-
-    .social-label {
-        font-size: 10px;
-    }
-
-    .social-icon {
-        width: 23px;
-        height: 23px;
-    }
-
-    .social-icon svg {
-        width: 15px;
-        height: 15px;
-    }
-
-    .brand {
-        font-size: 25px;
-    }
-
-    .qr-card {
-        width: min(25dvh, 60vw);
-    }
-
-    .floating {
-        width: 31px;
-        height: 31px;
-    }
-
-    .floating svg {
-        width: 18px;
-        height: 18px;
-    }
-
-    .bottom {
-        gap: 6px;
-    }
-
-    .follow {
-        min-height: 34px;
-        font-size: 11px;
-    }
-
-    .scan {
-        min-height: 36px;
-        font-size: 17px;
-    }
-
-    .bio {
-        min-height: 33px;
-        font-size: 10px;
-    }
-
-    .signature {
-        font-size: 9px;
-    }
+.tiny-star{
+    position:absolute;
+    width:40px;
+    height:40px;
+    color:var(--orange);
 }
 
-/* Narrow phones */
-
-@media (max-width: 350px) {
-    .page {
-        padding-left: 9px;
-        padding-right: 9px;
-    }
-
-    h1 {
-        font-size: 31px;
-    }
-
-    .benefit {
-        gap: 4px;
-    }
-
-    .benefit-text {
-        font-size: 10px;
-    }
-
-    .social-icons {
-        gap: 4px;
-    }
-
-    .qr-card {
-        width: min(29dvh, 64vw);
-    }
-
-    .scan {
-        font-size: 17px;
-    }
+.star-one{
+    top:690px;
+    left:105px;
 }
 
-/* Landscape */
+.star-two{
+    top:1450px;
+    right:115px;
+    color:var(--blue);
+}
 
-@media (orientation: landscape) and (max-height: 500px) {
-    .poster {
-        max-width: 680px;
-        justify-content: space-around;
-    }
+.tiny-star svg{
+    width:100%;
+    height:100%;
+    fill:currentColor;
+}
 
-    .qr-card {
-        width: min(29dvh, 27vw);
-    }
-
-    h1 {
-        font-size: 27px;
-    }
-
-    .brand {
-        font-size: 23px;
-    }
-
-    .benefits {
-        max-width: 450px;
-    }
-
-    .social-row {
-        max-width: 480px;
-    }
-
-    .bottom {
-        max-width: 480px;
-    }
+@media (max-height:650px){
+    .poster{transform:translate(-50%,-50%) scale(var(--poster-scale,1));}
 }
 </style>
 </head>
 
 <body>
 
-<div class="page">
+<main class="poster" id="poster">
 
-    <div class="background"></div>
-    <div class="pattern"></div>
-    <div class="edge left"></div>
-    <div class="edge right"></div>
+    <div class="shape shape-circle"></div>
+    <div class="shape shape-orange"></div>
+    <div class="shape shape-green"></div>
+    <div class="shape shape-cross"></div>
 
-    <main class="poster">
+    <div class="top-line"></div>
 
-        <!-- HEADER -->
+    <div class="top-meta">
+        <div><span class="meta-dot"></span>دانلود اپلیکیشن</div>
+        <div style="direction:ltr;font-family:'DM Sans',sans-serif;">INSTAGRAM PLATFORM</div>
+    </div>
 
-        <header class="top">
+    <section class="hero">
 
-            <div class="eyebrow">
-                <span class="eyebrow-dot"></span>
-                دانلود اپلیکیشن
-            </div>
-
-            <h1>
-                پلتفرم کسب درآمد
-                <span class="line">
-                    از <span class="colored">اینستاگرام</span>
-                </span>
-            </h1>
-
-            <div class="subtitle">
-                <strong>استفاده آسان</strong>
-                + درآمد واقعی
-            </div>
-
-        </header>
-
-        <!-- BENEFITS -->
-
-        <section class="benefits">
-
-            <div class="benefit">
-
-                <span class="benefit-icon">
-                    <svg viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2.2"
-                         stroke-linecap="round">
-                        <circle cx="12" cy="12" r="9"/>
-                        <path d="M12 6v6l4 2"/>
-                    </svg>
-                </span>
-
-                <div class="benefit-text">
-                    <strong>یک ساعت</strong>
-                    فعالیت هفتگی
-                </div>
-
-            </div>
-
-            <div class="benefit">
-
-                <span class="benefit-icon">
-                    <svg viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2.2"
-                         stroke-linecap="round">
-                        <path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9z"/>
-                    </svg>
-                </span>
-
-                <div class="benefit-text">
-                    <strong>اینستاگرام</strong>
-                    همراه با درآمد
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- SOCIAL MEDIA SYMBOLS -->
-
-        <section class="social-row">
-
-            <span class="social-label">
-                دنیای تعامل و دیده‌شدن
-            </span>
-
-            <div class="social-icons">
-
-                <span class="social-icon heart">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 21s-9-5.8-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.2-9 12-9 12z"/>
-                    </svg>
-                </span>
-
-                <span class="social-icon save">
-                    <svg viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2">
-                        <path d="M6 4h12v17l-6-4-6 4z"/>
-                    </svg>
-                </span>
-
-                <span class="social-icon send">
-                    <svg viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2"
-                         stroke-linejoin="round">
-                        <path d="M22 2L11 13"/>
-                        <path d="M22 2l-7 20-4-9-9-4z"/>
-                    </svg>
-                </span>
-
-                <span class="social-icon repeat">
-                    <svg viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2"
-                         stroke-linecap="round">
-                        <path d="M17 2l4 4-4 4"/>
-                        <path d="M3 11V9a3 3 0 0 1 3-3h15"/>
-                        <path d="M7 22l-4-4 4-4"/>
-                        <path d="M21 13v2a3 3 0 0 1-3 3H3"/>
-                    </svg>
-                </span>
-
-                <span class="social-icon person">
-                    <svg viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2"
-                         stroke-linecap="round">
-                        <circle cx="9" cy="8" r="4"/>
-                        <path d="M3 21v-2a6 6 0 0 1 6-6h1"/>
-                        <path d="M19 8v8M15 12h8"/>
-                    </svg>
-                </span>
-
-            </div>
-
-        </section>
-
-        <!-- BRAND -->
-
-        <div class="brand-area">
-            <div class="brand">
-                Insta<span>Gain</span>
-            </div>
-            <div class="brand-line"></div>
+        <div class="eyebrow">
+            <span class="eyebrow-mark"></span>
+            دانلود اپلیکیشن
         </div>
 
-        <!-- EMPTY SQUARE -->
+        <h1>
+            <span class="line-one">پلتفرم کسب درآمد</span>
+            <span class="line-two">از اینستاگرام</span>
+        </h1>
 
-        <section class="qr-area">
+        <div class="hero-stamp" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none">
+                <path d="M50 8L59 35L87 24L70 49L94 65L65 66L63 95L47 72L23 91L32 63L5 50L34 42L25 14L48 32Z"
+                      stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="50" cy="51" r="10" fill="currentColor"/>
+            </svg>
+        </div>
 
-            <span class="decor-star">✦</span>
-            <span class="decor-heart">♥</span>
+    </section>
 
-            <span class="floating one">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 21s-9-5.8-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.2-9 12-9 12z"/>
-                </svg>
-            </span>
+    <div class="subline">
+        استفاده آسان + درآمد واقعی
+    </div>
 
-            <span class="floating two">
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2">
-                    <path d="M6 4h12v17l-6-4-6 4z"/>
-                </svg>
-            </span>
+    <section class="side-copy">
 
-            <span class="floating three">
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2"
-                     stroke-linejoin="round">
-                    <path d="M22 2L11 13"/>
-                    <path d="M22 2l-7 20-4-9-9-4z"/>
-                </svg>
-            </span>
+        <div class="side-item">
+            <span class="number">01</span>
+            <span>هفته‌ای یک ساعت فعالیت</span>
+        </div>
 
-            <div class="qr-card" aria-label="کادر سفید خالی برای QR">
-            </div>
+        <div class="side-item">
+            <span class="number">02</span>
+            <span>لذت از اینستاگرام با درآمد</span>
+        </div>
 
-        </section>
+    </section>
 
-        <!-- INSTRUCTIONS -->
+    <div class="tiny-star star-one" aria-hidden="true">
+        <svg viewBox="0 0 50 50">
+            <path d="M25 0L30 18L50 25L30 31L25 50L19 31L0 25L19 18Z"/>
+        </svg>
+    </div>
 
-        <footer class="bottom">
+    <section class="qr-section">
 
-            <div class="follow">
+        <div class="brand-name">Insta<span>Gain</span></div>
 
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round">
-                    <circle cx="9" cy="8" r="4"/>
-                    <path d="M3 21v-2a6 6 0 0 1 6-6h1"/>
-                    <path d="M19 8v8M15 12h8"/>
-                </svg>
+        <!-- این کادر عمداً کاملاً خالی است -->
+        <div class="qr-frame" aria-label="کادر خالی محل قرارگیری QR Code"></div>
 
-                <span>
-                    برای ثبت‌نام، ابتدا این <strong>پیج را فالو کنید</strong>
-                </span>
+    </section>
 
-            </div>
+    <div class="social-mark mark-heart" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+            <path d="M27 11.5C27 20 16 27 16 27S5 20 5 11.5C5 5 13 3 16 10C19 3 27 5 27 11.5Z"/>
+        </svg>
+    </div>
 
-            <div class="scan">
+    <div class="social-mark mark-bookmark" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+            <path d="M8 5H24V28L16 22L8 28Z"/>
+        </svg>
+    </div>
 
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round">
-                    <path d="M3 8V5a2 2 0 0 1 2-2h3"/>
-                    <path d="M16 3h3a2 2 0 0 1 2 2v3"/>
-                    <path d="M21 16v3a2 2 0 0 1-2 2h-3"/>
-                    <path d="M8 21H5a2 2 0 0 1-2-2v-3"/>
-                    <path d="M7 7h4v4H7zM13 7h4v4h-4zM7 13h4v4H7zM14 14h3v3h-3z"/>
-                </svg>
+    <div class="social-mark mark-send" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+            <path d="M28 4L14 28L11 17L4 12Z"/>
+            <path d="M11 17L28 4"/>
+        </svg>
+    </div>
 
-                <span>
-                    سپس <strong>QR کد</strong> را اسکن کنید
-                </span>
+    <div class="social-mark mark-repost" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+            <path d="M7 12L11 8L15 12"/>
+            <path d="M11 8V20H25"/>
+            <path d="M25 20L21 24L17 20"/>
+            <path d="M21 24V12H7"/>
+        </svg>
+    </div>
 
-            </div>
+    <div class="qr-caption"></div>
 
-            <div class="bio">
+    <div class="tiny-star star-two" aria-hidden="true">
+        <svg viewBox="0 0 50 50">
+            <path d="M25 0L30 18L50 25L30 31L25 50L19 31L0 25L19 18Z"/>
+        </svg>
+    </div>
 
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2.2"
-                     stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/>
-                    <path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>
-                </svg>
+    <section class="instruction">
 
-                <span>
-                    یا از طریق <strong>لینک دانلود اپلیکیشن</strong>
-                    در بیوگرافی وارد شوید
-                </span>
+        <div class="follow-label">
+            برای ثبت‌نام حتماً این پیج را فالوو کنید
+        </div>
 
-            </div>
+        <h2>
+            سپس <span class="scan">کیوآر کد</span> را اسکن کنید
+        </h2>
 
-            <div class="signature">
-                <span>لذت از اینستاگرام با درآمد</span>
-                <span class="en">INSTAGAIN</span>
-            </div>
+        <p>
+            و یا وارد لینک دانلود اپلیکیشن در بیوگرافی شوید
+        </p>
 
-        </footer>
+    </section>
 
-    </main>
+    <div class="footer-line"></div>
 
-</div>
+    <div class="footer-symbols">
+        <span>INSTAGAIN</span>
+        <div class="dots">
+            <i></i><i></i><i></i>
+        </div>
+        <span>DOWNLOAD</span>
+    </div>
+
+</main>
+
+<script>
+(function(){
+
+    const poster = document.getElementById("poster");
+
+    const DESIGN_WIDTH = 900;
+    const DESIGN_HEIGHT = 1900;
+
+    function fitPoster(){
+
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        const scaleX = viewportWidth / DESIGN_WIDTH;
+        const scaleY = viewportHeight / DESIGN_HEIGHT;
+
+        const scale = Math.min(scaleX, scaleY);
+
+        poster.style.setProperty("--poster-scale", scale.toFixed(5));
+
+    }
+
+    window.addEventListener("resize", fitPoster, {passive:true});
+    window.addEventListener("orientationchange", fitPoster, {passive:true});
+
+    fitPoster();
+
+})();
+</script>
 
 </body>
 </html>
