@@ -1,357 +1,365 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CountUp + Confetti — تست</title>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#090B09">
+<title>InstaGain | کسب درآمد از اینستاگرام</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --paper:#f4f5ef;--ink:#222D29;--muted:#69736b;
-    --green:#176b4b;--lime:#C7FF00;--coral:#ef7657;
-    --line:rgba(21,27,24,.13);
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:"Vazirmatn",Tahoma,sans-serif;
-    padding:24px 16px 60px;
-  }
-  .wrap{max-width:560px;margin:auto}
+:root {
+    --bg: #090B09;
+    --lime: #D5FA45;
+    --white: #FFFFFF;
+    --muted: #A5AAA0;
+}
 
-  /* ============ کارت شمارنده ============ */
-  .counter-card{
-    position:relative;
-    border-radius:0;
-    background:linear-gradient(160deg,#1f2b25 0%,#222D29 55%,#163d2a 100%);
-    color:#fff;
-    padding:26px 22px 22px;
-    overflow:hidden;
-    box-shadow:0 26px 60px #151b1840;
-  }
-  .counter-card:before{
-    content:"";position:absolute;top:-50%;right:-30%;
-    width:320px;height:320px;border-radius:50%;
-    background:radial-gradient(circle,#C7FF0030,transparent 65%);
-    filter:blur(20px);
-    animation:glowFloat 9s ease-in-out infinite;
-  }
-  @keyframes glowFloat{
-    0%,100%{transform:translate(0,0)}
-    50%{transform:translate(-30px,30px)}
-  }
-  .counter-card:after{
-    content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
-    background:linear-gradient(90deg,transparent,#C7FF0060,transparent);
-  }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
 
-  .cc-head{
-    position:relative;z-index:2;
-    display:flex;justify-content:space-between;align-items:flex-start;
-    margin-bottom:24px;
-  }
-  .cc-head small{
-    display:block;font-size:10px;font-weight:900;letter-spacing:1.6px;
-    color:#8fbfa1;
-  }
-  .cc-head .title{
-    font-size:15px;font-weight:900;margin-top:5px;line-height:1.5;
-  }
-  .cc-head .chip{
-    background:var(--lime);color:#1c3528;
-    font-size:9px;font-weight:900;padding:5px 10px;letter-spacing:.6px;
-    box-shadow:0 0 20px #C7FF0055;
-  }
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+}
 
-  .cc-main{
-    position:relative;z-index:2;
-    display:flex;align-items:baseline;gap:6px;
-    padding:6px 0 18px;
-    border-bottom:1px solid #ffffff18;
-  }
-  .cc-num{
-    font-size:64px;font-weight:900;line-height:1;
-    letter-spacing:-2px;
-    background:linear-gradient(180deg,#fff,#C7FF00);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    text-shadow:0 0 30px #C7FF0033;
-    font-variant-numeric:tabular-nums;
-  }
-  .cc-unit{
-    font-size:13px;font-weight:800;color:#c2d1c7;letter-spacing:.4px;
-    padding-bottom:6px;
-  }
-  .cc-arrow{
-    margin-inline-start:auto;
-    align-self:center;
-    width:38px;height:38px;border-radius:50%;
-    background:#C7FF0018;border:1px solid #C7FF0050;
-    display:grid;place-items:center;color:var(--lime);
-  }
-  .cc-arrow svg{width:18px;height:18px}
+body {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    color: var(--white);
+    font-family: "Vazirmatn", sans-serif;
+}
 
-  .cc-foot{
-    position:relative;z-index:2;
-    display:flex;justify-content:space-between;align-items:center;
-    margin-top:16px;
-    font-size:10px;font-weight:700;color:#a8bcb0;
-  }
-  .cc-foot b{color:var(--lime);font-size:11px}
+.page {
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:
+        max(15px, env(safe-area-inset-top))
+        23px
+        max(15px, env(safe-area-inset-bottom));
+}
 
-  /* ============ کارت کانفتی ============ */
-  .confetti-card{
-    position:relative;
-    margin-top:18px;
-    border-radius:0;
-    background:#fffefa;
-    border:1px solid var(--line);
-    padding:22px 20px 20px;
-    overflow:hidden;
-    box-shadow:0 18px 44px #182b2014;
-  }
-  .confetti-card:before{
-    content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
-    background:linear-gradient(180deg,#C7FF00,#176b4b);
-  }
-  .cf-head{
-    display:flex;justify-content:space-between;align-items:center;
-    margin-bottom:14px;
-  }
-  .cf-head small{
-    font-size:10px;font-weight:900;letter-spacing:1.4px;color:#176b4b;
-  }
-  .cf-head .title{
-    font-size:16px;font-weight:900;margin-top:4px;
-  }
-  .cf-badge{
-    background:#222D29;color:var(--lime);
-    font-size:9px;font-weight:900;padding:5px 10px;letter-spacing:.6px;
-  }
-  .cf-desc{
-    font-size:12px;color:var(--muted);font-weight:600;line-height:1.9;
-    margin:0 0 16px;
-  }
-  .cf-btn{
-    width:100%;
-    min-height:56px;
-    border:none;border-radius:0;
-    background:linear-gradient(135deg,#176b4b 0%,#0f4a32 100%);
-    color:#fff;font-family:inherit;
-    font-size:14px;font-weight:900;
-    cursor:pointer;position:relative;overflow:hidden;
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;
-    box-shadow:0 12px 26px #176b4b40;
-    transition:transform .2s,box-shadow .2s;
-    letter-spacing:.3px;
-  }
-  .cf-btn:hover{transform:translateY(-2px);box-shadow:0 18px 34px #176b4b55}
-  .cf-btn:active{transform:translateY(0) scale(.985)}
-  .cf-btn svg{width:18px;height:18px}
-  .cf-btn:before{
-    content:"";position:absolute;top:0;left:-100%;width:60%;height:100%;
-    background:linear-gradient(90deg,transparent,#ffffff40,transparent);
-    transform:skewX(-20deg);
-    animation:btnShine 3.5s ease-in-out infinite;
-  }
-  @keyframes btnShine{
-    0%,55%{left:-100%}
-    75%{left:140%}
-    100%{left:140%}
-  }
+.background-glow {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: rgba(213,250,69,.075);
+    filter: blur(100px);
+    top: 15%;
+    left: -180px;
+    pointer-events: none;
+}
 
-  .cf-hint{
-    font-size:10px;color:var(--muted);font-weight:600;
-    text-align:center;margin-top:12px;letter-spacing:.2px;
-  }
+.background-glow.second {
+    width: 250px;
+    height: 250px;
+    background: rgba(213,250,69,.045);
+    top: auto;
+    bottom: 3%;
+    left: auto;
+    right: -130px;
+}
 
-  /* دکمه ریست شمارنده */
-  .reset-btn{
-    margin-top:16px;
-    width:100%;min-height:44px;
-    background:#fff;border:1px solid var(--line);
-    color:var(--ink);font-family:inherit;font-size:12px;font-weight:800;
-    cursor:pointer;letter-spacing:.3px;
-    transition:background .2s;
-  }
-  .reset-btn:hover{background:#f0f2ea}
+.grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .12;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+}
+
+.content {
+    width: 100%;
+    max-width: 440px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.top-section {
+    width: 100%;
+    margin-bottom: 25px;
+    animation: appear .9s ease both;
+}
+
+.eyebrow {
+    color: var(--lime);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 11px;
+}
+
+.main-title {
+    font-size: clamp(23px, 6.2vw, 31px);
+    font-weight: 900;
+    line-height: 1.65;
+    color: #fff;
+    letter-spacing: -.8px;
+}
+
+.main-title span {
+    color: var(--lime);
+}
+
+.subtitle {
+    color: #B7BDB2;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 7px;
+}
+
+.side-statements {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.stat {
+    flex: 1;
+    min-width: 0;
+    color: #E5E8E0;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.9;
+    white-space: nowrap;
+}
+
+.stat::before {
+    content: "";
+    display: block;
+    width: 17px;
+    height: 2px;
+    background: var(--lime);
+    border-radius: 10px;
+    margin: 0 auto 7px;
+    box-shadow: 0 0 12px rgba(213,250,69,.45);
+}
+
+.brand {
+    font-family: "Manrope", sans-serif;
+    font-size: 29px;
+    font-weight: 800;
+    direction: ltr;
+    letter-spacing: -1.8px;
+    color: white;
+    line-height: 1.3;
+    margin-bottom: 0;
+}
+
+.brand span {
+    color: var(--lime);
+}
+
+.qr-card {
+    width: 100%;
+    height: 30vh;
+    height: 30dvh;
+    min-height: 130px;
+    max-height: 260px;
+    flex-shrink: 0;
+    background: #FFFFFF;
+    border-radius: 19px;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.9),
+        0 18px 55px rgba(0,0,0,.3),
+        0 0 35px rgba(213,250,69,.055);
+    animation: cardAppear 1.1s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.qr-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(0,0,0,.035);
+    border-radius: inherit;
+}
+
+.bottom-section {
+    width: 100%;
+    margin-top: 23px;
+    animation: appear 1s .2s ease both;
+}
+
+.bottom-eyebrow {
+    color: var(--lime);
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.bottom-title {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.8;
+    color: #FFFFFF;
+}
+
+.bottom-subtitle {
+    font-size: 12px;
+    font-weight: 400;
+    color: #AAB0A5;
+    line-height: 2;
+    margin-top: 3px;
+}
+
+.footer-line {
+    width: 35px;
+    height: 3px;
+    border-radius: 10px;
+    background: var(--lime);
+    margin: 20px auto 0;
+    box-shadow: 0 0 15px rgba(213,250,69,.35);
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: scale(.94);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-height: 650px) {
+    .top-section {
+        margin-bottom: 13px;
+    }
+
+    .main-title {
+        font-size: 23px;
+        line-height: 1.5;
+    }
+
+    .side-statements {
+        margin-bottom: 9px;
+    }
+
+    .qr-card {
+        height: 30dvh;
+        min-height: 110px;
+    }
+
+    .bottom-section {
+        margin-top: 13px;
+    }
+
+    .bottom-title {
+        font-size: 17px;
+    }
+
+    .footer-line {
+        margin-top: 10px;
+    }
+}
 </style>
 </head>
+
 <body>
-<div class="wrap">
 
-  <!-- ============ کارت ۱: CountUp ============ -->
-  <div class="counter-card" id="counterCard">
-    <div class="cc-head">
-      <div>
-        <small>LIVE / GROWTH / 24</small>
-        <div class="title">فالوور پیج، در حال رشد.</div>
-      </div>
-      <span class="chip">G24 / COUNT</span>
-    </div>
+<div class="page">
 
-    <div class="cc-main">
-      <span class="cc-num" id="ccNum">0</span>
-      <span class="cc-unit">فالوور</span>
-      <span class="cc-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M7 17 17 7M9 7h8v8"/>
-        </svg>
-      </span>
-    </div>
+    <div class="background-glow"></div>
+    <div class="background-glow second"></div>
+    <div class="grain"></div>
 
-    <div class="cc-foot">
-      <span>هدف‌گذاری ← اقدام ← بازبینی</span>
-      <b>مسیر اختصاصی تو</b>
-    </div>
+    <main class="content">
 
-    <button class="reset-btn" id="resetBtn">↺ شمارنده را از نو ببین</button>
-  </div>
+        <header class="top-section">
 
-  <!-- ============ کارت ۲: Confetti ============ -->
-  <div class="confetti-card">
-    <div class="cf-head">
-      <div>
-        <small>MOMENT / CELEBRATE</small>
-        <div class="title">لحظه جهش، جشن بگیر.</div>
-      </div>
-      <span class="cf-badge">G24 / BURST</span>
-    </div>
+            <div class="eyebrow">
+                دانلود اپلیکیشن
+            </div>
 
-    <p class="cf-desc">
-      وقتی پیج به اکسپلور می‌رسه، این لحظه رو با یک انفجار لیمویی جشن بگیر.
-    </p>
+            <h1 class="main-title">
+                پلتفرم کسب درآمد
+                <span>از اینستاگرام</span>
+            </h1>
 
-    <button class="cf-btn" id="confettiBtn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2v6M12 16v6M2 12h6M16 12h6"/>
-        <circle cx="12" cy="12" r="2" fill="currentColor"/>
-      </svg>
-      انفجار جشن
-    </button>
+            <p class="subtitle">
+                استفاده آسان + درآمد واقعی
+            </p>
 
-    <p class="cf-hint">روی دکمه بزن — کانفتی لیمویی/سبز می‌پاشه ✨</p>
-  </div>
+        </header>
+
+        <section class="side-statements">
+
+            <div class="stat">
+                هفته‌ای یک ساعت فعالیت
+            </div>
+
+            <div class="stat">
+                لذت از اینستاگرام با درآمد
+            </div>
+
+        </section>
+
+        <div class="brand">
+            Insta<span>Gain</span>
+        </div>
+
+        <section class="qr-card" aria-label="محل قرارگیری کد QR">
+        </section>
+
+        <footer class="bottom-section">
+
+            <div class="bottom-eyebrow">
+                برای ثبت‌نام، ابتدا این پیج را فالو کنید
+            </div>
+
+            <h2 class="bottom-title">
+                سپس کد QR را اسکن کنید
+            </h2>
+
+            <p class="bottom-subtitle">
+                یا از طریق لینک دانلود در بیوگرافی وارد شوید
+            </p>
+
+            <div class="footer-line"></div>
+
+        </footer>
+
+    </main>
 
 </div>
 
-<!-- ================= CountUp.js ================= -->
-<script src="https://cdn.jsdelivr.net/npm/countup.js@2.10.1/dist/countUp.umd.js"></script>
-
-<!-- ================= canvas-confetti ================= -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-
-<script>
-(() => {
-  "use strict";
-
-  /* ---------- CountUp ---------- */
-  const ccEl = document.getElementById("ccNum");
-  const counterCard = document.getElementById("counterCard");
-  const resetBtn = document.getElementById("resetBtn");
-  const FINAL_NUMBER = 10000;
-  let counterInstance = null;
-
-  function runCounter(){
-    if(counterInstance) counterInstance.reset();
-    counterInstance = new countUp.CountUp(ccEl, FINAL_NUMBER, {
-      duration: 2.6,
-      separator: ",",
-      useEasing: true,
-      useGrouping: true,
-      onComplete: () => {
-        /* وقتی شمارنده تموم شد، یک انفجار کوچیک هم روی کارت بزن */
-        burstConfettiOnElement(counterCard, 40, 0.3);
-      }
-    });
-    if(!counterInstance.error) counterInstance.start();
-  }
-
-  /* اجرا وقتی کارت وارد دید شد */
-  let counterTriggered = false;
-  if("IntersectionObserver" in window){
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if(e.isIntersecting && !counterTriggered){
-          counterTriggered = true;
-          runCounter();
-          io.disconnect();
-        }
-      });
-    }, { threshold: 0.35 });
-    io.observe(counterCard);
-  } else {
-    runCounter();
-  }
-
-  resetBtn.addEventListener("click", () => {
-    ccEl.textContent = "0";
-    runCounter();
-  });
-
-  /* ---------- Confetti (canvas-confetti) ---------- */
-  const COLORS = ["#C7FF00", "#176b4b", "#a8d7b8", "#ffffff", "#ef7657"];
-
-  function bigCelebration(){
-    const duration = 1400;
-    const end = Date.now() + duration;
-
-    (function frame(){
-      confetti({
-        particleCount: 4,
-        angle: 60,
-        spread: 70,
-        origin: { x: 0, y: 0.7 },
-        colors: COLORS
-      });
-      confetti({
-        particleCount: 4,
-        angle: 120,
-        spread: 70,
-        origin: { x: 1, y: 0.7 },
-        colors: COLORS
-      });
-      if(Date.now() < end) requestAnimationFrame(frame);
-    })();
-
-    /* یک انفجار مرکزی */
-    confetti({
-      particleCount: 100,
-      spread: 90,
-      startVelocity: 45,
-      origin: { y: 0.6 },
-      colors: COLORS
-    });
-  }
-
-  function burstConfettiOnElement(el, count = 40, originY = 0.4){
-    const r = el.getBoundingClientRect();
-    const x = (r.left + r.width / 2) / window.innerWidth;
-    confetti({
-      particleCount: count,
-      spread: 70,
-      startVelocity: 30,
-      origin: { x, y: originY },
-      colors: COLORS,
-      scalar: 0.9
-    });
-  }
-
-  document.getElementById("confettiBtn").addEventListener("click", (e) => {
-    /* انفجار از خود دکمه */
-    const r = e.currentTarget.getBoundingClientRect();
-    const x = (r.left + r.width / 2) / window.innerWidth;
-    const y = (r.top + r.height / 2) / window.innerHeight;
-    confetti({
-      particleCount: 80,
-      spread: 80,
-      startVelocity: 40,
-      origin: { x, y },
-      colors: COLORS
-    });
-    setTimeout(bigCelebration, 120);
-  });
-
-})();
-</script>
 </body>
 </html>
