@@ -4,9 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#F7F6F2">
-<meta name="description" content="InstaGain؛ پلتفرم کسب درآمد از اینستاگرام">
-<title>InstaGain | کسب درآمد از اینستاگرام</title>
+<meta name="theme-color" content="#F5F4EF">
+<title>InstaGain | فرصت تازه در اینستاگرام</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,17 +13,19 @@
 
 <style>
 :root {
-    --paper: #F7F6F2;
+    --paper: #F5F4EF;
     --white: #FFFFFF;
-    --ink: #19191D;
-    --ink-soft: #44434A;
-    --muted: #68666F;
-    --purple: #6729CE;
-    --purple-dark: #42168F;
-    --pink: #F22D83;
-    --coral: #FF554D;
-    --orange: #FF9D36;
-    --line: #E8E5DF;
+    --ink: #17171B;
+    --ink2: #303039;
+    --blue: #245BFF;
+    --blue-light: #E8EEFF;
+    --purple: #792DE0;
+    --pink: #F02F83;
+    --coral: #FF5A54;
+    --orange: #FF9B3D;
+    --green: #B6D943;
+    --gray: #777681;
+    --line: #E3E0D9;
     --font: "Vazirmatn", sans-serif;
 }
 
@@ -58,275 +59,280 @@ body {
     overflow: hidden;
     isolation: isolate;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     padding:
-        max(13px, env(safe-area-inset-top))
-        15px
-        max(13px, env(safe-area-inset-bottom));
+        max(9px, env(safe-area-inset-top))
+        12px
+        max(9px, env(safe-area-inset-bottom));
 }
 
-/* --------------------------------
-   BACKGROUND ARCHITECTURE
---------------------------------- */
+/* ==================================
+   COMPLEX BACKGROUND
+================================== */
 
-.background {
+.bg {
     position: absolute;
     inset: 0;
+    z-index: -5;
+    background:
+        radial-gradient(circle at 10% 15%, rgba(36,91,255,.055), transparent 27%),
+        radial-gradient(circle at 95% 55%, rgba(240,47,131,.055), transparent 26%),
+        linear-gradient(135deg, #F9F8F4, #F0EFE9);
+}
+
+.bg-grid {
+    position: absolute;
+    inset: 0;
+    z-index: -4;
+    opacity: .23;
+    background-image:
+        radial-gradient(#A9A6A0 0.7px, transparent .7px);
+    background-size: 15px 15px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+.bg-line {
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    border: 1px solid rgba(36,91,255,.15);
+    border-radius: 50%;
     z-index: -3;
-    background:
-        linear-gradient(135deg, transparent 49.8%, rgba(30,25,35,.025) 50%, transparent 50.2%),
-        linear-gradient(45deg, transparent 49.8%, rgba(30,25,35,.018) 50%, transparent 50.2%),
-        var(--paper);
-    background-size: 46px 46px;
+    pointer-events: none;
 }
 
-.background::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(ellipse at 50% 45%,
-        rgba(255,255,255,.8),
-        transparent 75%);
+.bg-line.one {
+    top: -130px;
+    right: -85px;
 }
 
-.side-rail {
+.bg-line.two {
+    bottom: -145px;
+    left: -100px;
+    width: 240px;
+    height: 240px;
+    border-color: rgba(240,47,131,.17);
+}
+
+.side-stripe {
     position: absolute;
+    width: 5px;
     top: 0;
     bottom: 0;
-    width: 5px;
     background: linear-gradient(
         180deg,
+        var(--blue),
         var(--purple),
-        var(--pink) 45%,
+        var(--pink),
         var(--orange)
     );
-    opacity: .75;
 }
 
-.side-rail.left {
-    left: 0;
-}
+.side-stripe.right { right: 0; }
+.side-stripe.left { left: 0; opacity: .35; }
 
-.side-rail.right {
-    right: 0;
-    opacity: .35;
-}
-
-.corner-decoration {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    border: 1px solid rgba(103,41,206,.12);
-    border-radius: 32px;
-    transform: rotate(45deg);
-    z-index: -1;
-}
-
-.corner-decoration.top {
-    top: -85px;
-    left: -65px;
-}
-
-.corner-decoration.bottom {
-    bottom: -90px;
-    right: -65px;
-}
-
-/* --------------------------------
-   MAIN CONTENT
---------------------------------- */
+/* ==================================
+   MAIN LAYOUT
+================================== */
 
 .content {
-    width: 100%;
-    max-width: 600px;
     position: relative;
-    z-index: 2;
+    width: 100%;
+    max-width: 620px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    z-index: 2;
 }
 
-/* --------------------------------
-   TOP LABEL
---------------------------------- */
+/* ==================================
+   HEADER
+================================== */
+
+.header {
+    width: 100%;
+}
 
 .top-label {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-height: 37px;
-    padding: 5px 18px;
-    border-radius: 50px;
-    border: 1px solid #DED5EF;
-    background: #FFFFFF;
-    box-shadow: 0 4px 15px rgba(40,25,55,.045);
-    color: var(--purple-dark);
-    font-size: 15px;
-    font-weight: 800;
-    margin-bottom: 12px;
+    gap: 9px;
+    background: var(--ink);
+    color: #FFFFFF;
+    padding: 6px 18px;
+    border-radius: 7px;
+    font-size: 16px;
+    font-weight: 900;
+    box-shadow: 4px 4px 0 var(--blue);
+    margin-bottom: 13px;
 }
 
-.label-dot {
+.top-label .dot {
     width: 9px;
     height: 9px;
-    background: var(--pink);
+    background: var(--green);
     border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(242,45,131,.10);
-}
-
-/* --------------------------------
-   HERO TYPOGRAPHY
---------------------------------- */
-
-.hero {
-    width: 100%;
+    box-shadow: 0 0 0 4px rgba(182,217,67,.18);
 }
 
 .hero-title {
-    font-size: clamp(35px, 10vw, 49px);
+    font-size: clamp(38px, 10.5vw, 54px);
     font-weight: 900;
-    line-height: 1.4;
-    letter-spacing: -1.4px;
+    line-height: 1.35;
+    letter-spacing: -1.6px;
     color: var(--ink);
     overflow-wrap: anywhere;
 }
 
-.hero-title .line-two {
+.hero-title .second {
     display: block;
 }
 
-.hero-title .highlight {
-    display: inline-block;
+.hero-title .instagram {
+    color: var(--blue);
     position: relative;
-    color: var(--purple);
+    display: inline-block;
+    text-shadow: 2px 3px 0 rgba(36,91,255,.10);
 }
 
-.hero-title .highlight::after {
+.hero-title .instagram::after {
     content: "";
     position: absolute;
+    bottom: 1px;
+    right: 0;
+    width: 100%;
     height: 7px;
-    bottom: 0px;
-    right: 3%;
-    left: 3%;
-    background: linear-gradient(
-        90deg,
-        var(--pink),
-        var(--purple),
-        var(--orange)
-    );
+    background: var(--pink);
     border-radius: 10px;
-    opacity: .85;
+    z-index: -1;
+    transform: rotate(-1deg);
 }
 
 .hero-subtitle {
-    margin-top: 8px;
-    color: var(--ink-soft);
+    margin-top: 10px;
+    display: inline-block;
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    padding: 5px 15px;
+    background: white;
     font-size: 17px;
-    font-weight: 700;
-    line-height: 1.9;
+    font-weight: 900;
+    box-shadow: 4px 4px 0 var(--blue);
+    line-height: 1.8;
 }
 
 .hero-subtitle strong {
     color: var(--purple);
-    font-weight: 900;
 }
 
-/* --------------------------------
-   FEATURE STRIP
---------------------------------- */
+/* ==================================
+   INFORMATION RIBBON
+================================== */
 
-.features {
+.info-ribbon {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 19px;
-    margin-bottom: 13px;
+    gap: 9px;
+    margin-top: 18px;
+    margin-bottom: 12px;
 }
 
-.feature {
+.info-item {
     min-width: 0;
-    min-height: 64px;
-    padding: 8px 9px;
-    background: #FFFFFF;
-    border: 1px solid #EAE6E0;
-    border-radius: 15px;
-    box-shadow:
-        0 5px 15px rgba(34,25,45,.045),
-        inset 0 1px 0 #FFFFFF;
+    min-height: 66px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 9px;
-    text-align: right;
+    gap: 8px;
+    background: #FFFFFF;
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    padding: 7px;
+    box-shadow: 4px 4px 0 rgba(36,91,255,.85);
 }
 
-.feature-icon {
+.info-item:nth-child(2) {
+    box-shadow: 4px 4px 0 var(--pink);
+}
+
+.info-icon {
     flex-shrink: 0;
     width: 36px;
     height: 36px;
-    border-radius: 12px;
     display: grid;
     place-items: center;
+    border-radius: 10px;
+    background: var(--blue-light);
+    color: var(--blue);
 }
 
-.feature-icon svg {
+.info-item:nth-child(2) .info-icon {
+    background: #FFE8F1;
+    color: var(--pink);
+}
+
+.info-icon svg {
     width: 22px;
     height: 22px;
 }
 
-.feature-icon.purple {
-    background: #F0E8FF;
-    color: var(--purple);
-}
-
-.feature-icon.pink {
-    background: #FFE8F0;
-    color: var(--pink);
-}
-
-.feature-text {
-    min-width: 0;
+.info-text {
     font-size: 14px;
+    line-height: 1.6;
     font-weight: 800;
-    line-height: 1.7;
     color: var(--ink);
-    overflow-wrap: anywhere;
 }
 
-.feature-text strong {
+.info-text strong {
     display: block;
     font-size: 16px;
     font-weight: 900;
-    color: var(--purple);
+    color: var(--blue);
 }
 
-/* --------------------------------
-   INSTAGRAM-INSPIRED ICONS
---------------------------------- */
+/* ==================================
+   SOCIAL ICONS
+================================== */
 
-.social-strip {
+.social-panel {
     width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #E2DFD8;
+    border-radius: 12px;
+    padding: 8px 10px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 12px;
-    margin: 0 0 8px;
+    justify-content: space-between;
+    box-shadow:
+        0 4px 12px rgba(20,20,30,.045),
+        inset 0 1px white;
+    margin-bottom: 8px;
+}
+
+.social-caption {
+    font-size: 12px;
+    font-weight: 900;
+    color: var(--ink2);
+    white-space: nowrap;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .social-icon {
-    width: 33px;
-    height: 33px;
-    border-radius: 11px;
+    width: 32px;
+    height: 32px;
     display: grid;
     place-items: center;
-    background: #FFFFFF;
-    border: 1px solid #EBE7E0;
-    box-shadow: 0 3px 9px rgba(30,20,40,.06);
+    border-radius: 9px;
+    border: 1px solid #EDEAF0;
+    background: #FAF9FC;
 }
 
 .social-icon svg {
@@ -334,304 +340,354 @@ body {
     height: 19px;
 }
 
-.social-icon.heart {
-    color: var(--pink);
-}
+.i-heart { color: #F02F72; }
+.i-save { color: #245BFF; }
+.i-send { color: #FF754F; }
+.i-repeat { color: #873AD4; }
+.i-user { color: #D94393; }
 
-.social-icon.save {
-    color: var(--purple);
-}
-
-.social-icon.send {
-    color: #E85D50;
-}
-
-.social-icon.repeat {
-    color: #8C3ED3;
-}
-
-.social-icon.follow {
-    color: #D54B89;
-}
-
-/* --------------------------------
+/* ==================================
    BRAND
---------------------------------- */
+================================== */
+
+.brand-wrap {
+    position: relative;
+    margin-bottom: 2px;
+    padding: 0 12px;
+}
 
 .brand {
     font-family: "Manrope", sans-serif;
-    font-size: 35px;
+    direction: ltr;
+    font-size: 36px;
+    line-height: 1.25;
     font-weight: 800;
     letter-spacing: -2px;
-    direction: ltr;
-    line-height: 1.2;
     color: var(--ink);
-    margin-bottom: 0;
 }
 
-.brand .brand-accent {
-    background: linear-gradient(
-        110deg,
-        #6A29CF,
-        #E73591 65%,
-        #FF744B
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+.brand span {
+    color: var(--blue);
 }
 
-/* --------------------------------
-   QR CARD - PERFECT SQUARE
---------------------------------- */
+.brand-underline {
+    width: 75%;
+    height: 5px;
+    margin: 0 auto;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
+}
 
-.qr-wrapper {
+/* ==================================
+   QR CARD
+================================== */
+
+.qr-zone {
+    position: relative;
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    position: relative;
+    justify-content: center;
 }
 
 .qr-card {
-    width: min(30dvh, 100%);
-    height: min(30dvh, 100vw);
+    position: relative;
+    width: min(30dvh, calc(100vw - 95px));
+    height: min(30dvh, calc(100vw - 95px));
     aspect-ratio: 1 / 1;
     flex-shrink: 0;
     background: #FFFFFF;
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid #E6E1ED;
+    border-radius: 14px;
+    border: 3px dotted #245BFF;
+    outline: 5px solid #FFFFFF;
     box-shadow:
-        0 0 0 5px rgba(255,255,255,.8),
-        0 0 0 6px rgba(103,41,206,.12),
-        0 15px 40px rgba(39,23,55,.12);
+        0 0 0 7px rgba(36,91,255,.14),
+        0 0 0 10px rgba(255,255,255,.85),
+        0 13px 35px rgba(30,40,70,.16),
+        0 0 30px rgba(36,91,255,.10),
+        inset 0 0 0 5px #F7F9FF;
 }
 
-.qr-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 1px solid rgba(0,0,0,.025);
-    border-radius: inherit;
-}
+/* QR frame corner marks */
 
-/* Decorative QR frame corners */
-
+.qr-card::before,
 .qr-card::after {
     content: "";
     position: absolute;
-    width: 26px;
-    height: 26px;
-    top: 12px;
-    left: 12px;
-    border-top: 3px solid rgba(103,41,206,.10);
-    border-left: 3px solid rgba(103,41,206,.10);
-    border-radius: 7px 0 0 0;
+    width: 24px;
+    height: 24px;
+    border-color: rgba(36,91,255,.16);
+    border-style: solid;
 }
 
-/* --------------------------------
-   FLOATING DECORATIONS
---------------------------------- */
+.qr-card::before {
+    top: 9px;
+    left: 9px;
+    border-width: 3px 0 0 3px;
+    border-radius: 5px 0 0 0;
+}
 
-.floating {
+.qr-card::after {
+    bottom: 9px;
+    right: 9px;
+    border-width: 0 3px 3px 0;
+    border-radius: 0 0 5px 0;
+}
+
+/* Side stickers */
+
+.sticker {
     position: absolute;
-    z-index: 3;
+    width: 42px;
+    height: 42px;
     display: grid;
     place-items: center;
-    border-radius: 13px;
-    box-shadow: 0 7px 17px rgba(40,20,55,.10);
-    pointer-events: none;
+    border-radius: 12px;
+    border: 2px solid var(--ink);
+    background: #FFFFFF;
+    box-shadow: 3px 4px 0 var(--blue);
+    z-index: 4;
 }
 
-.floating svg {
-    width: 21px;
-    height: 21px;
+.sticker svg {
+    width: 23px;
+    height: 23px;
 }
 
-.floating.like {
-    width: 39px;
-    height: 39px;
-    top: 16%;
-    right: 3%;
-    background: #FFE8EF;
-    color: #F23B77;
-    transform: rotate(12deg);
+.sticker.like {
+    top: 8%;
+    right: 1%;
+    transform: rotate(10deg);
+    color: var(--pink);
 }
 
-.floating.bookmark {
-    width: 37px;
-    height: 37px;
-    top: 47%;
-    left: 2%;
-    background: #EEE5FF;
-    color: #702DD1;
+.sticker.save {
+    bottom: 8%;
+    left: 1%;
     transform: rotate(-9deg);
+    color: var(--blue);
+    box-shadow: 3px 4px 0 var(--pink);
 }
 
-.floating.share {
-    width: 34px;
-    height: 34px;
-    top: 72%;
-    right: 5%;
-    background: #FFE9E4;
-    color: #F16A50;
-    transform: rotate(9deg);
+.sticker.share {
+    top: 52%;
+    right: 0;
+    transform: translateY(-50%) rotate(8deg);
+    color: var(--coral);
+    box-shadow: 3px 4px 0 var(--purple);
 }
 
-.floating.follow {
-    width: 35px;
-    height: 35px;
-    top: 85%;
-    left: 5%;
-    background: #FBE5F2;
-    color: #D83C91;
-    transform: rotate(-8deg);
-}
+/* Small decorative symbols */
 
-.mini-heart {
+.mini-symbol {
     position: absolute;
-    pointer-events: none;
+    font-weight: 900;
     z-index: 1;
-    font-size: 19px;
-    line-height: 1;
-    opacity: .9;
+    pointer-events: none;
+}
+
+.star-one {
+    top: 5%;
+    left: 9%;
+    font-size: 26px;
+    color: var(--orange);
 }
 
 .heart-one {
-    top: 5%;
-    right: 17%;
-    color: #F04D86;
-    transform: rotate(15deg);
+    top: 35%;
+    right: 5%;
+    color: var(--pink);
+    font-size: 21px;
 }
 
 .heart-two {
-    top: 39%;
-    left: 7%;
-    color: #F47B67;
-    font-size: 14px;
+    bottom: 7%;
+    right: 13%;
+    color: var(--coral);
+    font-size: 16px;
 }
 
-.heart-three {
-    bottom: 12%;
-    right: 12%;
-    color: #E33C9C;
-    font-size: 15px;
+.plus-one {
+    bottom: 10%;
+    left: 13%;
+    font-size: 29px;
+    color: var(--purple);
 }
 
-/* --------------------------------
-   INSTRUCTIONS
---------------------------------- */
+/* ==================================
+   BOTTOM INFORMATION
+================================== */
 
-.instructions {
+.bottom {
     width: 100%;
     margin-top: 17px;
 }
 
-.follow-label {
+.follow-box {
+    position: relative;
+    width: 100%;
+    min-height: 51px;
+    padding: 8px 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 9px;
-    width: 100%;
-    padding: 10px 12px;
-    min-height: 49px;
-    border-radius: 14px;
+    border-radius: 10px;
     background: var(--ink);
-    color: #FFFFFF;
+    border: 2px solid #32323C;
+    box-shadow:
+        0 5px 0 var(--blue),
+        0 9px 18px rgba(20,20,30,.10);
+    color: white;
     font-size: 15px;
-    font-weight: 800;
-    box-shadow: 0 6px 15px rgba(25,25,29,.12);
+    font-weight: 900;
+    line-height: 1.7;
     overflow-wrap: anywhere;
 }
 
-.follow-label svg {
-    width: 22px;
-    height: 22px;
-    color: #FF6A9E;
+.follow-box svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: #FF6C9D;
+}
+
+.follow-box strong {
+    color: #FF719D;
+}
+
+.scan-box {
+    margin-top: 13px;
+    width: 100%;
+    min-height: 53px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 12px;
+    background: var(--blue);
+    color: #FFFFFF;
+    border-radius: 10px;
+    border: 2px solid #FFFFFF;
+    outline: 2px dashed rgba(36,91,255,.45);
+    box-shadow:
+        0 6px 0 #183DAD,
+        0 10px 20px rgba(36,91,255,.16);
+    font-size: 23px;
+    font-weight: 900;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.scan-box svg {
+    width: 26px;
+    height: 26px;
     flex-shrink: 0;
 }
 
-.instruction-title {
-    font-size: clamp(23px, 6.8vw, 30px);
-    line-height: 1.6;
-    font-weight: 900;
-    margin-top: 8px;
-    color: var(--ink);
-    overflow-wrap: anywhere;
+.scan-box strong {
+    color: #D8FF6C;
 }
 
-.instruction-title .qr-word {
-    color: var(--purple);
-}
-
-.instruction-subtitle {
-    margin-top: 3px;
-    font-size: 15px;
-    line-height: 1.9;
-    font-weight: 700;
-    color: var(--muted);
-    overflow-wrap: anywhere;
-}
-
-.instruction-subtitle strong {
-    color: var(--purple);
-    font-weight: 900;
-}
-
-.footer-decoration {
-    width: 75px;
-    height: 4px;
-    margin: 11px auto 0;
+.bio-box {
+    width: 100%;
+    margin-top: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 12px;
     border-radius: 10px;
-    background: linear-gradient(
-        90deg,
-        var(--pink),
-        var(--purple),
-        var(--orange)
-    );
+    background: #FFFFFF;
+    border: 2px dashed #D8D2E7;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 1.7;
+    box-shadow: 0 4px 12px rgba(20,20,30,.045);
+    overflow-wrap: anywhere;
 }
 
-/* --------------------------------
-   SMALLER MOBILE HEIGHTS
---------------------------------- */
+.bio-box svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    color: var(--purple);
+}
 
-@media (max-height: 700px) {
+.bio-box strong {
+    color: var(--purple);
+}
+
+.bottom-signature {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    color: #77747B;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.signature-line {
+    flex: 1;
+    height: 1px;
+    background: #D8D4CC;
+    margin: 0 9px;
+}
+
+.signature-mark {
+    color: var(--blue);
+    font-family: "Manrope", sans-serif;
+    direction: ltr;
+    letter-spacing: .5px;
+}
+
+/* ==================================
+   SHORT SCREEN ADJUSTMENTS
+================================== */
+
+@media (max-height: 740px) {
     .top-label {
-        min-height: 32px;
-        margin-bottom: 6px;
+        margin-bottom: 7px;
+        padding: 5px 14px;
     }
 
     .hero-title {
-        font-size: 35px;
-        line-height: 1.3;
+        font-size: clamp(34px, 9vw, 44px);
+        line-height: 1.28;
     }
 
     .hero-subtitle {
-        margin-top: 3px;
+        margin-top: 6px;
         font-size: 15px;
     }
 
-    .features {
-        margin-top: 9px;
-        margin-bottom: 7px;
+    .info-ribbon {
+        margin-top: 11px;
+        margin-bottom: 8px;
     }
 
-    .feature {
-        min-height: 51px;
+    .info-item {
+        min-height: 54px;
     }
 
-    .feature-text {
-        font-size: 13px;
+    .info-icon {
+        width: 30px;
+        height: 30px;
     }
 
-    .feature-text strong {
-        font-size: 15px;
+    .info-text {
+        font-size: 12px;
     }
 
-    .social-strip {
-        margin-bottom: 4px;
+    .info-text strong {
+        font-size: 14px;
+    }
+
+    .social-panel {
+        padding: 5px 8px;
+        margin-bottom: 5px;
     }
 
     .social-icon {
@@ -643,80 +699,58 @@ body {
         font-size: 31px;
     }
 
-    .instructions {
+    .bottom {
         margin-top: 12px;
     }
 
-    .follow-label {
+    .follow-box {
         min-height: 43px;
-    }
-
-    .instruction-title {
-        font-size: 24px;
-        margin-top: 4px;
-    }
-
-    .instruction-subtitle {
-        margin-top: 0;
         font-size: 14px;
     }
 
-    .footer-decoration {
-        margin-top: 7px;
+    .scan-box {
+        margin-top: 10px;
+        min-height: 45px;
+        font-size: 21px;
+    }
+
+    .bio-box {
+        margin-top: 10px;
+        padding: 6px 9px;
+        font-size: 13px;
+    }
+
+    .bottom-signature {
+        margin-top: 6px;
     }
 }
 
-/* --------------------------------
-   VERY SHORT DISPLAYS
---------------------------------- */
-
-@media (max-height: 590px) {
+@media (max-height: 650px) {
     .page {
-        padding-top: 7px;
-        padding-bottom: 7px;
-    }
-
-    .top-label {
-        font-size: 14px;
-        margin-bottom: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 
     .hero-title {
-        font-size: 32px;
-        line-height: 1.25;
+        font-size: 31px;
     }
 
     .hero-subtitle {
         font-size: 14px;
+        padding: 3px 10px;
     }
 
-    .features {
-        margin-top: 6px;
+    .info-ribbon {
+        margin-top: 7px;
         margin-bottom: 5px;
-        gap: 7px;
     }
 
-    .feature {
+    .info-item {
         min-height: 43px;
-        padding: 4px;
     }
 
-    .feature-icon {
-        width: 30px;
-        height: 30px;
-    }
-
-    .feature-text {
-        font-size: 12px;
-    }
-
-    .feature-text strong {
-        font-size: 14px;
-    }
-
-    .social-strip {
-        gap: 8px;
-        margin-bottom: 3px;
+    .social-panel {
+        padding: 3px 7px;
     }
 
     .social-icon {
@@ -733,89 +767,80 @@ body {
         font-size: 27px;
     }
 
-    .instructions {
+    .bottom {
         margin-top: 9px;
     }
 
-    .follow-label {
-        font-size: 14px;
-        min-height: 37px;
-        padding: 5px 8px;
+    .follow-box {
+        min-height: 36px;
+        padding: 4px 7px;
+        font-size: 12px;
     }
 
-    .instruction-title {
-        font-size: 22px;
+    .scan-box {
+        margin-top: 8px;
+        min-height: 38px;
+        padding: 4px 7px;
+        font-size: 18px;
     }
 
-    .instruction-subtitle {
-        font-size: 13px;
+    .bio-box {
+        margin-top: 8px;
+        padding: 4px 7px;
+        font-size: 12px;
     }
 
-    .footer-decoration {
+    .bottom-signature {
         display: none;
     }
 }
 
-/* --------------------------------
-   EXTRA NARROW SCREENS
---------------------------------- */
-
-@media (max-width: 340px) {
+@media (max-width: 360px) {
     .page {
-        padding-left: 11px;
-        padding-right: 11px;
+        padding-left: 9px;
+        padding-right: 9px;
     }
 
     .hero-title {
-        font-size: 33px;
+        font-size: 34px;
     }
 
-    .feature {
+    .info-item {
+        gap: 5px;
+        padding: 5px;
+    }
+
+    .info-text {
+        font-size: 11px;
+    }
+
+    .info-text strong {
+        font-size: 13px;
+    }
+
+    .social-caption {
+        font-size: 10px;
+    }
+
+    .social-icons {
         gap: 5px;
     }
 
-    .feature-text {
-        font-size: 12px;
+    .qr-card {
+        width: min(30dvh, calc(100vw - 80px));
+        height: min(30dvh, calc(100vw - 80px));
     }
 
-    .floating {
-        transform: scale(.85);
-    }
-
-    .instruction-title {
-        font-size: 22px;
+    .scan-box {
+        font-size: 19px;
     }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .header,
-    .features,
-    .social-strip,
-    .instructions {
-        animation: fadeUp .65s ease both;
-    }
-
-    .features {
-        animation-delay: .08s;
-    }
-
-    .social-strip {
-        animation-delay: .14s;
-    }
-
-    .instructions {
-        animation-delay: .22s;
-    }
-
-    @keyframes fadeUp {
-        from {
-            opacity: 0;
-            transform: translateY(9px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
     }
 }
 </style>
@@ -825,13 +850,12 @@ body {
 
 <div class="page">
 
-    <div class="background"></div>
-
-    <div class="side-rail left"></div>
-    <div class="side-rail right"></div>
-
-    <div class="corner-decoration top"></div>
-    <div class="corner-decoration bottom"></div>
+    <div class="bg"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-line one"></div>
+    <div class="bg-line two"></div>
+    <div class="side-stripe right"></div>
+    <div class="side-stripe left"></div>
 
     <main class="content">
 
@@ -840,14 +864,14 @@ body {
         <header class="header">
 
             <div class="top-label">
-                <span class="label-dot"></span>
+                <span class="dot"></span>
                 دانلود اپلیکیشن
             </div>
 
             <h1 class="hero-title">
                 پلتفرم کسب درآمد
-                <span class="line-two">
-                    از <span class="highlight">اینستاگرام</span>
+                <span class="second">
+                    از <span class="instagram">اینستاگرام</span>
                 </span>
             </h1>
 
@@ -860,37 +884,37 @@ body {
 
         <!-- FEATURES -->
 
-        <section class="features">
+        <section class="info-ribbon">
 
-            <div class="feature">
+            <div class="info-item">
 
-                <span class="feature-icon purple">
+                <span class="info-icon">
                     <svg viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2"
-                         stroke-linecap="round" stroke-linejoin="round">
+                         stroke="currentColor" stroke-width="2.2"
+                         stroke-linecap="round">
                         <circle cx="12" cy="12" r="9"/>
-                        <path d="M12 7v5l3 2"/>
+                        <path d="M12 6v6l4 2"/>
                     </svg>
                 </span>
 
-                <div class="feature-text">
-                    <strong>فقط یک ساعت</strong>
+                <div class="info-text">
+                    <strong>یک ساعت</strong>
                     فعالیت هفتگی
                 </div>
 
             </div>
 
-            <div class="feature">
+            <div class="info-item">
 
-                <span class="feature-icon pink">
+                <span class="info-icon">
                     <svg viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2"
+                         stroke="currentColor" stroke-width="2.2"
                          stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3z"/>
+                        <path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9z"/>
                     </svg>
                 </span>
 
-                <div class="feature-text">
+                <div class="info-text">
                     <strong>اینستاگرام</strong>
                     همراه با درآمد
                 </div>
@@ -899,139 +923,170 @@ body {
 
         </section>
 
-        <!-- SOCIAL ICONS -->
+        <!-- SOCIAL INTERACTION BAR -->
 
-        <div class="social-strip" aria-hidden="true">
+        <section class="social-panel">
 
-            <span class="social-icon heart">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 21s-9-5.8-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.2-9 12-9 12z"/>
-                </svg>
+            <span class="social-caption">
+                دنیای تعامل و دیده‌شدن
             </span>
 
-            <span class="social-icon save">
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M6 4h12v17l-6-4-6 4z"/>
-                </svg>
-            </span>
+            <div class="social-icons">
 
-            <span class="social-icon send">
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 2L11 13"/>
-                    <path d="M22 2l-7 20-4-9-9-4z"/>
-                </svg>
-            </span>
+                <span class="social-icon i-heart">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 21s-9-5.8-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.2-9 12-9 12z"/>
+                    </svg>
+                </span>
 
-            <span class="social-icon repeat">
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M17 2l4 4-4 4"/>
-                    <path d="M3 11V9a3 3 0 0 1 3-3h15"/>
-                    <path d="M7 22l-4-4 4-4"/>
-                    <path d="M21 13v2a3 3 0 0 1-3 3H3"/>
-                </svg>
-            </span>
+                <span class="social-icon i-save">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2.2">
+                        <path d="M6 4h12v17l-6-4-6 4z"/>
+                    </svg>
+                </span>
 
-            <span class="social-icon follow">
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="9" cy="8" r="4"/>
-                    <path d="M3 21v-2a6 6 0 0 1 6-6h1"/>
-                    <path d="M19 8v8"/>
-                    <path d="M15 12h8"/>
-                </svg>
-            </span>
+                <span class="social-icon i-send">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2.2"
+                         stroke-linejoin="round">
+                        <path d="M22 2L11 13"/>
+                        <path d="M22 2l-7 20-4-9-9-4z"/>
+                    </svg>
+                </span>
 
-        </div>
+                <span class="social-icon i-repeat">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2.2"
+                         stroke-linecap="round">
+                        <path d="M17 2l4 4-4 4"/>
+                        <path d="M3 11V9a3 3 0 0 1 3-3h15"/>
+                        <path d="M7 22l-4-4 4-4"/>
+                        <path d="M21 13v2a3 3 0 0 1-3 3H3"/>
+                    </svg>
+                </span>
 
-        <!-- BRAND -->
+                <span class="social-icon i-user">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2.2"
+                         stroke-linecap="round">
+                        <circle cx="9" cy="8" r="4"/>
+                        <path d="M3 21v-2a6 6 0 0 1 6-6h1"/>
+                        <path d="M19 8v8M15 12h8"/>
+                    </svg>
+                </span>
 
-        <div class="brand">
-            Insta<span class="brand-accent">Gain</span>
-        </div>
-
-        <!-- QR CARD -->
-
-        <section class="qr-wrapper">
-
-            <span class="floating like" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 21s-9-5.8-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.2-9 12-9 12z"/>
-                </svg>
-            </span>
-
-            <span class="floating bookmark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M6 4h12v17l-6-4-6 4z"/>
-                </svg>
-            </span>
-
-            <span class="floating share" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 2L11 13"/>
-                    <path d="M22 2l-7 20-4-9-9-4z"/>
-                </svg>
-            </span>
-
-            <span class="floating follow" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="9" cy="8" r="4"/>
-                    <path d="M3 21v-2a6 6 0 0 1 6-6h1"/>
-                    <path d="M19 8v8"/>
-                    <path d="M15 12h8"/>
-                </svg>
-            </span>
-
-            <span class="mini-heart heart-one">♥</span>
-            <span class="mini-heart heart-two">♥</span>
-            <span class="mini-heart heart-three">♥</span>
-
-            <div class="qr-card" aria-label="فضای خالی کد QR">
             </div>
 
         </section>
 
-        <!-- INSTRUCTIONS -->
+        <!-- BRAND -->
 
-        <footer class="instructions">
+        <div class="brand-wrap">
 
-            <div class="follow-label">
+            <div class="brand">
+                Insta<span>Gain</span>
+            </div>
+
+            <div class="brand-underline"></div>
+
+        </div>
+
+        <!-- EMPTY QR AREA -->
+
+        <section class="qr-zone">
+
+            <span class="mini-symbol star-one">✦</span>
+            <span class="mini-symbol heart-one">♥</span>
+            <span class="mini-symbol heart-two">♥</span>
+            <span class="mini-symbol plus-one">✳</span>
+
+            <span class="sticker like" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 21s-9-5.8-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.2-9 12-9 12z"/>
+                </svg>
+            </span>
+
+            <span class="sticker save" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.2">
+                    <path d="M6 4h12v17l-6-4-6 4z"/>
+                </svg>
+            </span>
+
+            <span class="sticker share" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.2"
+                     stroke-linejoin="round">
+                    <path d="M22 2L11 13"/>
+                    <path d="M22 2l-7 20-4-9-9-4z"/>
+                </svg>
+            </span>
+
+            <div class="qr-card" aria-label="کادر خالی کد QR">
+            </div>
+
+        </section>
+
+        <!-- DOWNLOAD INSTRUCTIONS -->
+
+        <footer class="bottom">
+
+            <div class="follow-box">
 
                 <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round" stroke-linejoin="round">
+                     stroke="currentColor" stroke-width="2.1"
+                     stroke-linecap="round">
                     <circle cx="9" cy="8" r="4"/>
                     <path d="M3 21v-2a6 6 0 0 1 6-6h1"/>
-                    <path d="M19 8v8"/>
-                    <path d="M15 12h8"/>
+                    <path d="M19 8v8M15 12h8"/>
                 </svg>
 
-                برای ثبت‌نام، ابتدا این پیج را فالو کنید
+                <span>
+                    برای ثبت‌نام، ابتدا این <strong>پیج را فالو کنید</strong>
+                </span>
 
             </div>
 
-            <h2 class="instruction-title">
-                سپس <span class="qr-word">کد QR</span> را اسکن کنید
-            </h2>
+            <div class="scan-box">
 
-            <p class="instruction-subtitle">
-                یا از طریق <strong>لینک دانلود اپلیکیشن</strong>
-                در بیوگرافی وارد شوید
-            </p>
+                <svg viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round">
+                    <path d="M3 8V5a2 2 0 0 1 2-2h3"/>
+                    <path d="M16 3h3a2 2 0 0 1 2 2v3"/>
+                    <path d="M21 16v3a2 2 0 0 1-2 2h-3"/>
+                    <path d="M8 21H5a2 2 0 0 1-2-2v-3"/>
+                    <path d="M7 7h4v4H7zM13 7h4v4h-4zM7 13h4v4H7zM14 14h3v3h-3z"/>
+                </svg>
 
-            <div class="footer-decoration"></div>
+                <span>
+                    سپس <strong>QR کد</strong> را اسکن کنید
+                </span>
+
+            </div>
+
+            <div class="bio-box">
+
+                <svg viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/>
+                    <path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>
+                </svg>
+
+                <span>
+                    یا از طریق <strong>لینک دانلود اپلیکیشن</strong>
+                    در بیوگرافی وارد شوید
+                </span>
+
+            </div>
+
+            <div class="bottom-signature">
+                <span>یک تجربه متفاوت در اینستاگرام</span>
+                <span class="signature-line"></span>
+                <span class="signature-mark">INSTAGAIN®</span>
+            </div>
 
         </footer>
 
