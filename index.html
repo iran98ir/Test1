@@ -4,28 +4,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#F5F4EF">
-<title>InstaGain | فرصت تازه در اینستاگرام</title>
+<meta name="theme-color" content="#F8F7F2">
+<title>InstaGain | دانلود اپلیکیشن</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --paper: #F5F4EF;
+    --bg: #F8F7F2;
     --white: #FFFFFF;
-    --ink: #17171B;
-    --ink2: #303039;
-    --blue: #245BFF;
-    --blue-light: #E8EEFF;
-    --purple: #792DE0;
-    --pink: #F02F83;
-    --coral: #FF5A54;
-    --orange: #FF9B3D;
-    --green: #B6D943;
-    --gray: #777681;
-    --line: #E3E0D9;
+    --black: #202027;
+    --blue: #315CFA;
+    --blue2: #6684FF;
+    --purple: #853BDB;
+    --pink: #F04491;
+    --coral: #FF6659;
+    --orange: #FFA43B;
+    --green: #B7D957;
+    --muted: #686875;
+    --border: #E8E5DF;
     --font: "Vazirmatn", sans-serif;
 }
 
@@ -33,93 +32,66 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: hidden !important;
     overscroll-behavior: none;
 }
 
 body {
     position: fixed;
     inset: 0;
-    background: var(--paper);
-    color: var(--ink);
+    background: var(--bg);
     font-family: var(--font);
+    color: var(--black);
 }
 
 .page {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     height: 100dvh;
-    position: relative;
     overflow: hidden;
+    position: relative;
+    padding:
+        max(8px, env(safe-area-inset-top))
+        12px
+        max(8px, env(safe-area-inset-bottom));
     isolation: isolate;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding:
-        max(9px, env(safe-area-inset-top))
-        12px
-        max(9px, env(safe-area-inset-bottom));
 }
 
-/* ==================================
-   COMPLEX BACKGROUND
-================================== */
+/* BACKGROUND */
 
-.bg {
+.background {
     position: absolute;
     inset: 0;
-    z-index: -5;
-    background:
-        radial-gradient(circle at 10% 15%, rgba(36,91,255,.055), transparent 27%),
-        radial-gradient(circle at 95% 55%, rgba(240,47,131,.055), transparent 26%),
-        linear-gradient(135deg, #F9F8F4, #F0EFE9);
-}
-
-.bg-grid {
-    position: absolute;
-    inset: 0;
-    z-index: -4;
-    opacity: .23;
-    background-image:
-        radial-gradient(#A9A6A0 0.7px, transparent .7px);
-    background-size: 15px 15px;
-    mask-image: linear-gradient(to bottom, black, transparent 85%);
-}
-
-.bg-line {
-    position: absolute;
-    width: 190px;
-    height: 190px;
-    border: 1px solid rgba(36,91,255,.15);
-    border-radius: 50%;
     z-index: -3;
-    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 5% 12%, rgba(49,92,250,.10), transparent 28%),
+        radial-gradient(ellipse at 95% 65%, rgba(240,68,145,.09), transparent 27%),
+        radial-gradient(ellipse at 45% 100%, rgba(255,164,59,.08), transparent 35%),
+        #F8F7F2;
 }
 
-.bg-line.one {
-    top: -130px;
-    right: -85px;
-}
-
-.bg-line.two {
-    bottom: -145px;
-    left: -100px;
-    width: 240px;
-    height: 240px;
-    border-color: rgba(240,47,131,.17);
-}
-
-.side-stripe {
+.pattern {
     position: absolute;
-    width: 5px;
+    inset: 0;
+    z-index: -2;
+    opacity: .24;
+    background-image: radial-gradient(#AAA7A0 0.8px, transparent .8px);
+    background-size: 16px 16px;
+}
+
+.edge {
+    position: absolute;
     top: 0;
     bottom: 0;
+    width: 4px;
     background: linear-gradient(
         180deg,
         var(--blue),
@@ -129,718 +101,705 @@ body {
     );
 }
 
-.side-stripe.right { right: 0; }
-.side-stripe.left { left: 0; opacity: .35; }
+.edge.left { left: 0; }
+.edge.right { right: 0; opacity: .4; }
 
-/* ==================================
-   MAIN LAYOUT
-================================== */
+/* MAIN POSTER */
 
-.content {
-    position: relative;
+.poster {
     width: 100%;
-    max-width: 620px;
+    max-width: 580px;
+    height: 100%;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    justify-content: space-between;
+    position: relative;
     z-index: 2;
+    min-height: 0;
 }
 
-/* ==================================
-   HEADER
-================================== */
+/* TOP */
 
-.header {
+.top {
     width: 100%;
+    flex: 0 0 auto;
+    text-align: center;
 }
 
-.top-label {
+.eyebrow {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 9px;
-    background: var(--ink);
-    color: #FFFFFF;
-    padding: 6px 18px;
+    padding: 5px 17px;
+    background: var(--black);
+    color: white;
     border-radius: 7px;
-    font-size: 16px;
+    font-size: clamp(13px, 3.8vw, 16px);
     font-weight: 900;
     box-shadow: 4px 4px 0 var(--blue);
-    margin-bottom: 13px;
+    margin-bottom: 9px;
 }
 
-.top-label .dot {
+.eyebrow-dot {
     width: 9px;
     height: 9px;
-    background: var(--green);
     border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(182,217,67,.18);
+    background: var(--green);
+    box-shadow: 0 0 0 4px rgba(183,217,87,.18);
 }
 
-.hero-title {
-    font-size: clamp(38px, 10.5vw, 54px);
+h1 {
+    font-size: clamp(32px, 9.1vw, 49px);
     font-weight: 900;
-    line-height: 1.35;
-    letter-spacing: -1.6px;
-    color: var(--ink);
+    line-height: 1.36;
+    letter-spacing: -1.4px;
     overflow-wrap: anywhere;
 }
 
-.hero-title .second {
+h1 .line {
     display: block;
 }
 
-.hero-title .instagram {
+h1 .colored {
     color: var(--blue);
     position: relative;
-    display: inline-block;
-    text-shadow: 2px 3px 0 rgba(36,91,255,.10);
+    white-space: nowrap;
 }
 
-.hero-title .instagram::after {
+h1 .colored::after {
     content: "";
     position: absolute;
-    bottom: 1px;
+    bottom: 0;
     right: 0;
     width: 100%;
-    height: 7px;
+    height: 6px;
     background: var(--pink);
     border-radius: 10px;
     z-index: -1;
-    transform: rotate(-1deg);
 }
 
-.hero-subtitle {
-    margin-top: 10px;
+.subtitle {
     display: inline-block;
-    border: 2px solid var(--ink);
+    margin-top: 8px;
+    padding: 5px 14px;
+    border: 2px solid var(--black);
     border-radius: 8px;
-    padding: 5px 15px;
     background: white;
-    font-size: 17px;
+    font-size: clamp(14px, 4vw, 18px);
     font-weight: 900;
-    box-shadow: 4px 4px 0 var(--blue);
-    line-height: 1.8;
+    box-shadow: 4px 4px 0 var(--purple);
+    line-height: 1.7;
 }
 
-.hero-subtitle strong {
+.subtitle strong {
     color: var(--purple);
 }
 
-/* ==================================
-   INFORMATION RIBBON
-================================== */
+/* BENEFITS */
 
-.info-ribbon {
+.benefits {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 9px;
-    margin-top: 18px;
-    margin-bottom: 12px;
+    flex: 0 0 auto;
 }
 
-.info-item {
+.benefit {
     min-width: 0;
-    min-height: 66px;
+    min-height: 56px;
+    padding: 5px 8px;
+    background: white;
+    border: 1.5px solid #E5E1DB;
+    border-radius: 11px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background: #FFFFFF;
-    border: 2px solid var(--ink);
-    border-radius: 10px;
-    padding: 7px;
-    box-shadow: 4px 4px 0 rgba(36,91,255,.85);
+    box-shadow: 3px 4px 0 rgba(49,92,250,.20);
 }
 
-.info-item:nth-child(2) {
-    box-shadow: 4px 4px 0 var(--pink);
+.benefit:nth-child(2) {
+    box-shadow: 3px 4px 0 rgba(240,68,145,.20);
 }
 
-.info-icon {
+.benefit-icon {
+    width: 34px;
+    height: 34px;
     flex-shrink: 0;
-    width: 36px;
-    height: 36px;
     display: grid;
     place-items: center;
-    border-radius: 10px;
-    background: var(--blue-light);
+    background: #EAF0FF;
     color: var(--blue);
+    border-radius: 10px;
 }
 
-.info-item:nth-child(2) .info-icon {
-    background: #FFE8F1;
+.benefit:nth-child(2) .benefit-icon {
+    background: #FFEAF3;
     color: var(--pink);
 }
 
-.info-icon svg {
-    width: 22px;
-    height: 22px;
+.benefit-icon svg {
+    width: 21px;
+    height: 21px;
 }
 
-.info-text {
-    font-size: 14px;
-    line-height: 1.6;
+.benefit-text {
+    font-size: clamp(11px, 3.2vw, 14px);
     font-weight: 800;
-    color: var(--ink);
+    line-height: 1.5;
+    text-align: right;
+    overflow-wrap: anywhere;
 }
 
-.info-text strong {
+.benefit-text strong {
     display: block;
-    font-size: 16px;
-    font-weight: 900;
     color: var(--blue);
+    font-size: clamp(13px, 3.7vw, 16px);
+    font-weight: 900;
 }
 
-/* ==================================
-   SOCIAL ICONS
-================================== */
+/* SOCIAL ROW */
 
-.social-panel {
+.social-row {
     width: 100%;
-    background: #FFFFFF;
-    border: 1px solid #E2DFD8;
-    border-radius: 12px;
-    padding: 8px 10px;
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow:
-        0 4px 12px rgba(20,20,30,.045),
-        inset 0 1px white;
-    margin-bottom: 8px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 5px 10px;
+    box-shadow: 0 4px 12px rgba(30,25,40,.045);
 }
 
-.social-caption {
-    font-size: 12px;
+.social-label {
+    font-size: clamp(10px, 3vw, 13px);
     font-weight: 900;
-    color: var(--ink2);
-    white-space: nowrap;
+    color: var(--black);
 }
 
 .social-icons {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 7px;
 }
 
 .social-icon {
-    width: 32px;
-    height: 32px;
+    width: 29px;
+    height: 29px;
+    border-radius: 8px;
+    background: #F8F7FA;
+    border: 1px solid #EEEAF0;
     display: grid;
     place-items: center;
-    border-radius: 9px;
-    border: 1px solid #EDEAF0;
-    background: #FAF9FC;
 }
 
 .social-icon svg {
-    width: 19px;
-    height: 19px;
+    width: 18px;
+    height: 18px;
 }
 
-.i-heart { color: #F02F72; }
-.i-save { color: #245BFF; }
-.i-send { color: #FF754F; }
-.i-repeat { color: #873AD4; }
-.i-user { color: #D94393; }
+.heart { color: #EF3980; }
+.save { color: #315CFA; }
+.send { color: #FF7656; }
+.repeat { color: #873BDB; }
+.person { color: #DA4698; }
 
-/* ==================================
-   BRAND
-================================== */
+/* BRAND */
 
-.brand-wrap {
+.brand-area {
+    flex: 0 0 auto;
+    text-align: center;
+    direction: ltr;
     position: relative;
-    margin-bottom: 2px;
-    padding: 0 12px;
+    line-height: 1;
 }
 
 .brand {
     font-family: "Manrope", sans-serif;
-    direction: ltr;
-    font-size: 36px;
-    line-height: 1.25;
+    font-size: clamp(29px, 8.5vw, 39px);
     font-weight: 800;
     letter-spacing: -2px;
-    color: var(--ink);
+    color: var(--black);
 }
 
 .brand span {
     color: var(--blue);
 }
 
-.brand-underline {
-    width: 75%;
-    height: 5px;
-    margin: 0 auto;
-    border-radius: 8px;
+.brand-line {
+    width: 80%;
+    height: 4px;
+    border-radius: 10px;
+    margin: 4px auto 0;
     background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
 }
 
-/* ==================================
-   QR CARD
-================================== */
+/* QR AREA */
 
-.qr-zone {
-    position: relative;
+.qr-area {
     width: 100%;
+    flex: 0 0 auto;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .qr-card {
-    position: relative;
-    width: min(30dvh, calc(100vw - 95px));
-    height: min(30dvh, calc(100vw - 95px));
+    width: min(30dvh, 67vw);
     aspect-ratio: 1 / 1;
     flex-shrink: 0;
+    position: relative;
     background: #FFFFFF;
-    border-radius: 14px;
-    border: 3px dotted #245BFF;
-    outline: 5px solid #FFFFFF;
+    border: 3px dashed var(--blue);
+    border-radius: 15px;
+    outline: 5px solid white;
     box-shadow:
-        0 0 0 7px rgba(36,91,255,.14),
-        0 0 0 10px rgba(255,255,255,.85),
-        0 13px 35px rgba(30,40,70,.16),
-        0 0 30px rgba(36,91,255,.10),
-        inset 0 0 0 5px #F7F9FF;
+        0 0 0 8px rgba(49,92,250,.13),
+        0 12px 35px rgba(39,52,95,.14),
+        0 0 30px rgba(49,92,250,.12);
 }
 
-/* QR frame corner marks */
+/* Decorative QR corners */
 
-.qr-card::before,
+.qr-card::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 23px;
+    height: 23px;
+    border-top: 3px solid rgba(49,92,250,.16);
+    border-left: 3px solid rgba(49,92,250,.16);
+    border-radius: 5px 0 0;
+}
+
 .qr-card::after {
     content: "";
     position: absolute;
-    width: 24px;
-    height: 24px;
-    border-color: rgba(36,91,255,.16);
-    border-style: solid;
-}
-
-.qr-card::before {
-    top: 9px;
-    left: 9px;
-    border-width: 3px 0 0 3px;
-    border-radius: 5px 0 0 0;
-}
-
-.qr-card::after {
-    bottom: 9px;
-    right: 9px;
-    border-width: 0 3px 3px 0;
-    border-radius: 0 0 5px 0;
-}
-
-/* Side stickers */
-
-.sticker {
-    position: absolute;
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    border-radius: 12px;
-    border: 2px solid var(--ink);
-    background: #FFFFFF;
-    box-shadow: 3px 4px 0 var(--blue);
-    z-index: 4;
-}
-
-.sticker svg {
+    bottom: 10px;
+    right: 10px;
     width: 23px;
     height: 23px;
+    border-bottom: 3px solid rgba(49,92,250,.16);
+    border-right: 3px solid rgba(49,92,250,.16);
+    border-radius: 0 0 5px;
 }
 
-.sticker.like {
+/* Floating decorations */
+
+.floating {
+    position: absolute;
+    z-index: 3;
+    width: 37px;
+    height: 37px;
+    display: grid;
+    place-items: center;
+    background: white;
+    border: 1.5px solid var(--black);
+    border-radius: 11px;
+    box-shadow: 3px 4px 0 var(--blue);
+}
+
+.floating svg {
+    width: 21px;
+    height: 21px;
+}
+
+.floating.one {
+    right: 3%;
     top: 8%;
-    right: 1%;
-    transform: rotate(10deg);
     color: var(--pink);
+    transform: rotate(9deg);
 }
 
-.sticker.save {
+.floating.two {
+    left: 3%;
     bottom: 8%;
-    left: 1%;
-    transform: rotate(-9deg);
     color: var(--blue);
     box-shadow: 3px 4px 0 var(--pink);
+    transform: rotate(-8deg);
 }
 
-.sticker.share {
-    top: 52%;
-    right: 0;
-    transform: translateY(-50%) rotate(8deg);
+.floating.three {
+    right: 3%;
+    bottom: 10%;
     color: var(--coral);
     box-shadow: 3px 4px 0 var(--purple);
+    transform: rotate(8deg);
 }
 
-/* Small decorative symbols */
-
-.mini-symbol {
+.decor-star {
     position: absolute;
-    font-weight: 900;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.star-one {
-    top: 5%;
-    left: 9%;
-    font-size: 26px;
     color: var(--orange);
+    font-size: 24px;
+    top: 2%;
+    left: 12%;
 }
 
-.heart-one {
-    top: 35%;
-    right: 5%;
+.decor-heart {
+    position: absolute;
     color: var(--pink);
-    font-size: 21px;
+    font-size: 18px;
+    right: 12%;
+    top: 2%;
 }
 
-.heart-two {
-    bottom: 7%;
-    right: 13%;
-    color: var(--coral);
-    font-size: 16px;
-}
-
-.plus-one {
-    bottom: 10%;
-    left: 13%;
-    font-size: 29px;
-    color: var(--purple);
-}
-
-/* ==================================
-   BOTTOM INFORMATION
-================================== */
+/* BOTTOM */
 
 .bottom {
     width: 100%;
-    margin-top: 17px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
 }
 
-.follow-box {
-    position: relative;
+.follow {
     width: 100%;
-    min-height: 51px;
-    padding: 8px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    border-radius: 10px;
-    background: var(--ink);
-    border: 2px solid #32323C;
-    box-shadow:
-        0 5px 0 var(--blue),
-        0 9px 18px rgba(20,20,30,.10);
+    min-height: 44px;
+    padding: 5px 10px;
+    background: var(--black);
     color: white;
-    font-size: 15px;
-    font-weight: 900;
-    line-height: 1.7;
-    overflow-wrap: anywhere;
-}
-
-.follow-box svg {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    color: #FF6C9D;
-}
-
-.follow-box strong {
-    color: #FF719D;
-}
-
-.scan-box {
-    margin-top: 13px;
-    width: 100%;
-    min-height: 53px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 9px;
-    padding: 7px 12px;
-    background: var(--blue);
-    color: #FFFFFF;
-    border-radius: 10px;
-    border: 2px solid #FFFFFF;
-    outline: 2px dashed rgba(36,91,255,.45);
-    box-shadow:
-        0 6px 0 #183DAD,
-        0 10px 20px rgba(36,91,255,.16);
-    font-size: 23px;
-    font-weight: 900;
-    line-height: 1.5;
-    overflow-wrap: anywhere;
-}
-
-.scan-box svg {
-    width: 26px;
-    height: 26px;
-    flex-shrink: 0;
-}
-
-.scan-box strong {
-    color: #D8FF6C;
-}
-
-.bio-box {
-    width: 100%;
-    margin-top: 13px;
+    border: 1.5px solid #393943;
+    border-radius: 9px;
+    box-shadow: 0 4px 0 var(--pink);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 9px 12px;
-    border-radius: 10px;
-    background: #FFFFFF;
-    border: 2px dashed #D8D2E7;
-    color: var(--ink);
-    font-size: 14px;
+    font-size: clamp(12px, 3.6vw, 15px);
     font-weight: 900;
-    line-height: 1.7;
-    box-shadow: 0 4px 12px rgba(20,20,30,.045);
-    overflow-wrap: anywhere;
+    line-height: 1.6;
+    text-align: center;
 }
 
-.bio-box svg {
+.follow svg {
+    flex-shrink: 0;
     width: 22px;
     height: 22px;
-    flex-shrink: 0;
-    color: var(--purple);
+    color: #FF75A8;
 }
 
-.bio-box strong {
-    color: var(--purple);
+.follow strong {
+    color: #FF80AD;
 }
 
-.bottom-signature {
+.scan {
+    width: 100%;
+    min-height: 47px;
+    background: var(--blue);
+    color: white;
+    border: 2px solid white;
+    outline: 2px dashed rgba(49,92,250,.5);
+    border-radius: 9px;
+    box-shadow: 0 5px 0 #1F43C1;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
-    color: #77747B;
-    font-size: 11px;
+    justify-content: center;
+    gap: 8px;
+    padding: 5px 9px;
+    font-size: clamp(18px, 5.6vw, 23px);
+    font-weight: 900;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.scan svg {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.scan strong {
+    color: #E1FF7B;
+}
+
+.bio {
+    width: 100%;
+    min-height: 43px;
+    padding: 5px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border: 2px dashed #D8D0E8;
+    border-radius: 9px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(40,30,55,.05);
+    font-size: clamp(11px, 3.3vw, 14px);
+    font-weight: 900;
+    line-height: 1.65;
+    text-align: center;
+}
+
+.bio svg {
+    flex-shrink: 0;
+    width: 21px;
+    height: 21px;
+    color: var(--purple);
+}
+
+.bio strong {
+    color: var(--purple);
+}
+
+.signature {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: #77747D;
+    font-size: 10px;
     font-weight: 800;
+    line-height: 1.4;
 }
 
-.signature-line {
-    flex: 1;
-    height: 1px;
-    background: #D8D4CC;
-    margin: 0 9px;
-}
-
-.signature-mark {
-    color: var(--blue);
+.signature .en {
     font-family: "Manrope", sans-serif;
     direction: ltr;
+    color: var(--blue);
     letter-spacing: .5px;
 }
 
-/* ==================================
-   SHORT SCREEN ADJUSTMENTS
-================================== */
+/* =================================
+   RESPONSIVE FIT
+================================= */
+
+/* Short mobile displays */
 
 @media (max-height: 740px) {
-    .top-label {
-        margin-bottom: 7px;
-        padding: 5px 14px;
-    }
-
-    .hero-title {
-        font-size: clamp(34px, 9vw, 44px);
-        line-height: 1.28;
-    }
-
-    .hero-subtitle {
-        margin-top: 6px;
-        font-size: 15px;
-    }
-
-    .info-ribbon {
-        margin-top: 11px;
-        margin-bottom: 8px;
-    }
-
-    .info-item {
-        min-height: 54px;
-    }
-
-    .info-icon {
-        width: 30px;
-        height: 30px;
-    }
-
-    .info-text {
-        font-size: 12px;
-    }
-
-    .info-text strong {
-        font-size: 14px;
-    }
-
-    .social-panel {
-        padding: 5px 8px;
+    .eyebrow {
         margin-bottom: 5px;
+        padding: 4px 13px;
     }
 
-    .social-icon {
+    h1 {
+        font-size: clamp(29px, 8vw, 40px);
+        line-height: 1.27;
+    }
+
+    .subtitle {
+        margin-top: 5px;
+        padding: 3px 11px;
+    }
+
+    .benefits {
+        gap: 7px;
+    }
+
+    .benefit {
+        min-height: 46px;
+        padding: 4px 6px;
+    }
+
+    .benefit-icon {
         width: 29px;
         height: 29px;
     }
 
-    .brand {
-        font-size: 31px;
-    }
-
-    .bottom {
-        margin-top: 12px;
-    }
-
-    .follow-box {
-        min-height: 43px;
-        font-size: 14px;
-    }
-
-    .scan-box {
-        margin-top: 10px;
-        min-height: 45px;
-        font-size: 21px;
-    }
-
-    .bio-box {
-        margin-top: 10px;
-        padding: 6px 9px;
-        font-size: 13px;
-    }
-
-    .bottom-signature {
-        margin-top: 6px;
-    }
-}
-
-@media (max-height: 650px) {
-    .page {
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-
-    .hero-title {
-        font-size: 31px;
-    }
-
-    .hero-subtitle {
-        font-size: 14px;
-        padding: 3px 10px;
-    }
-
-    .info-ribbon {
-        margin-top: 7px;
-        margin-bottom: 5px;
-    }
-
-    .info-item {
-        min-height: 43px;
-    }
-
-    .social-panel {
-        padding: 3px 7px;
+    .social-row {
+        padding: 4px 8px;
     }
 
     .social-icon {
+        width: 26px;
+        height: 26px;
+    }
+
+    .brand {
+        font-size: 30px;
+    }
+
+    .bottom {
+        gap: 7px;
+    }
+
+    .follow {
+        min-height: 39px;
+    }
+
+    .scan {
+        min-height: 41px;
+    }
+
+    .bio {
+        min-height: 38px;
+    }
+}
+
+/* Very short screens */
+
+@media (max-height: 640px) {
+    .page {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .eyebrow {
+        font-size: 12px;
+        margin-bottom: 3px;
+    }
+
+    h1 {
+        font-size: clamp(26px, 7.5vw, 34px);
+        line-height: 1.22;
+    }
+
+    .subtitle {
+        font-size: 13px;
+        margin-top: 3px;
+        padding: 2px 9px;
+    }
+
+    .benefit {
+        min-height: 38px;
+    }
+
+    .benefit-icon {
         width: 25px;
         height: 25px;
     }
 
+    .benefit-icon svg {
+        width: 17px;
+        height: 17px;
+    }
+
+    .benefit-text {
+        font-size: 10px;
+    }
+
+    .benefit-text strong {
+        font-size: 12px;
+    }
+
+    .social-label {
+        font-size: 10px;
+    }
+
+    .social-icon {
+        width: 23px;
+        height: 23px;
+    }
+
     .social-icon svg {
-        width: 16px;
-        height: 16px;
+        width: 15px;
+        height: 15px;
     }
 
     .brand {
-        font-size: 27px;
+        font-size: 25px;
+    }
+
+    .qr-card {
+        width: min(25dvh, 60vw);
+    }
+
+    .floating {
+        width: 31px;
+        height: 31px;
+    }
+
+    .floating svg {
+        width: 18px;
+        height: 18px;
     }
 
     .bottom {
-        margin-top: 9px;
+        gap: 6px;
     }
 
-    .follow-box {
+    .follow {
+        min-height: 34px;
+        font-size: 11px;
+    }
+
+    .scan {
         min-height: 36px;
-        padding: 4px 7px;
-        font-size: 12px;
+        font-size: 17px;
     }
 
-    .scan-box {
-        margin-top: 8px;
-        min-height: 38px;
-        padding: 4px 7px;
-        font-size: 18px;
+    .bio {
+        min-height: 33px;
+        font-size: 10px;
     }
 
-    .bio-box {
-        margin-top: 8px;
-        padding: 4px 7px;
-        font-size: 12px;
-    }
-
-    .bottom-signature {
-        display: none;
+    .signature {
+        font-size: 9px;
     }
 }
 
-@media (max-width: 360px) {
+/* Narrow phones */
+
+@media (max-width: 350px) {
     .page {
         padding-left: 9px;
         padding-right: 9px;
     }
 
-    .hero-title {
-        font-size: 34px;
+    h1 {
+        font-size: 31px;
     }
 
-    .info-item {
-        gap: 5px;
-        padding: 5px;
+    .benefit {
+        gap: 4px;
     }
 
-    .info-text {
-        font-size: 11px;
-    }
-
-    .info-text strong {
-        font-size: 13px;
-    }
-
-    .social-caption {
+    .benefit-text {
         font-size: 10px;
     }
 
     .social-icons {
-        gap: 5px;
+        gap: 4px;
     }
 
     .qr-card {
-        width: min(30dvh, calc(100vw - 80px));
-        height: min(30dvh, calc(100vw - 80px));
+        width: min(29dvh, 64vw);
     }
 
-    .scan-box {
-        font-size: 19px;
+    .scan {
+        font-size: 17px;
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
+/* Landscape */
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .poster {
+        max-width: 680px;
+        justify-content: space-around;
+    }
+
+    .qr-card {
+        width: min(29dvh, 27vw);
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    .brand {
+        font-size: 23px;
+    }
+
+    .benefits {
+        max-width: 450px;
+    }
+
+    .social-row {
+        max-width: 480px;
+    }
+
+    .bottom {
+        max-width: 480px;
     }
 }
 </style>
@@ -850,45 +809,43 @@ body {
 
 <div class="page">
 
-    <div class="bg"></div>
-    <div class="bg-grid"></div>
-    <div class="bg-line one"></div>
-    <div class="bg-line two"></div>
-    <div class="side-stripe right"></div>
-    <div class="side-stripe left"></div>
+    <div class="background"></div>
+    <div class="pattern"></div>
+    <div class="edge left"></div>
+    <div class="edge right"></div>
 
-    <main class="content">
+    <main class="poster">
 
         <!-- HEADER -->
 
-        <header class="header">
+        <header class="top">
 
-            <div class="top-label">
-                <span class="dot"></span>
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
                 دانلود اپلیکیشن
             </div>
 
-            <h1 class="hero-title">
+            <h1>
                 پلتفرم کسب درآمد
-                <span class="second">
-                    از <span class="instagram">اینستاگرام</span>
+                <span class="line">
+                    از <span class="colored">اینستاگرام</span>
                 </span>
             </h1>
 
-            <p class="hero-subtitle">
+            <div class="subtitle">
                 <strong>استفاده آسان</strong>
                 + درآمد واقعی
-            </p>
+            </div>
 
         </header>
 
-        <!-- FEATURES -->
+        <!-- BENEFITS -->
 
-        <section class="info-ribbon">
+        <section class="benefits">
 
-            <div class="info-item">
+            <div class="benefit">
 
-                <span class="info-icon">
+                <span class="benefit-icon">
                     <svg viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-width="2.2"
                          stroke-linecap="round">
@@ -897,24 +854,24 @@ body {
                     </svg>
                 </span>
 
-                <div class="info-text">
+                <div class="benefit-text">
                     <strong>یک ساعت</strong>
                     فعالیت هفتگی
                 </div>
 
             </div>
 
-            <div class="info-item">
+            <div class="benefit">
 
-                <span class="info-icon">
+                <span class="benefit-icon">
                     <svg viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-width="2.2"
-                         stroke-linecap="round" stroke-linejoin="round">
+                         stroke-linecap="round">
                         <path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9z"/>
                     </svg>
                 </span>
 
-                <div class="info-text">
+                <div class="benefit-text">
                     <strong>اینستاگرام</strong>
                     همراه با درآمد
                 </div>
@@ -923,41 +880,41 @@ body {
 
         </section>
 
-        <!-- SOCIAL INTERACTION BAR -->
+        <!-- SOCIAL MEDIA SYMBOLS -->
 
-        <section class="social-panel">
+        <section class="social-row">
 
-            <span class="social-caption">
+            <span class="social-label">
                 دنیای تعامل و دیده‌شدن
             </span>
 
             <div class="social-icons">
 
-                <span class="social-icon i-heart">
+                <span class="social-icon heart">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 21s-9-5.8-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.2-9 12-9 12z"/>
                     </svg>
                 </span>
 
-                <span class="social-icon i-save">
+                <span class="social-icon save">
                     <svg viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2.2">
+                         stroke="currentColor" stroke-width="2">
                         <path d="M6 4h12v17l-6-4-6 4z"/>
                     </svg>
                 </span>
 
-                <span class="social-icon i-send">
+                <span class="social-icon send">
                     <svg viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2.2"
+                         stroke="currentColor" stroke-width="2"
                          stroke-linejoin="round">
                         <path d="M22 2L11 13"/>
                         <path d="M22 2l-7 20-4-9-9-4z"/>
                     </svg>
                 </span>
 
-                <span class="social-icon i-repeat">
+                <span class="social-icon repeat">
                     <svg viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2.2"
+                         stroke="currentColor" stroke-width="2"
                          stroke-linecap="round">
                         <path d="M17 2l4 4-4 4"/>
                         <path d="M3 11V9a3 3 0 0 1 3-3h15"/>
@@ -966,9 +923,9 @@ body {
                     </svg>
                 </span>
 
-                <span class="social-icon i-user">
+                <span class="social-icon person">
                     <svg viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2.2"
+                         stroke="currentColor" stroke-width="2"
                          stroke-linecap="round">
                         <circle cx="9" cy="8" r="4"/>
                         <path d="M3 21v-2a6 6 0 0 1 6-6h1"/>
@@ -982,60 +939,55 @@ body {
 
         <!-- BRAND -->
 
-        <div class="brand-wrap">
-
+        <div class="brand-area">
             <div class="brand">
                 Insta<span>Gain</span>
             </div>
-
-            <div class="brand-underline"></div>
-
+            <div class="brand-line"></div>
         </div>
 
-        <!-- EMPTY QR AREA -->
+        <!-- EMPTY SQUARE -->
 
-        <section class="qr-zone">
+        <section class="qr-area">
 
-            <span class="mini-symbol star-one">✦</span>
-            <span class="mini-symbol heart-one">♥</span>
-            <span class="mini-symbol heart-two">♥</span>
-            <span class="mini-symbol plus-one">✳</span>
+            <span class="decor-star">✦</span>
+            <span class="decor-heart">♥</span>
 
-            <span class="sticker like" aria-hidden="true">
+            <span class="floating one">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 21s-9-5.8-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.2-9 12-9 12z"/>
                 </svg>
             </span>
 
-            <span class="sticker save" aria-hidden="true">
+            <span class="floating two">
                 <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2.2">
+                     stroke="currentColor" stroke-width="2">
                     <path d="M6 4h12v17l-6-4-6 4z"/>
                 </svg>
             </span>
 
-            <span class="sticker share" aria-hidden="true">
+            <span class="floating three">
                 <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2.2"
+                     stroke="currentColor" stroke-width="2"
                      stroke-linejoin="round">
                     <path d="M22 2L11 13"/>
                     <path d="M22 2l-7 20-4-9-9-4z"/>
                 </svg>
             </span>
 
-            <div class="qr-card" aria-label="کادر خالی کد QR">
+            <div class="qr-card" aria-label="کادر سفید خالی برای QR">
             </div>
 
         </section>
 
-        <!-- DOWNLOAD INSTRUCTIONS -->
+        <!-- INSTRUCTIONS -->
 
         <footer class="bottom">
 
-            <div class="follow-box">
+            <div class="follow">
 
                 <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2.1"
+                     stroke="currentColor" stroke-width="2"
                      stroke-linecap="round">
                     <circle cx="9" cy="8" r="4"/>
                     <path d="M3 21v-2a6 6 0 0 1 6-6h1"/>
@@ -1048,7 +1000,7 @@ body {
 
             </div>
 
-            <div class="scan-box">
+            <div class="scan">
 
                 <svg viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2"
@@ -1066,7 +1018,7 @@ body {
 
             </div>
 
-            <div class="bio-box">
+            <div class="bio">
 
                 <svg viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2.2"
@@ -1082,10 +1034,9 @@ body {
 
             </div>
 
-            <div class="bottom-signature">
-                <span>یک تجربه متفاوت در اینستاگرام</span>
-                <span class="signature-line"></span>
-                <span class="signature-mark">INSTAGAIN®</span>
+            <div class="signature">
+                <span>لذت از اینستاگرام با درآمد</span>
+                <span class="en">INSTAGAIN</span>
             </div>
 
         </footer>
