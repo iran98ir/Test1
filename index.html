@@ -3,739 +3,564 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#F5F3EC">
-<title>InstaGain | پلتفرم کسب درآمد از اینستاگرام</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#080F1D">
+<title>دانلود اپلیکیشن راضی</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700;800;900&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900;1000&display=swap');
 
-:root{
-    --paper:#F5F3EC;
-    --ink:#171717;
-    --blue:#315CFF;
-    --orange:#FF633D;
-    --pink:#F2A8B9;
-    --yellow:#F4D64E;
-    --green:#C8ED69;
-    --white:#FFFFFF;
+:root {
+    --bg: #080F1D;
+    --bg2: #101D31;
+    --gold: #E9C77C;
+    --gold2: #B78A43;
+    --white: #FFFFFF;
+    --muted: #C6D0DD;
+    --font: 'Vazirmatn', Tahoma, sans-serif;
 }
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    -webkit-tap-highlight-color:transparent;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#E9E7E0;
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #030711;
+    font-family: var(--font);
 }
 
-body{
-    font-family:"Vazirmatn",Tahoma,sans-serif;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overscroll-behavior:none;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.poster{
-    position:absolute;
-    width:900px;
-    height:1900px;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%) scale(var(--poster-scale,1));
-    transform-origin:center center;
-    overflow:hidden;
-    background:var(--paper);
-    color:var(--ink);
-    isolation:isolate;
+.poster {
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    max-width: 600px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background:
+        radial-gradient(ellipse at 50% 37%, rgba(43,75,111,.48), transparent 47%),
+        radial-gradient(ellipse at 0% 70%, rgba(184,137,65,.12), transparent 40%),
+        radial-gradient(ellipse at 100% 15%, rgba(60,91,130,.18), transparent 35%),
+        linear-gradient(155deg, #111F34 0%, #080F1D 48%, #060B14 100%);
+    color: var(--white);
+    padding: 0 5%;
 }
 
-/* بافت ظریف کاغذ */
-.poster::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    z-index:20;
-    pointer-events:none;
-    opacity:.14;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.19'/%3E%3C/svg%3E");
+/* BACKGROUND DECORATIONS */
+
+.poster::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: .16;
+    background-image:
+        linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
 }
 
-/* عناصر گرافیکی پس‌زمینه */
-.shape{
-    position:absolute;
-    pointer-events:none;
-}
-
-.shape-circle{
-    width:330px;
-    height:330px;
-    border:2px solid var(--blue);
-    border-radius:50%;
-    top:340px;
-    left:-180px;
-}
-
-.shape-circle::before,
-.shape-circle::after{
-    content:"";
-    position:absolute;
-    border:1px solid var(--blue);
-    border-radius:50%;
-    inset:22px;
-}
-
-.shape-circle::after{
-    inset:45px;
-}
-
-.shape-orange{
-    width:120px;
-    height:120px;
-    background:var(--orange);
-    border-radius:50%;
-    right:-45px;
-    top:640px;
-}
-
-.shape-green{
-    width:100px;
-    height:100px;
-    background:var(--green);
-    transform:rotate(45deg);
-    left:55px;
-    bottom:310px;
-}
-
-.shape-cross{
-    width:74px;
-    height:74px;
-    right:70px;
-    bottom:520px;
-}
-
-.shape-cross::before,
-.shape-cross::after{
-    content:"";
-    position:absolute;
-    background:var(--blue);
-    border-radius:10px;
-}
-
-.shape-cross::before{
-    width:100%;
-    height:12px;
-    top:31px;
-}
-
-.shape-cross::after{
-    height:100%;
-    width:12px;
-    left:31px;
-}
-
-.top-line{
-    position:absolute;
-    top:58px;
-    left:65px;
-    right:65px;
-    height:2px;
-    background:var(--ink);
-}
-
-.top-meta{
-    position:absolute;
-    top:78px;
-    left:65px;
-    right:65px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    font-size:19px;
-    font-weight:800;
-    letter-spacing:-.5px;
-}
-
-.meta-dot{
-    display:inline-block;
-    width:13px;
-    height:13px;
-    background:var(--orange);
-    border-radius:50%;
-    margin-left:10px;
-    vertical-align:middle;
-}
-
-/* بخش اصلی تیتر */
-.hero{
-    position:absolute;
-    top:180px;
-    right:65px;
-    left:65px;
-    height:440px;
-}
-
-.eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:13px;
-    padding:10px 20px;
-    border:2px solid var(--ink);
-    border-radius:100px;
-    font-size:25px;
-    font-weight:800;
-    background:var(--paper);
-}
-
-.eyebrow-mark{
-    width:14px;
-    height:14px;
-    background:var(--orange);
-    border-radius:50%;
-}
-
-.hero h1{
-    margin-top:28px;
-    font-size:91px;
-    line-height:1.38;
-    font-weight:900;
-    letter-spacing:-5px;
-    text-align:right;
-    position:relative;
-    z-index:2;
-}
-
-.hero h1 .line-one{
-    display:block;
-    white-space:nowrap;
-}
-
-.hero h1 .line-two{
-    display:inline-block;
-    position:relative;
-    z-index:1;
-    padding:0 13px 4px 20px;
-    background:var(--green);
-    transform:rotate(-1.3deg);
-    margin-top:5px;
-}
-
-.hero h1 .line-two::after{
-    content:"";
-    position:absolute;
-    bottom:-9px;
-    right:0;
-    width:100%;
-    height:5px;
-    background:var(--ink);
-}
-
-.hero-stamp{
-    position:absolute;
-    left:12px;
-    top:110px;
-    width:145px;
-    height:145px;
-    border:2px solid var(--blue);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transform:rotate(-13deg);
-    color:var(--blue);
-}
-
-.hero-stamp svg{
-    width:95px;
-    height:95px;
-}
-
-.subline{
-    position:absolute;
-    right:65px;
-    top:630px;
-    display:flex;
-    align-items:center;
-    gap:18px;
-    font-size:34px;
-    font-weight:900;
-}
-
-.subline::before{
-    content:"";
-    width:55px;
-    height:8px;
-    background:var(--orange);
-    display:block;
-}
-
-/* دو پیام اطراف کادر */
-.side-copy{
-    position:absolute;
-    top:725px;
-    right:65px;
-    width:770px;
-    height:95px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-
-.side-item{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    font-size:24px;
-    font-weight:800;
-    line-height:1.5;
-    white-space:nowrap;
-}
-
-.side-item .number{
-    width:48px;
-    height:48px;
-    flex:0 0 48px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:var(--blue);
-    color:white;
-    font-family:"DM Sans",sans-serif;
-    font-size:23px;
-    font-weight:900;
-}
-
-.side-item:last-child .number{
-    background:var(--orange);
-}
-
-/* بخش قاب خالی QR */
-.qr-section{
-    position:absolute;
-    top:850px;
-    left:0;
-    width:900px;
-    height:600px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-.brand-name{
-    height:78px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:"DM Sans","Vazirmatn",sans-serif;
-    direction:ltr;
-    font-size:65px;
-    font-weight:900;
-    letter-spacing:-3px;
-    color:var(--ink);
-    line-height:1;
-}
-
-.brand-name span{
-    color:var(--blue);
-}
-
-.qr-frame{
-    position:relative;
-    width:500px;
-    height:500px;
-    background:#FFFFFF;
-    border:3px solid var(--ink);
-    outline:3px dashed var(--blue);
-    outline-offset:13px;
+.poster::after {
+    content: "";
+    position: absolute;
+    width: 85vw;
+    height: 85vw;
+    max-width: 500px;
+    max-height: 500px;
+    border: 1px solid rgba(233,199,124,.12);
+    border-radius: 50%;
+    top: 29%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
     box-shadow:
-        15px 15px 0 var(--green),
-        18px 18px 0 var(--ink);
-    margin-top:12px;
+        0 0 0 25px rgba(233,199,124,.025),
+        0 0 0 55px rgba(233,199,124,.018);
 }
 
-/* گوشه‌های گرافیکی قاب */
+.light-beam {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65%;
+    height: 32%;
+    background: linear-gradient(
+        to bottom,
+        rgba(233,199,124,.13),
+        transparent
+    );
+    filter: blur(45px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.corner {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    border-color: rgba(233,199,124,.5);
+    border-style: solid;
+    z-index: 2;
+}
+
+.corner.tl {
+    top: 17px;
+    left: 17px;
+    border-width: 1px 0 0 1px;
+}
+
+.corner.tr {
+    top: 17px;
+    right: 17px;
+    border-width: 1px 1px 0 0;
+}
+
+.corner.bl {
+    bottom: 17px;
+    left: 17px;
+    border-width: 0 0 1px 1px;
+}
+
+.corner.br {
+    bottom: 17px;
+    right: 17px;
+    border-width: 0 1px 1px 0;
+}
+
+/* TOP BRAND AREA */
+
+.header {
+    width: 100%;
+    flex: 0 0 27%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding-top: 5%;
+}
+
+.eyebrow {
+    font-size: clamp(12px, 3.2vw, 17px);
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: -.3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.eyebrow::before,
+.eyebrow::after {
+    content: "";
+    width: 23px;
+    height: 1px;
+    background: var(--gold2);
+}
+
+.main-title {
+    font-size: clamp(76px, 23vw, 125px);
+    line-height: 1.08;
+    font-weight: 1000;
+    letter-spacing: -5px;
+    color: #FFFFFF;
+    text-shadow: 0 5px 30px rgba(0,0,0,.35);
+}
+
+.main-title span {
+    color: var(--gold);
+}
+
+.title-line {
+    width: 75px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 5px auto 9px;
+}
+
+.subtitle {
+    font-size: clamp(13px, 3.7vw, 19px);
+    line-height: 1.9;
+    font-weight: 700;
+    color: #E4EAF2;
+}
+
+.subtitle strong {
+    color: var(--gold);
+    font-weight: 900;
+}
+
+/* QR AREA */
+
+.qr-section {
+    width: 100%;
+    flex: 0 0 43%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.qr-layout {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 52%;
+    direction: rtl;
+    align-items: center;
+    gap: 3%;
+}
+
+.qr-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(15px, 4vh, 35px);
+    text-align: center;
+}
+
+.benefit {
+    width: 100%;
+    position: relative;
+    padding: 12px 2px;
+    border-top: 1px solid rgba(233,199,124,.48);
+    border-bottom: 1px solid rgba(233,199,124,.20);
+}
+
+.benefit::before {
+    content: "✦";
+    display: block;
+    color: var(--gold);
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.benefit-label {
+    color: var(--gold);
+    font-size: clamp(10px, 2.9vw, 14px);
+    font-weight: 800;
+    display: block;
+    white-space: nowrap;
+}
+
+.benefit-value {
+    color: #FFFFFF;
+    font-size: clamp(12px, 3.5vw, 17px);
+    line-height: 1.8;
+    font-weight: 900;
+    display: block;
+    overflow-wrap: anywhere;
+}
+
+.qr-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+}
+
+.scan-label {
+    font-size: clamp(14px, 4vw, 19px);
+    font-weight: 900;
+    color: var(--gold);
+    margin-bottom: 12px;
+    white-space: nowrap;
+    letter-spacing: -.5px;
+}
+
+.qr-frame {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #FFFFFF;
+    border: 5px solid #FFFFFF;
+    border-radius: 7px;
+    box-shadow:
+        0 0 0 1px rgba(233,199,124,.9),
+        0 0 0 8px rgba(233,199,124,.08),
+        0 15px 45px rgba(0,0,0,.45);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* QR CORNER MARKS */
+
 .qr-frame::before,
-.qr-frame::after{
-    content:"";
-    position:absolute;
-    width:43px;
-    height:43px;
-    border-color:var(--orange);
-    border-style:solid;
-    z-index:2;
+.qr-frame::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 3px solid var(--gold2);
 }
 
-.qr-frame::before{
-    top:-5px;
-    right:-5px;
-    border-width:6px 6px 0 0;
+.qr-frame::before {
+    top: -9px;
+    left: -9px;
+    border-right: 0;
+    border-bottom: 0;
 }
 
-.qr-frame::after{
-    bottom:-5px;
-    left:-5px;
-    border-width:0 0 6px 6px;
+.qr-frame::after {
+    bottom: -9px;
+    right: -9px;
+    border-left: 0;
+    border-top: 0;
 }
 
-/* نوار تزئینی پایین قاب */
-.qr-caption{
-    position:absolute;
-    top:1450px;
-    right:65px;
-    left:65px;
-    height:3px;
-    background:var(--ink);
+.qr-inner {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
 }
 
-/* بخش دستور اسکن */
-.instruction{
-    position:absolute;
-    top:1510px;
-    right:65px;
-    left:65px;
-    height:280px;
+/* BOTTOM INFORMATION */
+
+.bottom {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding-top: 2%;
 }
 
-.follow-label{
-    display:inline-flex;
-    align-items:center;
-    gap:12px;
-    font-size:25px;
-    font-weight:800;
-    padding:7px 16px;
-    background:var(--pink);
-    border:2px solid var(--ink);
-    transform:rotate(-.6deg);
+.service-label {
+    color: var(--gold);
+    font-size: clamp(22px, 6.5vw, 34px);
+    font-weight: 1000;
+    line-height: 1.5;
+    margin-bottom: 5px;
 }
 
-.follow-label::before{
-    content:"";
-    width:12px;
-    height:12px;
-    border-radius:50%;
-    background:var(--ink);
+.description {
+    color: #FFFFFF;
+    font-size: clamp(13px, 3.6vw, 18px);
+    font-weight: 700;
+    line-height: 2;
+    max-width: 95%;
 }
 
-.instruction h2{
-    margin-top:16px;
-    font-size:47px;
-    line-height:1.55;
-    font-weight:900;
-    letter-spacing:-1.5px;
+.description strong {
+    color: var(--gold);
+    font-weight: 900;
 }
 
-.instruction h2 .scan{
-    color:var(--blue);
-    text-decoration:underline;
-    text-decoration-thickness:5px;
-    text-underline-offset:8px;
+.bottom-divider {
+    width: 65%;
+    height: 1px;
+    margin-top: 15px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(233,199,124,.65),
+        transparent
+    );
 }
 
-.instruction p{
-    margin-top:9px;
-    font-size:27px;
-    line-height:1.7;
-    font-weight:700;
+.bottom-note {
+    color: rgba(255,255,255,.45);
+    font-size: 10px;
+    font-weight: 500;
+    margin-top: 8px;
 }
 
-.footer-line{
-    position:absolute;
-    right:65px;
-    left:65px;
-    bottom:55px;
-    height:2px;
-    background:var(--ink);
+/* SMALL SCREENS */
+
+@media (max-height: 700px) {
+    .header {
+        flex-basis: 25%;
+    }
+
+    .qr-section {
+        flex-basis: 42%;
+    }
+
+    .main-title {
+        font-size: clamp(65px, 19vw, 100px);
+    }
+
+    .benefit {
+        padding: 7px 1px;
+    }
+
+    .bottom {
+        padding-top: 0;
+    }
+
+    .bottom-divider {
+        margin-top: 7px;
+    }
+
+    .service-label {
+        margin-bottom: 0;
+    }
 }
 
-.footer-symbols{
-    position:absolute;
-    bottom:15px;
-    right:65px;
-    left:65px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    font-family:"DM Sans",sans-serif;
-    font-size:17px;
-    font-weight:800;
-    direction:ltr;
+@media (max-width: 350px) {
+    .poster {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .qr-layout {
+        grid-template-columns: minmax(0, 1fr) 50%;
+        gap: 2%;
+    }
+
+    .benefit-label {
+        font-size: 10px;
+    }
+
+    .benefit-value {
+        font-size: 11px;
+    }
+
+    .scan-label {
+        font-size: 13px;
+    }
 }
 
-.footer-symbols .dots{
-    display:flex;
-    gap:8px;
-}
-
-.footer-symbols .dots i{
-    display:block;
-    width:11px;
-    height:11px;
-    border-radius:50%;
-    background:var(--blue);
-}
-
-.footer-symbols .dots i:nth-child(2){
-    background:var(--orange);
-}
-
-.footer-symbols .dots i:nth-child(3){
-    background:var(--green);
-}
-
-/* نمادهای تعاملی */
-.social-mark{
-    position:absolute;
-    width:58px;
-    height:58px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:var(--white);
-    border:2px solid var(--ink);
-    box-shadow:5px 5px 0 var(--ink);
-    transform:rotate(-9deg);
-}
-
-.social-mark svg{
-    width:31px;
-    height:31px;
-    stroke:var(--ink);
-    fill:none;
-    stroke-width:2.4;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-}
-
-.mark-heart{
-    top:1150px;
-    right:55px;
-    border-radius:50%;
-}
-
-.mark-send{
-    top:1285px;
-    left:55px;
-    border-radius:18px;
-    transform:rotate(9deg);
-}
-
-.mark-bookmark{
-    top:1060px;
-    left:85px;
-    border-radius:50%;
-    transform:rotate(8deg);
-}
-
-.mark-repost{
-    top:1350px;
-    right:70px;
-    border-radius:50%;
-    transform:rotate(-8deg);
-}
-
-.tiny-star{
-    position:absolute;
-    width:40px;
-    height:40px;
-    color:var(--orange);
-}
-
-.star-one{
-    top:690px;
-    left:105px;
-}
-
-.star-two{
-    top:1450px;
-    right:115px;
-    color:var(--blue);
-}
-
-.tiny-star svg{
-    width:100%;
-    height:100%;
-    fill:currentColor;
-}
-
-@media (max-height:650px){
-    .poster{transform:translate(-50%,-50%) scale(var(--poster-scale,1));}
+/* NO ANIMATION - STATIC POSTER */
+* {
+    animation: none !important;
+    transition: none !important;
 }
 </style>
 </head>
 
 <body>
 
-<main class="poster" id="poster">
+<main class="poster">
 
-    <div class="shape shape-circle"></div>
-    <div class="shape shape-orange"></div>
-    <div class="shape shape-green"></div>
-    <div class="shape shape-cross"></div>
+    <div class="light-beam"></div>
 
-    <div class="top-line"></div>
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
 
-    <div class="top-meta">
-        <div><span class="meta-dot"></span>دانلود اپلیکیشن</div>
-        <div style="direction:ltr;font-family:'DM Sans',sans-serif;">INSTAGRAM PLATFORM</div>
-    </div>
+    <!-- HEADER -->
 
-    <section class="hero">
+    <header class="header">
 
         <div class="eyebrow">
-            <span class="eyebrow-mark"></span>
-            دانلود اپلیکیشن
+            خدمات امور مشترکین آنلاین
         </div>
 
-        <h1>
-            <span class="line-one">پلتفرم کسب درآمد</span>
-            <span class="line-two">از اینستاگرام</span>
+        <h1 class="main-title">
+            راضی<span>.</span>
         </h1>
 
-        <div class="hero-stamp" aria-hidden="true">
-            <svg viewBox="0 0 100 100" fill="none">
-                <path d="M50 8L59 35L87 24L70 49L94 65L65 66L63 95L47 72L23 91L32 63L5 50L34 42L25 14L48 32Z"
-                      stroke="currentColor" stroke-width="2.5"/>
-                <circle cx="50" cy="51" r="10" fill="currentColor"/>
-            </svg>
-        </div>
+        <div class="title-line"></div>
 
-    </section>
+        <p class="subtitle">
+            از پرداخت خلافی خودرو تا مشاهده ابلاغیه
+            <br>
+            <strong>بدون نیاز به حضور</strong>
+        </p>
 
-    <div class="subline">
-        استفاده آسان + درآمد واقعی
-    </div>
+    </header>
 
-    <section class="side-copy">
-
-        <div class="side-item">
-            <span class="number">01</span>
-            <span>هفته‌ای یک ساعت فعالیت</span>
-        </div>
-
-        <div class="side-item">
-            <span class="number">02</span>
-            <span>لذت از اینستاگرام با درآمد</span>
-        </div>
-
-    </section>
-
-    <div class="tiny-star star-one" aria-hidden="true">
-        <svg viewBox="0 0 50 50">
-            <path d="M25 0L30 18L50 25L30 31L25 50L19 31L0 25L19 18Z"/>
-        </svg>
-    </div>
+    <!-- QR CODE AREA -->
 
     <section class="qr-section">
 
-        <div class="brand-name">Insta<span>Gain</span></div>
+        <div class="qr-layout">
 
-        <!-- این کادر عمداً کاملاً خالی است -->
-        <div class="qr-frame" aria-label="کادر خالی محل قرارگیری QR Code"></div>
+            <!-- RIGHT BENEFITS -->
+
+            <div class="qr-side">
+
+                <div class="benefit">
+                    <span class="benefit-label">
+                        طرح‌های تشویقی
+                    </span>
+
+                    <strong class="benefit-value">
+                        سیم‌کارت رایگان
+                    </strong>
+                </div>
+
+                <div class="benefit">
+                    <span class="benefit-label">
+                        طرح‌های تشویقی
+                    </span>
+
+                    <strong class="benefit-value">
+                        بسته اینترنت ارزان
+                    </strong>
+                </div>
+
+            </div>
+
+            <!-- EMPTY QR SQUARE -->
+
+            <div class="qr-center">
+
+                <div class="scan-label">
+                    مرا اسکن کنید
+                </div>
+
+                <div class="qr-frame">
+                    <div class="qr-inner">
+                        <!-- QR CODE GOES HERE -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
 
     </section>
 
-    <div class="social-mark mark-heart" aria-hidden="true">
-        <svg viewBox="0 0 32 32">
-            <path d="M27 11.5C27 20 16 27 16 27S5 20 5 11.5C5 5 13 3 16 10C19 3 27 5 27 11.5Z"/>
-        </svg>
-    </div>
+    <!-- BOTTOM TEXT -->
 
-    <div class="social-mark mark-bookmark" aria-hidden="true">
-        <svg viewBox="0 0 32 32">
-            <path d="M8 5H24V28L16 22L8 28Z"/>
-        </svg>
-    </div>
+    <footer class="bottom">
 
-    <div class="social-mark mark-send" aria-hidden="true">
-        <svg viewBox="0 0 32 32">
-            <path d="M28 4L14 28L11 17L4 12Z"/>
-            <path d="M11 17L28 4"/>
-        </svg>
-    </div>
-
-    <div class="social-mark mark-repost" aria-hidden="true">
-        <svg viewBox="0 0 32 32">
-            <path d="M7 12L11 8L15 12"/>
-            <path d="M11 8V20H25"/>
-            <path d="M25 20L21 24L17 20"/>
-            <path d="M21 24V12H7"/>
-        </svg>
-    </div>
-
-    <div class="qr-caption"></div>
-
-    <div class="tiny-star star-two" aria-hidden="true">
-        <svg viewBox="0 0 50 50">
-            <path d="M25 0L30 18L50 25L30 31L25 50L19 31L0 25L19 18Z"/>
-        </svg>
-    </div>
-
-    <section class="instruction">
-
-        <div class="follow-label">
-            برای ثبت‌نام حتماً این پیج را فالوو کنید
+        <div class="service-label">
+            شبانه‌روزی
         </div>
 
-        <h2>
-            سپس <span class="scan">کیوآر کد</span> را اسکن کنید
-        </h2>
-
-        <p>
-            و یا وارد لینک دانلود اپلیکیشن در بیوگرافی شوید
+        <p class="description">
+            فقط کافیست اپلیکیشن
+            <strong>خدمات امور مشترکین</strong>
+            را دانلود کنید و از مزایای آن بهره‌مند شوید.
         </p>
 
-    </section>
+        <div class="bottom-divider"></div>
 
-    <div class="footer-line"></div>
-
-    <div class="footer-symbols">
-        <span>INSTAGAIN</span>
-        <div class="dots">
-            <i></i><i></i><i></i>
+        <div class="bottom-note">
+            خدمات هوشمند، دسترسی آسان، همیشه در دسترس
         </div>
-        <span>DOWNLOAD</span>
-    </div>
+
+    </footer>
 
 </main>
-
-<script>
-(function(){
-
-    const poster = document.getElementById("poster");
-
-    const DESIGN_WIDTH = 900;
-    const DESIGN_HEIGHT = 1900;
-
-    function fitPoster(){
-
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-
-        const scaleX = viewportWidth / DESIGN_WIDTH;
-        const scaleY = viewportHeight / DESIGN_HEIGHT;
-
-        const scale = Math.min(scaleX, scaleY);
-
-        poster.style.setProperty("--poster-scale", scale.toFixed(5));
-
-    }
-
-    window.addEventListener("resize", fitPoster, {passive:true});
-    window.addEventListener("orientationchange", fitPoster, {passive:true});
-
-    fitPoster();
-
-})();
-</script>
 
 </body>
 </html>
